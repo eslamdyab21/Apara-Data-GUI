@@ -3,25 +3,27 @@ import os
 from pathlib import Path
 import sys
 
-from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton
+from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QFileDialog
 from PyQt5.QtCore import QFile
 
         
 from ui import Ui_MainWindow
 
-class Window():
+class Window(QMainWindow):
     def __init__(self,ui):
+        QMainWindow.__init__(self)
         self.ui = ui
         self.Page1BulkConverter()
 
-        self.ui.BtnBrows_Page1.clicked.connect(self.change_txt)
+        self.ui.BtnBrows_Page1.clicked.connect(self.Page1BrowsFolders)
 
         self.ui.BtnBulkConverter.clicked.connect(self.Page1BulkConverter)
         self.ui.BtnSecond.clicked.connect(self.Page2Second)
         
 
-    def change_txt(self):
-        self.ui.LineEditPath.setText("What?!!!")
+    def Page1BrowsFolders(self):
+        fname = QFileDialog.getExistingDirectory(self, "Chosse folder", "/home/")
+        self.ui.LineEditPath_Page1.setText(fname)
     
     def Page1BulkConverter(self):
         self.ui.stackedWidget.setCurrentIndex(0)

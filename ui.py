@@ -872,9 +872,9 @@ class Ui_MainWindow(object):
         self.gridLayout_5 = QtWidgets.QGridLayout()
         self.gridLayout_5.setContentsMargins(-1, -1, -1, 0)
         self.gridLayout_5.setObjectName("gridLayout_5")
-        self.LineEditPath_3 = QtWidgets.QLineEdit(self.frame_12)
-        self.LineEditPath_3.setMinimumSize(QtCore.QSize(0, 30))
-        self.LineEditPath_3.setStyleSheet("QLineEdit {\n"
+        self.LineEditPath_Page1 = QtWidgets.QLineEdit(self.frame_12)
+        self.LineEditPath_Page1.setMinimumSize(QtCore.QSize(0, 30))
+        self.LineEditPath_Page1.setStyleSheet("QLineEdit {\n"
 "    background-color: rgb(27, 29, 35);\n"
 "    border-radius: 5px;\n"
 "    border: 2px solid rgb(27, 29, 35);\n"
@@ -886,8 +886,8 @@ class Ui_MainWindow(object):
 "QLineEdit:focus {\n"
 "    border: 2px solid rgb(91, 101, 124);\n"
 "}")
-        self.LineEditPath_3.setObjectName("LineEditPath_3")
-        self.gridLayout_5.addWidget(self.LineEditPath_3, 0, 0, 1, 1)
+        self.LineEditPath_Page1.setObjectName("LineEditPath_Page1")
+        self.gridLayout_5.addWidget(self.LineEditPath_Page1, 0, 0, 1, 1)
         self.BtnBrows_Page1 = QtWidgets.QPushButton(self.frame_12)
         self.BtnBrows_Page1.setMinimumSize(QtCore.QSize(150, 30))
         font = QtGui.QFont()
@@ -1089,7 +1089,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 274, 218))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 218, 218))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.horizontalLayout_11 = QtWidgets.QHBoxLayout(self.scrollAreaWidgetContents)
         self.horizontalLayout_11.setObjectName("horizontalLayout_11")
@@ -1535,7 +1535,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(2)
+        self.stackedWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
         MainWindow.setTabOrder(self.btn_minimize, self.btn_maximize_restore)
         MainWindow.setTabOrder(self.btn_maximize_restore, self.btn_close)
@@ -1563,7 +1563,7 @@ class Ui_MainWindow(object):
         self.BtnBrows_2.setText(_translate("MainWindow", "Open Folder"))
         self.label_user_icon.setText(_translate("MainWindow", "Apara"))
         self.labelBoxBlenderInstalation_4.setText(_translate("MainWindow", "Enter Path To The folder To Convert To CSV"))
-        self.LineEditPath_3.setPlaceholderText(_translate("MainWindow", "Your Path"))
+        self.LineEditPath_Page1.setPlaceholderText(_translate("MainWindow", "Your Path"))
         self.BtnBrows_Page1.setText(_translate("MainWindow", "Open Folder"))
         self.labelVersion_6.setText(_translate("MainWindow", "Ex: /home/documents/csvfolder"))
         self.labelBoxBlenderInstalation.setText(_translate("MainWindow", "BLENDER INSTALLATION"))

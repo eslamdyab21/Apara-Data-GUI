@@ -1743,7 +1743,7 @@ QPushButton:pressed {
                    <string notr="true">background: transparent;</string>
                   </property>
                   <property name="currentIndex">
-                   <number>2</number>
+                   <number>0</number>
                   </property>
                   <widget class="QWidget" name="page_home">
                    <layout class="QVBoxLayout" name="verticalLayout_10">
@@ -1801,7 +1801,7 @@ QPushButton:pressed {
                              <number>0</number>
                             </property>
                             <item row="0" column="0">
-                             <widget class="QLineEdit" name="LineEditPath_3">
+                             <widget class="QLineEdit" name="LineEditPath_Page1">
                               <property name="minimumSize">
                                <size>
                                 <width>0</width>
@@ -2226,7 +2226,7 @@ QScrollBar:horizontal {
                              <rect>
                               <x>0</x>
                               <y>0</y>
-                              <width>274</width>
+                              <width>218</width>
                               <height>218</height>
                              </rect>
                             </property>
