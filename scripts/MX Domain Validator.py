@@ -1,0 +1,107 @@
+import pandas as pd
+pd.options.mode.chained_assignment = None  # default='warn'
+import numpy as np
+import dns.resolver
+import time
+import os
+
+
+current_directory = os.getcwd()
+final_directory = os.path.join(current_directory, r'mx valid emails')
+if not os.path.exists(final_directory):
+   os.makedirs(final_directory)
+
+df_domains_list=[]
+big_df_domains = []
+k=1
+def mx_validate(df,csvfile):
+    global  df_domains_list
+    global big_df_domains
+    global k
+    df[['mail', 'domain']] = df['EMAIL'].str.split('@', 1, expand=True)
+    df = df[~df['domain'].isnull()]
+    domains = list(df.domain.unique())
+
+    if 'checked_domains.csv' in os.listdir(current_directory):
+        big_df_domains = pd.read_csv(current_directory + '/' + 'checked_domains.csv')
+        if k ==1:
+            df_domains_list.append(big_df_domains)
+        checked_domains_list = list(big_df_domains['domain'].unique())
+        if 'type' in big_df_domains.columns:
+            if 'invalid' in big_df_domains['type'].unique():
+                invaid_domains = list(big_df_domains[big_df_domains['type'] == 'invalid']['domain'].unique())
+                df = df[~df['domain'].isin(invaid_domains)]
+
+    else:
+        if len(df_domains_list) >0:
+            checked_domains_list = list(big_df_domains['domain'].unique())
+            if 'invalid' in big_df_domains['type'].unique():
+                invaid_domains = list(big_df_domains[big_df_domains['type'] == 'invalid']['domain'].unique())
+                df = df[~df['domain'].isin(invaid_domains)]
+        else:
+            checked_domains_list = []
+
+
+    domains_dict = {}
+    invalid_domains_list = []
+
+    i = 0
+    for domain in domains:
+        i = i + 1
+        if domain not in checked_domains_list:
+            try:
+                mxRecords = dns.resolver.resolve(domain, 'MX')
+                exchanges = [exchange.to_text().split()[1] for exchange in mxRecords]
+                domains_dict[domain] = ['valid', exchanges]
+                print(str(len(os.listdir(current_directory)) - k) + ' files remaining')
+                print(domain + ' domain exist')
+
+            except:
+                print(str(len(os.listdir(current_directory)) - k) + ' files remaining')
+                print(domain + ' domain does not exist')
+                domains_dict[domain] = ['invalid',np.nan]
+                invalid_domains_list.append(domain)
+
+            time.sleep(0.2)
+            per = i * 100 / len(domains)
+            print(str(int(per)) + '%')
+            print('===================================================================================')
+        else:
+            print(str(len(os.listdir(current_directory)) - k) + ' files remaining')
+            print(domain + ' domain had been checked before')
+            per = i * 100 / len(domains)
+            print(str(int(per)) + '%')
+            print('===================================================================================')
+
+    df = df[~df['domain'].isin(invalid_domains_list)]
+    df = df.drop(columns=['mail', 'domain'])
+
+    df.to_csv(final_directory + '/' + csvfile, index=None, header=True)
+
+    df_domains = pd.DataFrame.from_dict(domains_dict, orient='index').reset_index().rename(columns={'index': 'domain', 0: 'type', 1: 'mx records'})
+
+    df_domains_list.append(df_domains)
+    big_df_domains = pd.concat(df_domains_list)
+    big_df_domains.to_csv(current_directory + '/' +'checked_domains.csv', index=None, header=True)
+    k = k + 1
+
+
+j=1
+for csvfile in os.listdir(current_directory):
+    if csvfile.endswith(".csv") and not csvfile == 'checked_domains.csv':
+        start_time = time.time()
+        print('loading ' + csvfile + ' file: ' + str(j))
+        try:
+            df = pd.read_csv(csvfile, encoding="ISO-8859-1", error_bad_lines=False,dtype=str)
+        except:
+            print('problem reading ' + csvfile)
+
+        if 'EMAIL' in df.columns:
+            df = df[df['EMAIL'].notna()].reset_index(drop=True)
+            df = df[~df['EMAIL'].isnull()]
+            print('MX filtering....')
+            mx_validate(df,csvfile)
+
+        j = j + 1
+
+        print("--- %s minuts ---" % ((time.time() - start_time)/60))
