@@ -10,6 +10,7 @@ from PyQt5.QtCore import QFile
 
 
 import scripts.Bulk_Converter_to_CSV as Bulk_Converter_to_CSV
+import scripts.Xlsx_to_Csv as Xlsx_to_Csv
 from ui import Ui_MainWindow
 
 
@@ -18,19 +19,25 @@ class Window(QMainWindow):
         QMainWindow.__init__(self)
         self.ui = ui
         self.Page1_BulckConverter_fname = ''
+        self.Page2_XlsxToSCV_fname = ''
         self.SetPage1BulkConverter()
 
-
+        ############################PAGE1-BULCK_CONERTER##########################
         self.ui.BtnBulkConverter.clicked.connect(self.SetPage1BulkConverter)
         self.ui.BtnBrows_Page1_BulckConverter.clicked.connect(self.Page1_BulckConverter_BrowsFolders)
         self.ui.BtnConvert_Page1_BulckConverter.clicked.connect(self.Page1_BulckConverter_CallScript)
+        ##########################################################################
 
 
-        self.ui.BtnSecond.clicked.connect(self.Page2Second)
+        ############################PAGE2-XLSX_CONERTER##########################
+        self.ui.BtnXlsxToCSV.clicked.connect(self.SetPage2XlsxToCSV)
+        self.ui.BtnBrows_Page2_XlsxToSCV.clicked.connect(self.Page2_XlsxToSCV_BrowsFolders)
+        self.ui.BtnConvert_Page2_XlsxToSCV.clicked.connect(self.Page2_XlsxToSCV_CallScript)
+        ##########################################################################
         
 
     
-    
+    ############################PAGE1-BULCK_CONERTER##########################
     def SetPage1BulkConverter(self):
         self.ui.stackedWidget.setCurrentIndex(0)
         self.ui.label_title_bar_top.setText("Bulk Converter")
@@ -45,12 +52,27 @@ class Window(QMainWindow):
         status = Bulk_Converter_to_CSV.DirctoryPathToXlxsFiles(self.Page1_BulckConverter_fname)
         print(status)
         self.ui.LabelStatus_Page1_BulkConvert.setText("Done")
+    ##########################################################################
 
 
 
-    def Page2Second(self):
+
+    ############################PAGE2-XLSX_CONERTER##########################
+    def SetPage2XlsxToCSV(self):
         self.ui.stackedWidget.setCurrentIndex(2)
-        self.ui.label_title_bar_top.setText("Second")
+        self.ui.label_title_bar_top.setText("Xlsx Converter")
+
+    def Page2_XlsxToSCV_BrowsFolders(self):
+        self.Page2_XlsxToSCV_fname = QFileDialog.getExistingDirectory(self, "Chosse folder", "/home/")
+        self.ui.LineEditPath_Page2.setText(self.Page2_XlsxToSCV_fname)
+
+    def Page2_XlsxToSCV_CallScript(self):
+        self.ui.LabelStatus_Page2_XlsxToCSV.setText("Wait......")
+        QApplication.processEvents()
+        status = Xlsx_to_Csv.DirctoryPathToXlxsFiles(self.Page2_XlsxToSCV_fname)
+        print(status)
+        self.ui.LabelStatus_Page2_XlsxToCSV.setText("Done")
+    ##########################################################################
 
 
 
