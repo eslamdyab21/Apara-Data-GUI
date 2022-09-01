@@ -7,7 +7,7 @@ import time
 
 from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QFileDialog
 from PyQt5.QtCore import QFile
-
+from PyQt5.QtCore import QObject, QThread, pyqtSignal
 
 import scripts.Bulk_Converter_to_CSV as Bulk_Converter_to_CSV
 import scripts.Xlsx_to_Csv as Xlsx_to_Csv
@@ -15,6 +15,22 @@ import scripts.Large_File_Splitter as Large_File_Splitter
 
 
 from ui import Ui_MainWindow
+
+
+
+
+# Step 1: Create a worker class
+class Worker(QObject):
+    finished = pyqtSignal()
+    progress = pyqtSignal(int)
+
+    def run(self,Page3_LargeFileSplitter_fname, LabelStatus_Page3_LargeFileSplitter):
+        """Long-running task."""
+        Large_File_Splitter.DirctoryPathToLargeFilesToSplit(Page3_LargeFileSplitter_fname, LabelStatus_Page3_LargeFileSplitter, QApplication)
+        LabelStatus_Page3_LargeFileSplitter.setText("Done")
+        
+        self.finished.emit()
+
 
 
 class Window(QMainWindow):
@@ -100,8 +116,28 @@ class Window(QMainWindow):
     def Page3_LargeFileSplitter_CallScript(self):
         self.ui.LabelStatus_Page3_LargeFileSplitter.setText("Wait......")
         QApplication.processEvents()
-        Large_File_Splitter.DirctoryPathToLargeFilesToSplit(self.Page3_LargeFileSplitter_fname, self.ui.LabelStatus_Page3_LargeFileSplitter)
-        self.ui.LabelStatus_Page3_LargeFileSplitter.setText("Done")
+
+        # Step 2: Create a QThread object
+        self.thread = QThread()
+        # Step 3: Create a worker object
+        self.worker = Worker()
+        # Step 4: Move worker to the thread
+        self.worker.moveToThread(self.thread)
+        # Step 5: Connect signals and slots
+        self.thread.started.connect(self.worker.run(self.Page3_LargeFileSplitter_fname, self.ui.LabelStatus_Page3_LargeFileSplitter))
+        self.worker.finished.connect(self.thread.quit)
+        self.worker.finished.connect(self.worker.deleteLater)
+        self.thread.finished.connect(self.thread.deleteLater)
+        #self.worker.progress.connect(self.reportProgress)
+        # Step 6: Start the thread
+        self.thread.start()
+
+        # Final resets
+        self.ui.BtnConvert_Page3_LargeFileSplitter.setEnabled(False)
+        self.thread.finished.connect(lambda: self.ui.BtnConvert_Page3_LargeFileSplitter.setEnabled(True))
+        #self.thread.finished.connect(lambda: self.stepLabel.setText("Long-Running Step: 0"))
+
+        
     ##########################################################################
 
 

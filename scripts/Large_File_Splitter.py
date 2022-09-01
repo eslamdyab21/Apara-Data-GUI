@@ -8,11 +8,11 @@ import math
 
 j = 1
 
-def filter_eamils(df, LabelStatus_Page3_LargeFileSplitter):
-    global j
+def filter_eamils(df, LabelStatus_Page3_LargeFileSplitter, QApplication):
     print('filtering emails in this file: ' + str(j))
     s = 'filtering emails in this file: ' + str(j)
     LabelStatus_Page3_LargeFileSplitter.setText(s)
+    QApplication.processEvents()
 
     if 'EMAIL' in df.columns:
         # delete emails which have values in äëïöüÿÄËÏÖÜŸ
@@ -27,16 +27,19 @@ def filter_eamils(df, LabelStatus_Page3_LargeFileSplitter):
             df = df[df['EMAIL'].apply(lambda x: validate_email(x))]
             print('eamil filtering was successful')
             LabelStatus_Page3_LargeFileSplitter.setText('eamil filtering was successful')
+            QApplication.processEvents()
         except:
             print('Problem in deleting invalid emails from this file')
             LabelStatus_Page3_LargeFileSplitter.setText('Problem in deleting invalid emails from this file')
+            QApplication.processEvents()
     else:
         print('this file does ot have EMAIL column')
         LabelStatus_Page3_LargeFileSplitter.setText('this file does ot have EMAIL column')
+        QApplication.processEvents()
     return df
 
 
-def DirctoryPathToLargeFilesToSplit(current_directory,LabelStatus_Page3_LargeFileSplitter):
+def DirctoryPathToLargeFilesToSplit(current_directory,LabelStatus_Page3_LargeFileSplitter, QApplication):
     global j
     #current_directory = os.getcwd()
     final_directory = os.path.join(current_directory, r'splited files')
@@ -55,9 +58,10 @@ def DirctoryPathToLargeFilesToSplit(current_directory,LabelStatus_Page3_LargeFil
                 print('loading ' + csvfile + ' file: ' + str(j))
                 s = 'loading ' + csvfile + ' file: ' + str(j)
                 LabelStatus_Page3_LargeFileSplitter.setText(s)
+                QApplication.processEvents()
 
                 df = pd.read_csv(current_directory + '/' + csvfile,encoding = "ISO-8859-1",error_bad_lines=False)
-                df = filter_eamils(df, LabelStatus_Page3_LargeFileSplitter)
+                df = filter_eamils(df, LabelStatus_Page3_LargeFileSplitter, QApplication)
 
                 df_list = np.array_split(df, splited_files_number)
 
@@ -65,6 +69,7 @@ def DirctoryPathToLargeFilesToSplit(current_directory,LabelStatus_Page3_LargeFil
                 print('splitting ' + csvfile + ' file: ' + str(j))
                 s = 'splitting ' + csvfile + ' file: ' + str(j)
                 LabelStatus_Page3_LargeFileSplitter.setText(s)
+                QApplication.processEvents()
 
                 for dfS in df_list:
                     dfS.to_csv(final_directory + '/' + csvfile[0:-4] + ' splited' + str(i) + '.csv', index=None, header=True)
@@ -73,7 +78,9 @@ def DirctoryPathToLargeFilesToSplit(current_directory,LabelStatus_Page3_LargeFil
                 print('Done')
                 print('===========================================================================================')
                 LabelStatus_Page3_LargeFileSplitter.setText('Done')
+                QApplication.processEvents()
                 j = j + 1
 
     print('program has finished execution')
     LabelStatus_Page3_LargeFileSplitter.setText('program has finished execution')
+    QApplication.processEvents()

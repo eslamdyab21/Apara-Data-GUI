@@ -12,7 +12,7 @@ def create_csv_folder(current_directory):
 
 
 
-def DirctoryPathToXlxsFiles(current_directory, LabelStatus_Page1_BulkConvert):
+def DirctoryPathToXlxsFiles(current_directory):
     #current_directory = os.getcwd()
     folders = []
     for folder in os.listdir(current_directory):
@@ -27,6 +27,5 @@ def DirctoryPathToXlxsFiles(current_directory, LabelStatus_Page1_BulkConvert):
                 df = pd.read_excel(path + xfile)
                 df.to_csv(final_directory + '/' + xfile[0:-5] + '.csv',index = None,header=True)
     
-    LabelStatus_Page1_BulkConvert.setText("ffffffffffffffffff")
     return 'done'
 
