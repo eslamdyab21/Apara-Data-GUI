@@ -2,6 +2,7 @@ import pandas as pd
 import os
 
 
+
 def create_csv_folder(current_directory):
     final_directory = os.path.join(current_directory, r'csv')
     if not os.path.exists(final_directory):
@@ -11,7 +12,7 @@ def create_csv_folder(current_directory):
 
 
 
-def main(current_directory):
+def DirctoryPathToXlxsFiles(current_directory):
     #current_directory = os.getcwd()
     folders = []
     for folder in os.listdir(current_directory):
@@ -26,5 +27,5 @@ def main(current_directory):
                 df = pd.read_excel(path + xfile)
                 df.to_csv(final_directory + '/' + xfile[0:-5] + '.csv',index = None,header=True)
 
-
+    return 'done'
 
