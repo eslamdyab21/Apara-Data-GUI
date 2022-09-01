@@ -11,6 +11,9 @@ from PyQt5.QtCore import QFile
 
 import scripts.Bulk_Converter_to_CSV as Bulk_Converter_to_CSV
 import scripts.Xlsx_to_Csv as Xlsx_to_Csv
+import scripts.Large_File_Splitter as Large_File_Splitter
+
+
 from ui import Ui_MainWindow
 
 
@@ -20,6 +23,7 @@ class Window(QMainWindow):
         self.ui = ui
         self.Page1_BulckConverter_fname = ''
         self.Page2_XlsxToSCV_fname = ''
+        self.Page3_LargeFileSplitter_fname = ''
         self.SetPage1BulkConverter()
 
         ############################PAGE1-BULCK_CONERTER##########################
@@ -35,6 +39,15 @@ class Window(QMainWindow):
         self.ui.BtnConvert_Page2_XlsxToSCV.clicked.connect(self.Page2_XlsxToSCV_CallScript)
         ##########################################################################
         
+
+
+        ############################PAGE3-LARGE-SPLITER##########################
+        self.ui.BtnLargeFileSplitter.clicked.connect(self.SetPage3LargeFileSplitter)
+        self.ui.BtnBrows_Page3_LargeFileSplitter.clicked.connect(self.Page3_LargeFileSplitter_BrowsFolders)
+        self.ui.BtnConvert_Page3_LargeFileSplitter.clicked.connect(self.Page3_LargeFileSplitter_CallScript)
+        ##########################################################################
+        
+
 
     
     ############################PAGE1-BULCK_CONERTER##########################
@@ -70,10 +83,26 @@ class Window(QMainWindow):
         self.ui.LabelStatus_Page2_XlsxToCSV.setText("Wait......")
         QApplication.processEvents()
         status = Xlsx_to_Csv.DirctoryPathToXlxsFiles(self.Page2_XlsxToSCV_fname)
-        print(status)
         self.ui.LabelStatus_Page2_XlsxToCSV.setText("Done")
     ##########################################################################
 
+
+
+    ############################PAGE3-LARGE-SPLITER##########################
+    def SetPage3LargeFileSplitter(self):
+        self.ui.stackedWidget.setCurrentIndex(3)
+        self.ui.label_title_bar_top.setText("Large Files Splitter")
+
+    def Page3_LargeFileSplitter_BrowsFolders(self):
+        self.Page3_LargeFileSplitter_fname = QFileDialog.getExistingDirectory(self, "Chosse folder", "/home/")
+        self.ui.LineEditPath_Page3.setText(self.Page3_LargeFileSplitter_fname)
+
+    def Page3_LargeFileSplitter_CallScript(self):
+        self.ui.LabelStatus_Page3_LargeFileSplitter.setText("Wait......")
+        QApplication.processEvents()
+        Large_File_Splitter.DirctoryPathToLargeFilesToSplit(self.Page3_LargeFileSplitter_fname, self.ui.LabelStatus_Page3_LargeFileSplitter)
+        self.ui.LabelStatus_Page3_LargeFileSplitter.setText("Done")
+    ##########################################################################
 
 
 if __name__ == "__main__":
