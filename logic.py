@@ -12,7 +12,7 @@ from PyQt5.QtCore import QObject, QThread, pyqtSignal
 import scripts.Bulk_Converter_to_CSV as Bulk_Converter_to_CSV
 import scripts.Xlsx_to_Csv as Xlsx_to_Csv
 import scripts.Large_File_Splitter as Large_File_Splitter
-
+import scripts.merge_small_files_under_1mb as merge_small_files_under_1mb
 
 from ui import Ui_MainWindow
 
@@ -40,6 +40,9 @@ class Window(QMainWindow):
         self.Page1_BulckConverter_fname = ''
         self.Page2_XlsxToSCV_fname = ''
         self.Page3_LargeFileSplitter_fname = ''
+        self.Page4_MergeSmall_fname = ''
+        self.Page4_MergeSmall_small_file_max_size_kb = 1000
+        self.Page4_MergeSmall_merged_file_max_size_mb = 49
         self.SetPage1BulkConverter()
 
         ############################PAGE1-BULCK_CONERTER##########################
@@ -64,6 +67,12 @@ class Window(QMainWindow):
         ##########################################################################
         
 
+        ############################PAGE4-MERGE-SMALL#############################
+        self.ui.BtnMergeSmallFiles.clicked.connect(self.SetPage4MergeSmallFiles)
+        self.ui.BtnBrows_Page4_MergeSmall.clicked.connect(self.Page4_MergeSmall_BrowsFolders)
+        self.ui.BtnMerge_Page4_MergeSmall.clicked.connect(self.Page4_MergeSmall_CallScript)
+
+        ##########################################################################
 
     
     ############################PAGE1-BULCK_CONERTER##########################
@@ -135,10 +144,31 @@ class Window(QMainWindow):
         # Final resets
         self.ui.BtnConvert_Page3_LargeFileSplitter.setEnabled(False)
         self.thread.finished.connect(lambda: self.ui.BtnConvert_Page3_LargeFileSplitter.setEnabled(True))
-        #self.thread.finished.connect(lambda: self.stepLabel.setText("Long-Running Step: 0"))
-
-        
+        #self.thread.finished.connect(lambda: self.stepLabel.setText("Long-Running Step: 0"))        
     ##########################################################################
+
+
+
+
+    ############################PAGE4-MERGE-SMALL#############################
+    def SetPage4MergeSmallFiles(self):
+        self.ui.stackedWidget.setCurrentIndex(4)
+        self.ui.label_title_bar_top.setText("Merge Small Files")
+
+    def Page4_MergeSmall_BrowsFolders(self):
+        self.Page4_MergeSmall_fname = QFileDialog.getExistingDirectory(self, "Chosse folder", "/home/")
+        self.ui.LineEditPath_Page4.setText(self.Page4_MergeSmall_fname)
+
+    def Page4_MergeSmall_CallScript(self):
+        self.ui.LabelStatus_Page4_MergeSmall.setText("Wait......")
+        QApplication.processEvents()
+        self.Page4_MergeSmall_small_file_max_size_kb = int(self.ui.LineEdit_Page4_SmallFileMaxSize.text())
+        self.Page4_MergeSmall_merged_file_max_size_mb = float(self.ui.LineEdit_Page4_MergedFileMaxSize.text())
+        merge_small_files_under_1mb.DirctoryPathToMergeSmallFiles(self.Page4_MergeSmall_fname, self.Page4_MergeSmall_small_file_max_size_kb, self.Page4_MergeSmall_merged_file_max_size_mb, self.ui.LabelStatus_Page4_MergeSmall, QApplication)
+        self.ui.LabelStatus_Page4_MergeSmall.setText("Done")
+    ##########################################################################
+
+
 
 
 if __name__ == "__main__":
