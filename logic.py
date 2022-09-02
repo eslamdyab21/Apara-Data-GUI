@@ -13,6 +13,8 @@ import scripts.Bulk_Converter_to_CSV as Bulk_Converter_to_CSV
 import scripts.Xlsx_to_Csv as Xlsx_to_Csv
 import scripts.Large_File_Splitter as Large_File_Splitter
 import scripts.merge_small_files_under_1mb as merge_small_files_under_1mb
+import scripts.Extract_Geos as Extract_Geos
+
 
 from ui import Ui_MainWindow
 
@@ -43,6 +45,7 @@ class Window(QMainWindow):
         self.Page4_MergeSmall_fname = ''
         self.Page4_MergeSmall_small_file_max_size_kb = 1000
         self.Page4_MergeSmall_merged_file_max_size_mb = 49
+        self.Page5_Geos_fname = ''
         self.SetPage1BulkConverter()
 
         ############################PAGE1-BULCK_CONERTER##########################
@@ -71,8 +74,16 @@ class Window(QMainWindow):
         self.ui.BtnMergeSmallFiles.clicked.connect(self.SetPage4MergeSmallFiles)
         self.ui.BtnBrows_Page4_MergeSmall.clicked.connect(self.Page4_MergeSmall_BrowsFolders)
         self.ui.BtnMerge_Page4_MergeSmall.clicked.connect(self.Page4_MergeSmall_CallScript)
-
         ##########################################################################
+
+
+        ############################PAGE5-GEOS###################################
+        self.ui.BtnGeos.clicked.connect(self.SetPage5Geos)
+        self.ui.BtnBrows_Page5_Geos.clicked.connect(self.Page5_Geos_BrowsFolders)
+        self.ui.BtnExtractGeos_Page5.clicked.connect(self.Page5_ExtractGeo_CallScript)
+        self.ui.BtnMergeGeos_Page5.clicked.connect(self.Page5_MergeGeo_CallScript)
+        ##########################################################################
+
 
     
     ############################PAGE1-BULCK_CONERTER##########################
@@ -168,6 +179,34 @@ class Window(QMainWindow):
         self.ui.LabelStatus_Page4_MergeSmall.setText("Done")
     ##########################################################################
 
+
+
+
+
+    ############################PAGE5-GEOS###################################
+    def SetPage5Geos(self):
+        self.ui.stackedWidget.setCurrentIndex(5)
+        self.ui.label_title_bar_top.setText("Geos Extractor and Merger")
+
+    def Page5_Geos_BrowsFolders(self):
+        self.Page5_Geos_fname = QFileDialog.getExistingDirectory(self, "Chosse folder", "/home/")
+        self.ui.LineEditPath_Page5.setText(self.Page5_Geos_fname)
+
+    def Page5_ExtractGeo_CallScript(self):
+        #self.ui.LabelStatus_Page5_Geos.setText("Wait......")
+        self.ui.plainTextEdit_Page5.appendPlainText("Wait......")
+        QApplication.processEvents()
+        Extract_Geos.DirctoryPathToGeo(self.Page5_Geos_fname,self.ui.plainTextEdit_Page5, QApplication)
+        #self.ui.LabelStatus_Page5_Geos.setText("Done")
+        self.ui.plainTextEdit_Page5.appendPlainText("Done")
+        QApplication.processEvents()
+
+    def Page5_MergeGeo_CallScript(self):
+        self.ui.LabelStatus_Page5_Geos.setText("Wait......")
+        QApplication.processEvents()
+        #Xlsx_to_Csv.DirctoryPathToXlxsFiles(self.Page5_Geos_fname)
+        self.ui.LabelStatus_Page5_Geos.setText("Done")
+    ##########################################################################
 
 
 
