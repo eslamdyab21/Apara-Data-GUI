@@ -25,7 +25,7 @@ def checkMaxSize(current_directory, csvfile, merged_file_max_size_mb):
             return False
 
 
-def DirctoryPathToMergeSmallFiles(current_directory, small_file_max_size_kb, merged_file_max_size_mb, LabelStatus_Page4_MergeSmall, QApplication):
+def DirctoryPathToMergeSmallFiles(current_directory, small_file_max_size_kb, merged_file_max_size_mb, plainTextEdit_Page4, QApplication):
     #current_directory = os.getcwd()
     #small_file_max_size_kb = 1000
     #merged_file_max_size_mb = 49.0
@@ -37,6 +37,10 @@ def DirctoryPathToMergeSmallFiles(current_directory, small_file_max_size_kb, mer
     wanted_list = ['EMAIL','NAME','FIRST NAME','LAST NAME','COUNTRY','NUMBER','SOURCE']
 
     print('preparing files......')
+    s = 'preparing files......'
+    plainTextEdit_Page4.appendPlainText(s)
+    QApplication.processEvents()
+
     for csvfile in os.listdir(current_directory):
         sizeKB = os.path.getsize(current_directory + '/' + csvfile)/1000
 
@@ -56,7 +60,7 @@ def DirctoryPathToMergeSmallFiles(current_directory, small_file_max_size_kb, mer
             except:
                 print('problem reading '+csvfile)
                 s = 'problem reading '+csvfile
-                LabelStatus_Page4_MergeSmall.setText(s)
+                plainTextEdit_Page4.appendPlainText(s)
                 QApplication.processEvents()
                 flag = 'red'
 
@@ -93,7 +97,7 @@ def DirctoryPathToMergeSmallFiles(current_directory, small_file_max_size_kb, mer
             else:
                 print('columns do not match in '+csvfile)
                 s = 'columns do not match in '+csvfile
-                LabelStatus_Page4_MergeSmall.setText(s)
+                plainTextEdit_Page4.appendPlainText(s)
                 QApplication.processEvents()
 
 
@@ -104,19 +108,19 @@ def DirctoryPathToMergeSmallFiles(current_directory, small_file_max_size_kb, mer
             os.makedirs(final_directory)
 
         print('merging files......')
-        LabelStatus_Page4_MergeSmall.setText('merging files......')
+        plainTextEdit_Page4.appendPlainText('merging files......')
         QApplication.processEvents()
 
         list_num = 0
         for df_list in df_multi_list:
             print('following files will be merged in: '+'"merged file'+str(list_num+1) + '.csv"')
             s = 'following files will be merged in: '+'"merged file'+str(list_num+1) + '.csv"'
-            LabelStatus_Page4_MergeSmall.setText(s)
+            plainTextEdit_Page4.appendPlainText(s)
             QApplication.processEvents()
 
             print(csvfiles_multi_list[list_num])
             s = str(csvfiles_multi_list[list_num])
-            LabelStatus_Page4_MergeSmall.setText(s)
+            plainTextEdit_Page4.appendPlainText(s)
             QApplication.processEvents()
 
             if len(df_list) >0:

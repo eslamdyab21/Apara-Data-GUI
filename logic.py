@@ -63,10 +63,10 @@ class Worker(QObject):
     finished = pyqtSignal()
     progress = pyqtSignal(int)
 
-    def run(self,Page3_LargeFileSplitter_fname, LabelStatus_Page3_LargeFileSplitter):
+    def run(self,Page3_LargeFileSplitter_fname, plainTextEdit_Page3):
         """Long-running task."""
-        Large_File_Splitter.DirctoryPathToLargeFilesToSplit(Page3_LargeFileSplitter_fname, LabelStatus_Page3_LargeFileSplitter, QApplication)
-        LabelStatus_Page3_LargeFileSplitter.setText("Done")
+        Large_File_Splitter.DirctoryPathToLargeFilesToSplit(Page3_LargeFileSplitter_fname, plainTextEdit_Page3, QApplication)
+        plainTextEdit_Page3.appendPlainText("Done")
         
         self.finished.emit()
 
@@ -161,6 +161,8 @@ class Window(QMainWindow):
         UIFunctions.toggleMenu(self, 220)
     ##########################################################################
 
+
+
     ############################PAGE1-BULCK_CONERTER##########################
     def SetPage1BulkConverter(self):
         self.ui.stackedWidget.setCurrentIndex(0)
@@ -215,7 +217,7 @@ class Window(QMainWindow):
         self.ui.LineEditPath_Page3.setText(self.Page3_LargeFileSplitter_fname)
 
     def Page3_LargeFileSplitter_CallScript(self):
-        self.ui.LabelStatus_Page3_LargeFileSplitter.setText("Wait......")
+        self.ui.plainTextEdit_Page3.appendPlainText("Wait......")
         QApplication.processEvents()
 
         # Step 2: Create a QThread object
@@ -225,7 +227,7 @@ class Window(QMainWindow):
         # Step 4: Move worker to the thread
         self.worker.moveToThread(self.thread)
         # Step 5: Connect signals and slots
-        self.thread.started.connect(self.worker.run(self.Page3_LargeFileSplitter_fname, self.ui.LabelStatus_Page3_LargeFileSplitter))
+        self.thread.started.connect(self.worker.run(self.Page3_LargeFileSplitter_fname, self.ui.plainTextEdit_Page3))
         self.worker.finished.connect(self.thread.quit)
         self.worker.finished.connect(self.worker.deleteLater)
         self.thread.finished.connect(self.thread.deleteLater)
@@ -254,12 +256,12 @@ class Window(QMainWindow):
         self.ui.LineEditPath_Page4.setText(self.Page4_MergeSmall_fname)
 
     def Page4_MergeSmall_CallScript(self):
-        self.ui.LabelStatus_Page4_MergeSmall.setText("Wait......")
+        self.ui.plainTextEdit_Page4.appendPlainText("Wait......")
         QApplication.processEvents()
         self.Page4_MergeSmall_small_file_max_size_kb = int(self.ui.LineEdit_Page4_SmallFileMaxSize.text())
         self.Page4_MergeSmall_merged_file_max_size_mb = float(self.ui.LineEdit_Page4_MergedFileMaxSize.text())
-        merge_small_files_under_1mb.DirctoryPathToMergeSmallFiles(self.Page4_MergeSmall_fname, self.Page4_MergeSmall_small_file_max_size_kb, self.Page4_MergeSmall_merged_file_max_size_mb, self.ui.LabelStatus_Page4_MergeSmall, QApplication)
-        self.ui.LabelStatus_Page4_MergeSmall.setText("Done")
+        merge_small_files_under_1mb.DirctoryPathToMergeSmallFiles(self.Page4_MergeSmall_fname, self.Page4_MergeSmall_small_file_max_size_kb, self.Page4_MergeSmall_merged_file_max_size_mb, self.ui.plainTextEdit_Page4, QApplication)
+        self.ui.plainTextEdit_Page4.appendPlainText("Done")
     ##########################################################################
 
 
