@@ -2265,7 +2265,7 @@ class Ui_MainWindow(object):
         self.frame_67.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_67.setObjectName("frame_67")
         self.verticalLayout_38 = QtWidgets.QVBoxLayout(self.frame_67)
-        self.verticalLayout_38.setContentsMargins(-1, 5, -1, -1)
+        self.verticalLayout_38.setContentsMargins(-1, 4, -1, -1)
         self.verticalLayout_38.setObjectName("verticalLayout_38")
         self.plainTextEdit_Page4 = QtWidgets.QPlainTextEdit(self.frame_67)
         self.plainTextEdit_Page4.setMinimumSize(QtCore.QSize(200, 200))
