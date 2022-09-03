@@ -526,78 +526,6 @@ class Ui_MainWindow(object):
         self.horizontalLayout_5.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_5.setSpacing(0)
         self.horizontalLayout_5.setObjectName("horizontalLayout_5")
-        self.btn_minimize = QtWidgets.QPushButton(self.frame_btns_right)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.btn_minimize.sizePolicy().hasHeightForWidth())
-        self.btn_minimize.setSizePolicy(sizePolicy)
-        self.btn_minimize.setMinimumSize(QtCore.QSize(40, 0))
-        self.btn_minimize.setMaximumSize(QtCore.QSize(40, 16777215))
-        self.btn_minimize.setStyleSheet("QPushButton {    \n"
-"    border: none;\n"
-"    background-color: transparent;\n"
-"}\n"
-"QPushButton:hover {\n"
-"    background-color: rgb(52, 59, 72);\n"
-"}\n"
-"QPushButton:pressed {    \n"
-"    background-color: rgb(85, 170, 255);\n"
-"}")
-        self.btn_minimize.setText("")
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(":/16x16/icons/16x16/cil-window-minimize.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.btn_minimize.setIcon(icon)
-        self.btn_minimize.setObjectName("btn_minimize")
-        self.horizontalLayout_5.addWidget(self.btn_minimize)
-        self.btn_maximize_restore = QtWidgets.QPushButton(self.frame_btns_right)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.btn_maximize_restore.sizePolicy().hasHeightForWidth())
-        self.btn_maximize_restore.setSizePolicy(sizePolicy)
-        self.btn_maximize_restore.setMinimumSize(QtCore.QSize(40, 0))
-        self.btn_maximize_restore.setMaximumSize(QtCore.QSize(40, 16777215))
-        self.btn_maximize_restore.setStyleSheet("QPushButton {    \n"
-"    border: none;\n"
-"    background-color: transparent;\n"
-"}\n"
-"QPushButton:hover {\n"
-"    background-color: rgb(52, 59, 72);\n"
-"}\n"
-"QPushButton:pressed {    \n"
-"    background-color: rgb(85, 170, 255);\n"
-"}")
-        self.btn_maximize_restore.setText("")
-        icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap(":/16x16/icons/16x16/cil-window-maximize.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.btn_maximize_restore.setIcon(icon1)
-        self.btn_maximize_restore.setObjectName("btn_maximize_restore")
-        self.horizontalLayout_5.addWidget(self.btn_maximize_restore)
-        self.btn_close = QtWidgets.QPushButton(self.frame_btns_right)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.btn_close.sizePolicy().hasHeightForWidth())
-        self.btn_close.setSizePolicy(sizePolicy)
-        self.btn_close.setMinimumSize(QtCore.QSize(40, 0))
-        self.btn_close.setMaximumSize(QtCore.QSize(40, 16777215))
-        self.btn_close.setStyleSheet("QPushButton {    \n"
-"    border: none;\n"
-"    background-color: transparent;\n"
-"}\n"
-"QPushButton:hover {\n"
-"    background-color: rgb(52, 59, 72);\n"
-"}\n"
-"QPushButton:pressed {    \n"
-"    background-color: rgb(85, 170, 255);\n"
-"}")
-        self.btn_close.setText("")
-        icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap(":/16x16/icons/16x16/cil-x.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.btn_close.setIcon(icon2)
-        self.btn_close.setObjectName("btn_close")
-        self.horizontalLayout_5.addWidget(self.btn_close)
         self.horizontalLayout_4.addWidget(self.frame_btns_right)
         self.verticalLayout_2.addWidget(self.frame_top_btns)
         self.frame_top_info = QtWidgets.QFrame(self.frame_top_right)
@@ -697,9 +625,9 @@ class Ui_MainWindow(object):
 "    background-color: rgb(35, 40, 49);\n"
 "    border: 2px solid rgb(43, 50, 61);\n"
 "}")
-        icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap(":/20x20/icons/20x20/cil-lightbulb.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.BtnBulkConverter.setIcon(icon3)
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(":/20x20/icons/20x20/cil-lightbulb.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.BtnBulkConverter.setIcon(icon)
         self.BtnBulkConverter.setIconSize(QtCore.QSize(20, 20))
         self.BtnBulkConverter.setObjectName("BtnBulkConverter")
         self.verticalLayout_13.addWidget(self.BtnBulkConverter)
@@ -724,7 +652,7 @@ class Ui_MainWindow(object):
 "    background-color: rgb(35, 40, 49);\n"
 "    border: 2px solid rgb(43, 50, 61);\n"
 "}")
-        self.BtnXlsxToCSV.setIcon(icon3)
+        self.BtnXlsxToCSV.setIcon(icon)
         self.BtnXlsxToCSV.setIconSize(QtCore.QSize(20, 20))
         self.BtnXlsxToCSV.setObjectName("BtnXlsxToCSV")
         self.verticalLayout_13.addWidget(self.BtnXlsxToCSV)
@@ -748,7 +676,7 @@ class Ui_MainWindow(object):
 "    background-color: rgb(35, 40, 49);\n"
 "    border: 2px solid rgb(43, 50, 61);\n"
 "}")
-        self.BtnLargeFileSplitter.setIcon(icon3)
+        self.BtnLargeFileSplitter.setIcon(icon)
         self.BtnLargeFileSplitter.setIconSize(QtCore.QSize(20, 20))
         self.BtnLargeFileSplitter.setObjectName("BtnLargeFileSplitter")
         self.verticalLayout_13.addWidget(self.BtnLargeFileSplitter)
@@ -772,9 +700,9 @@ class Ui_MainWindow(object):
 "    background-color: rgb(35, 40, 49);\n"
 "    border: 2px solid rgb(43, 50, 61);\n"
 "}")
-        icon4 = QtGui.QIcon()
-        icon4.addPixmap(QtGui.QPixmap("icons/24x24/cil-lightbulb.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.BtnMergeSmallFiles.setIcon(icon4)
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap("icons/24x24/cil-lightbulb.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.BtnMergeSmallFiles.setIcon(icon1)
         self.BtnMergeSmallFiles.setIconSize(QtCore.QSize(20, 20))
         self.BtnMergeSmallFiles.setObjectName("BtnMergeSmallFiles")
         self.verticalLayout_13.addWidget(self.BtnMergeSmallFiles, 0, QtCore.Qt.AlignVCenter)
@@ -798,7 +726,7 @@ class Ui_MainWindow(object):
 "    background-color: rgb(35, 40, 49);\n"
 "    border: 2px solid rgb(43, 50, 61);\n"
 "}")
-        self.BtnGeos.setIcon(icon4)
+        self.BtnGeos.setIcon(icon1)
         self.BtnGeos.setIconSize(QtCore.QSize(20, 20))
         self.BtnGeos.setObjectName("BtnGeos")
         self.verticalLayout_13.addWidget(self.BtnGeos)
@@ -822,7 +750,7 @@ class Ui_MainWindow(object):
 "    background-color: rgb(35, 40, 49);\n"
 "    border: 2px solid rgb(43, 50, 61);\n"
 "}")
-        self.BtnEmailValidation.setIcon(icon4)
+        self.BtnEmailValidation.setIcon(icon1)
         self.BtnEmailValidation.setIconSize(QtCore.QSize(20, 20))
         self.BtnEmailValidation.setObjectName("BtnEmailValidation")
         self.verticalLayout_13.addWidget(self.BtnEmailValidation)
@@ -959,9 +887,9 @@ class Ui_MainWindow(object):
 "    background-color: rgb(35, 40, 49);\n"
 "    border: 2px solid rgb(43, 50, 61);\n"
 "}")
-        icon5 = QtGui.QIcon()
-        icon5.addPixmap(QtGui.QPixmap(":/16x16/icons/16x16/cil-folder-open.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.BtnBrows_Page1_BulckConverter.setIcon(icon5)
+        icon2 = QtGui.QIcon()
+        icon2.addPixmap(QtGui.QPixmap(":/16x16/icons/16x16/cil-folder-open.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.BtnBrows_Page1_BulckConverter.setIcon(icon2)
         self.BtnBrows_Page1_BulckConverter.setObjectName("BtnBrows_Page1_BulckConverter")
         self.gridLayout_5.addWidget(self.BtnBrows_Page1_BulckConverter, 0, 1, 1, 1)
         self.labelVersion_6 = QtWidgets.QLabel(self.frame_12)
@@ -1061,9 +989,9 @@ class Ui_MainWindow(object):
 "    background-color: rgb(35, 40, 49);\n"
 "    border: 2px solid rgb(43, 50, 61);\n"
 "}")
-        icon6 = QtGui.QIcon()
-        icon6.addPixmap(QtGui.QPixmap("icons/20x20/cil-paper-plane.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.BtnConvert_Page1_BulckConverter.setIcon(icon6)
+        icon3 = QtGui.QIcon()
+        icon3.addPixmap(QtGui.QPixmap("icons/20x20/cil-paper-plane.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.BtnConvert_Page1_BulckConverter.setIcon(icon3)
         self.BtnConvert_Page1_BulckConverter.setCheckable(False)
         self.BtnConvert_Page1_BulckConverter.setObjectName("BtnConvert_Page1_BulckConverter")
         self.horizontalLayout_17.addWidget(self.BtnConvert_Page1_BulckConverter)
@@ -1179,7 +1107,7 @@ class Ui_MainWindow(object):
 "    background-color: rgb(35, 40, 49);\n"
 "    border: 2px solid rgb(43, 50, 61);\n"
 "}")
-        self.pushButton.setIcon(icon5)
+        self.pushButton.setIcon(icon2)
         self.pushButton.setObjectName("pushButton")
         self.gridLayout.addWidget(self.pushButton, 0, 1, 1, 1)
         self.labelVersion_3 = QtWidgets.QLabel(self.frame_content_wid_1)
@@ -1329,9 +1257,9 @@ class Ui_MainWindow(object):
 "    color: rgb(210, 210, 210);\n"
 "    background-color: rgb(52, 58, 71);\n"
 "}")
-        icon7 = QtGui.QIcon()
-        icon7.addPixmap(QtGui.QPixmap(":/16x16/icons/16x16/cil-link.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.commandLinkButton.setIcon(icon7)
+        icon4 = QtGui.QIcon()
+        icon4.addPixmap(QtGui.QPixmap(":/16x16/icons/16x16/cil-link.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.commandLinkButton.setIcon(icon4)
         self.commandLinkButton.setObjectName("commandLinkButton")
         self.gridLayout_2.addWidget(self.commandLinkButton, 1, 6, 1, 1)
         self.verticalScrollBar = QtWidgets.QScrollBar(self.frame_2)
@@ -1635,7 +1563,7 @@ class Ui_MainWindow(object):
 "    background-color: rgb(35, 40, 49);\n"
 "    border: 2px solid rgb(43, 50, 61);\n"
 "}")
-        self.BtnBrows_Page2_XlsxToSCV.setIcon(icon5)
+        self.BtnBrows_Page2_XlsxToSCV.setIcon(icon2)
         self.BtnBrows_Page2_XlsxToSCV.setObjectName("BtnBrows_Page2_XlsxToSCV")
         self.gridLayout_6.addWidget(self.BtnBrows_Page2_XlsxToSCV, 0, 1, 1, 1)
         self.labelVersion_7 = QtWidgets.QLabel(self.frame_25)
@@ -1735,7 +1663,7 @@ class Ui_MainWindow(object):
 "    background-color: rgb(35, 40, 49);\n"
 "    border: 2px solid rgb(43, 50, 61);\n"
 "}")
-        self.BtnConvert_Page2_XlsxToSCV.setIcon(icon6)
+        self.BtnConvert_Page2_XlsxToSCV.setIcon(icon3)
         self.BtnConvert_Page2_XlsxToSCV.setCheckable(False)
         self.BtnConvert_Page2_XlsxToSCV.setObjectName("BtnConvert_Page2_XlsxToSCV")
         self.horizontalLayout_21.addWidget(self.BtnConvert_Page2_XlsxToSCV)
@@ -1842,7 +1770,7 @@ class Ui_MainWindow(object):
 "    background-color: rgb(35, 40, 49);\n"
 "    border: 2px solid rgb(43, 50, 61);\n"
 "}")
-        self.BtnBrows_Page3_LargeFileSplitter.setIcon(icon5)
+        self.BtnBrows_Page3_LargeFileSplitter.setIcon(icon2)
         self.BtnBrows_Page3_LargeFileSplitter.setObjectName("BtnBrows_Page3_LargeFileSplitter")
         self.gridLayout_7.addWidget(self.BtnBrows_Page3_LargeFileSplitter, 0, 1, 1, 1)
         self.labelVersion_8 = QtWidgets.QLabel(self.frame_39)
@@ -1920,7 +1848,7 @@ class Ui_MainWindow(object):
 "    background-color: rgb(35, 40, 49);\n"
 "    border: 2px solid rgb(43, 50, 61);\n"
 "}")
-        self.BtnConvert_Page3_LargeFileSplitter.setIcon(icon6)
+        self.BtnConvert_Page3_LargeFileSplitter.setIcon(icon3)
         self.BtnConvert_Page3_LargeFileSplitter.setCheckable(False)
         self.BtnConvert_Page3_LargeFileSplitter.setObjectName("BtnConvert_Page3_LargeFileSplitter")
         self.horizontalLayout_26.addWidget(self.BtnConvert_Page3_LargeFileSplitter)
@@ -2063,7 +1991,7 @@ class Ui_MainWindow(object):
 "    background-color: rgb(35, 40, 49);\n"
 "    border: 2px solid rgb(43, 50, 61);\n"
 "}")
-        self.BtnBrows_Page4_MergeSmall.setIcon(icon5)
+        self.BtnBrows_Page4_MergeSmall.setIcon(icon2)
         self.BtnBrows_Page4_MergeSmall.setObjectName("BtnBrows_Page4_MergeSmall")
         self.gridLayout_8.addWidget(self.BtnBrows_Page4_MergeSmall, 0, 1, 1, 1)
         self.labelVersion_9 = QtWidgets.QLabel(self.frame_55)
@@ -2242,7 +2170,7 @@ class Ui_MainWindow(object):
 "    background-color: rgb(35, 40, 49);\n"
 "    border: 2px solid rgb(43, 50, 61);\n"
 "}")
-        self.BtnMerge_Page4_MergeSmall.setIcon(icon6)
+        self.BtnMerge_Page4_MergeSmall.setIcon(icon3)
         self.BtnMerge_Page4_MergeSmall.setCheckable(False)
         self.BtnMerge_Page4_MergeSmall.setObjectName("BtnMerge_Page4_MergeSmall")
         self.horizontalLayout_31.addWidget(self.BtnMerge_Page4_MergeSmall)
@@ -2360,7 +2288,7 @@ class Ui_MainWindow(object):
 "    background-color: rgb(35, 40, 49);\n"
 "    border: 2px solid rgb(43, 50, 61);\n"
 "}")
-        self.BtnBrows_Page5_Geos.setIcon(icon5)
+        self.BtnBrows_Page5_Geos.setIcon(icon2)
         self.BtnBrows_Page5_Geos.setObjectName("BtnBrows_Page5_Geos")
         self.gridLayout_9.addWidget(self.BtnBrows_Page5_Geos, 0, 1, 1, 1)
         self.labelVersion_10 = QtWidgets.QLabel(self.frame_74)
@@ -2453,7 +2381,7 @@ class Ui_MainWindow(object):
 "    background-color: rgb(35, 40, 49);\n"
 "    border: 2px solid rgb(43, 50, 61);\n"
 "}")
-        self.BtnExtractGeos_Page5.setIcon(icon6)
+        self.BtnExtractGeos_Page5.setIcon(icon3)
         self.BtnExtractGeos_Page5.setCheckable(False)
         self.BtnExtractGeos_Page5.setObjectName("BtnExtractGeos_Page5")
         self.horizontalLayout_41.addWidget(self.BtnExtractGeos_Page5)
@@ -2485,7 +2413,7 @@ class Ui_MainWindow(object):
 "    background-color: rgb(35, 40, 49);\n"
 "    border: 2px solid rgb(43, 50, 61);\n"
 "}")
-        self.BtnMergeGeos_Page5.setIcon(icon6)
+        self.BtnMergeGeos_Page5.setIcon(icon3)
         self.BtnMergeGeos_Page5.setCheckable(False)
         self.BtnMergeGeos_Page5.setObjectName("BtnMergeGeos_Page5")
         self.verticalLayout_35.addWidget(self.BtnMergeGeos_Page5)
@@ -2604,7 +2532,7 @@ class Ui_MainWindow(object):
 "    background-color: rgb(35, 40, 49);\n"
 "    border: 2px solid rgb(43, 50, 61);\n"
 "}")
-        self.BtnBrows_Page6_Validation.setIcon(icon5)
+        self.BtnBrows_Page6_Validation.setIcon(icon2)
         self.BtnBrows_Page6_Validation.setObjectName("BtnBrows_Page6_Validation")
         self.gridLayout_10.addWidget(self.BtnBrows_Page6_Validation, 0, 1, 1, 1)
         self.labelVersion_11 = QtWidgets.QLabel(self.frame_93)
@@ -2697,7 +2625,7 @@ class Ui_MainWindow(object):
 "    background-color: rgb(35, 40, 49);\n"
 "    border: 2px solid rgb(43, 50, 61);\n"
 "}")
-        self.BtnValidateEmailSpam_Page6.setIcon(icon6)
+        self.BtnValidateEmailSpam_Page6.setIcon(icon3)
         self.BtnValidateEmailSpam_Page6.setCheckable(False)
         self.BtnValidateEmailSpam_Page6.setObjectName("BtnValidateEmailSpam_Page6")
         self.horizontalLayout_50.addWidget(self.BtnValidateEmailSpam_Page6)
@@ -2729,7 +2657,7 @@ class Ui_MainWindow(object):
 "    background-color: rgb(35, 40, 49);\n"
 "    border: 2px solid rgb(43, 50, 61);\n"
 "}")
-        self.BtnValidateMxDomain_Page6.setIcon(icon6)
+        self.BtnValidateMxDomain_Page6.setIcon(icon3)
         self.BtnValidateMxDomain_Page6.setCheckable(False)
         self.BtnValidateMxDomain_Page6.setObjectName("BtnValidateMxDomain_Page6")
         self.verticalLayout_42.addWidget(self.BtnValidateMxDomain_Page6)
@@ -2826,9 +2754,6 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
         self.stackedWidget.setCurrentIndex(6)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
-        MainWindow.setTabOrder(self.btn_minimize, self.btn_maximize_restore)
-        MainWindow.setTabOrder(self.btn_maximize_restore, self.btn_close)
-        MainWindow.setTabOrder(self.btn_close, self.btn_toggle_menu)
         MainWindow.setTabOrder(self.btn_toggle_menu, self.checkBox)
         MainWindow.setTabOrder(self.checkBox, self.comboBox)
         MainWindow.setTabOrder(self.comboBox, self.radioButton)
@@ -2843,9 +2768,6 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.label_title_bar_top.setText(_translate("MainWindow", "Main Window - Base"))
-        self.btn_minimize.setToolTip(_translate("MainWindow", "Minimize"))
-        self.btn_maximize_restore.setToolTip(_translate("MainWindow", "Maximize"))
-        self.btn_close.setToolTip(_translate("MainWindow", "Close"))
         self.BtnBulkConverter.setText(_translate("MainWindow", "Bulk Converte       "))
         self.BtnXlsxToCSV.setText(_translate("MainWindow", "Xlsx To CSV            "))
         self.BtnLargeFileSplitter.setText(_translate("MainWindow", "Large File Splitter"))
