@@ -6,18 +6,27 @@ import time
 import os
 
 
-current_directory = os.getcwd()
-final_directory = os.path.join(current_directory, r'mx valid emails')
-if not os.path.exists(final_directory):
-   os.makedirs(final_directory)
+
+
+
+#current_directory = os.getcwd()
+
 
 df_domains_list=[]
 big_df_domains = []
 k=1
-def mx_validate(df,csvfile):
+
+
+def mx_validate(df,csvfile, current_directory,plainTextEdit_Page6, QApplication):
     global  df_domains_list
     global big_df_domains
     global k
+
+    final_directory = os.path.join(current_directory, r'mx valid emails')
+    if not os.path.exists(final_directory):
+        os.makedirs(final_directory)
+
+
     df[['mail', 'domain']] = df['EMAIL'].str.split('@', 1, expand=True)
     df = df[~df['domain'].isnull()]
     domains = list(df.domain.unique())
@@ -54,24 +63,59 @@ def mx_validate(df,csvfile):
                 exchanges = [exchange.to_text().split()[1] for exchange in mxRecords]
                 domains_dict[domain] = ['valid', exchanges]
                 print(str(len(os.listdir(current_directory)) - k) + ' files remaining')
+                s = str(len(os.listdir(current_directory)) - k) + ' files remaining'
+                plainTextEdit_Page6.appendPlainText(s)
+                QApplication.processEvents()
+
                 print(domain + ' domain exist')
+                s = domain + ' domain exist'
+                plainTextEdit_Page6.appendPlainText(s)
+                QApplication.processEvents()
+                
 
             except:
                 print(str(len(os.listdir(current_directory)) - k) + ' files remaining')
+                s = str(len(os.listdir(current_directory)) - k) + ' files remaining'
+                plainTextEdit_Page6.appendPlainText(s)
+                QApplication.processEvents()
+
                 print(domain + ' domain does not exist')
+                s = domain + ' domain does not exist'
+                plainTextEdit_Page6.appendPlainText(s)
+                QApplication.processEvents()
+
                 domains_dict[domain] = ['invalid',np.nan]
                 invalid_domains_list.append(domain)
 
             time.sleep(0.2)
             per = i * 100 / len(domains)
             print(str(int(per)) + '%')
+            plainTextEdit_Page6.appendPlainText(str(int(per)) + '%')
+            QApplication.processEvents()
+
             print('===================================================================================')
+            plainTextEdit_Page6.appendPlainText('===================================================================================')
+            QApplication.processEvents()
+
         else:
             print(str(len(os.listdir(current_directory)) - k) + ' files remaining')
+            s = str(len(os.listdir(current_directory)) - k) + ' files remaining'
+            plainTextEdit_Page6.appendPlainText(s)
+            QApplication.processEvents()
+
             print(domain + ' domain had been checked before')
+            s = domain + ' domain had been checked before'
+            plainTextEdit_Page6.appendPlainText(s)
+            QApplication.processEvents()
+
             per = i * 100 / len(domains)
             print(str(int(per)) + '%')
+            plainTextEdit_Page6.appendPlainText(str(int(per)) + '%')
+            QApplication.processEvents()
+
             print('===================================================================================')
+            plainTextEdit_Page6.appendPlainText('===================================================================================')
+            QApplication.processEvents()
 
     df = df[~df['domain'].isin(invalid_domains_list)]
     df = df.drop(columns=['mail', 'domain'])
@@ -86,22 +130,37 @@ def mx_validate(df,csvfile):
     k = k + 1
 
 
-j=1
-for csvfile in os.listdir(current_directory):
-    if csvfile.endswith(".csv") and not csvfile == 'checked_domains.csv':
-        start_time = time.time()
-        print('loading ' + csvfile + ' file: ' + str(j))
-        try:
-            df = pd.read_csv(csvfile, encoding="ISO-8859-1", error_bad_lines=False,dtype=str)
-        except:
-            print('problem reading ' + csvfile)
 
-        if 'EMAIL' in df.columns:
-            df = df[df['EMAIL'].notna()].reset_index(drop=True)
-            df = df[~df['EMAIL'].isnull()]
-            print('MX filtering....')
-            mx_validate(df,csvfile)
 
-        j = j + 1
 
-        print("--- %s minuts ---" % ((time.time() - start_time)/60))
+def DirctoryPathToValidation(current_directory,plainTextEdit_Page6, QApplication):
+    j=1
+
+    for csvfile in os.listdir(current_directory):
+        if csvfile.endswith(".csv") and not csvfile == 'checked_domains.csv':
+            start_time = time.time()
+            print('loading ' + csvfile + ' file: ' + str(j))
+            s = 'loading ' + csvfile + ' file: ' + str(j)
+            plainTextEdit_Page6.appendPlainText(s)
+            QApplication.processEvents()
+
+            try:
+                df = pd.read_csv(current_directory + '/' + csvfile, encoding="ISO-8859-1", error_bad_lines=False,dtype=str)
+            except:
+                print('problem reading ' + csvfile)
+                s = 'problem reading ' + csvfile
+                plainTextEdit_Page6.appendPlainText(s)
+                QApplication.processEvents()
+
+            if 'EMAIL' in df.columns:
+                df = df[df['EMAIL'].notna()].reset_index(drop=True)
+                df = df[~df['EMAIL'].isnull()]
+                print('MX filtering....')
+                mx_validate(df,csvfile,current_directory,plainTextEdit_Page6, QApplication)
+
+            j = j + 1
+
+            #print("--- %s minuts ---" % ((time.time() - start_time)))
+            #s = "--- %s minuts ---" % ((time.time() - start_time))
+            #plainTextEdit_Page6.appendPlainText(s)
+            #QApplication.processEvents()

@@ -15,6 +15,8 @@ import scripts.Large_File_Splitter as Large_File_Splitter
 import scripts.merge_small_files_under_1mb as merge_small_files_under_1mb
 import scripts.Extract_Geos as Extract_Geos
 import scripts.Merge_Geos as Merge_Geos
+import scripts.Validate_Emails_Spam as Validate_Emails_Spam
+import scripts.MX_Domain_Validator as MX_Domain_Validator
 
 
 from ui import Ui_MainWindow
@@ -23,7 +25,7 @@ from ui import Ui_MainWindow
 
 defult_style = "QPushButton {\n""    border: 2px solid rgb(52, 59, 72);\n""    /*border-radius: 5px;    */\n""    background-color: rgb(52, 59, 72);\n""}\n""QPushButton:hover {\n""    background-color: rgb(57, 65, 80);\n""    border: 2px solid rgb(61, 70, 86);\n""}\n""QPushButton:pressed {    \n""    background-color: rgb(35, 40, 49);\n""    border: 2px solid rgb(43, 50, 61);\n""}"
 pressed_style = "QPushButton {\n""    border: 0px solid rgb(52, 59, 72);\n""    /*border-radius: 5px;    */\n""    background-color: rgb(44,48,61);\n""}"
-
+current_directory = os.getcwd()
 
 
 
@@ -130,6 +132,13 @@ class Window(QMainWindow):
         self.ui.BtnMergeGeos_Page5.clicked.connect(self.Page5_MergeGeo_CallScript)
         ##########################################################################
 
+        ############################PAGE6-Validation##############################
+        self.ui.BtnEmailValidation.clicked.connect(self.SetPage6Validation)
+        self.ui.BtnBrows_Page6_Validation.clicked.connect(self.Page6_Validation_BrowsFolders)
+        self.ui.BtnValidateEmailSpam_Page6.clicked.connect(self.Page6_ValidateEmailSpam_CallScript)
+        self.ui.BtnValidateMxDomain_Page6.clicked.connect(self.Page6_ValidateMxDomain_CallScript)
+        ##########################################################################
+
 
     
 
@@ -144,6 +153,9 @@ class Window(QMainWindow):
             self.ui.BtnMergeSmallFiles.setStyleSheet(defult_style)
         if lst[4] == 1:
             self.ui.BtnGeos.setStyleSheet(defult_style)
+        if lst[5] == 1:
+            self.ui.BtnEmailValidation.setStyleSheet(defult_style)
+            
         #if lst[5] == 1:
         #    self.ui.BtnBulkConverter.setStyleSheet(self.defult)
 
@@ -152,6 +164,7 @@ class Window(QMainWindow):
         self.ui.BtnLargeFileSplitter.setEnabled(lst[2])
         self.ui.BtnMergeSmallFiles.setEnabled(lst[3])
         self.ui.BtnGeos.setEnabled(lst[4])
+        self.ui.BtnEmailValidation.setEnabled(lst[5])
 
 
 
@@ -171,7 +184,7 @@ class Window(QMainWindow):
         self.BtnPressed([0,1,1,1,1,1])
 
     def Page1_BulckConverter_BrowsFolders(self):
-        self.Page1_BulckConverter_fname = QFileDialog.getExistingDirectory(self, "Chosse folder", "/home/")
+        self.Page1_BulckConverter_fname = QFileDialog.getExistingDirectory(self, "Chosse folder", current_directory)
         self.ui.LineEditPath_Page1.setText(self.Page1_BulckConverter_fname)
 
     def Page1_BulckConverter_CallScript(self):
@@ -193,7 +206,7 @@ class Window(QMainWindow):
         self.BtnPressed([1,0,1,1,1,1])
 
     def Page2_XlsxToSCV_BrowsFolders(self):
-        self.Page2_XlsxToSCV_fname = QFileDialog.getExistingDirectory(self, "Chosse folder", "/home/")
+        self.Page2_XlsxToSCV_fname = QFileDialog.getExistingDirectory(self, "Chosse folder", current_directory)
         self.ui.LineEditPath_Page2.setText(self.Page2_XlsxToSCV_fname)
 
     def Page2_XlsxToSCV_CallScript(self):
@@ -213,7 +226,7 @@ class Window(QMainWindow):
         self.BtnPressed([1,1,0,1,1,1])
 
     def Page3_LargeFileSplitter_BrowsFolders(self):
-        self.Page3_LargeFileSplitter_fname = QFileDialog.getExistingDirectory(self, "Chosse folder", "/home/")
+        self.Page3_LargeFileSplitter_fname = QFileDialog.getExistingDirectory(self, "Chosse folder", current_directory)
         self.ui.LineEditPath_Page3.setText(self.Page3_LargeFileSplitter_fname)
 
     def Page3_LargeFileSplitter_CallScript(self):
@@ -252,7 +265,7 @@ class Window(QMainWindow):
         self.BtnPressed([1,1,1,0,1,1])
 
     def Page4_MergeSmall_BrowsFolders(self):
-        self.Page4_MergeSmall_fname = QFileDialog.getExistingDirectory(self, "Chosse folder", "/home/")
+        self.Page4_MergeSmall_fname = QFileDialog.getExistingDirectory(self, "Chosse folder", current_directory)
         self.ui.LineEditPath_Page4.setText(self.Page4_MergeSmall_fname)
 
     def Page4_MergeSmall_CallScript(self):
@@ -276,7 +289,7 @@ class Window(QMainWindow):
         self.BtnPressed([1,1,1,1,0,1])
 
     def Page5_Geos_BrowsFolders(self):
-        self.Page5_Geos_fname = QFileDialog.getExistingDirectory(self, "Chosse folder", "/home/")
+        self.Page5_Geos_fname = QFileDialog.getExistingDirectory(self, "Chosse folder", current_directory)
         self.ui.LineEditPath_Page5.setText(self.Page5_Geos_fname)
 
     def Page5_ExtractGeo_CallScript(self):
@@ -293,6 +306,35 @@ class Window(QMainWindow):
         QApplication.processEvents()
         Merge_Geos.DirctoryPathToGeo(self.Page5_Geos_fname,self.ui.plainTextEdit_Page5, QApplication)
         self.ui.plainTextEdit_Page5.appendPlainText("Done")
+        QApplication.processEvents()
+    ##########################################################################
+
+
+
+
+    ############################PAGE6-Validation##############################
+    def SetPage6Validation(self):
+        self.ui.stackedWidget.setCurrentIndex(6)
+        self.ui.label_title_bar_top.setText("Email Validation")
+        self.ui.BtnEmailValidation.setStyleSheet(pressed_style)
+        self.BtnPressed([1,1,1,1,1,0])
+
+    def Page6_Validation_BrowsFolders(self):
+        self.Page6_Validation_fname = QFileDialog.getExistingDirectory(self, "Chosse folder", current_directory)
+        self.ui.LineEditPath_Page6.setText(self.Page6_Validation_fname)
+
+    def Page6_ValidateEmailSpam_CallScript(self):
+        self.ui.plainTextEdit_Page6.appendPlainText("Wait......")
+        QApplication.processEvents()
+        Validate_Emails_Spam.DirctoryPathToValidation(self.Page6_Validation_fname,self.ui.plainTextEdit_Page6, QApplication)
+        self.ui.plainTextEdit_Page6.appendPlainText("Done")
+        QApplication.processEvents()
+    
+    def Page6_ValidateMxDomain_CallScript(self):
+        self.ui.plainTextEdit_Page6.appendPlainText("Wait......")
+        QApplication.processEvents()
+        MX_Domain_Validator.DirctoryPathToValidation(self.Page6_Validation_fname,self.ui.plainTextEdit_Page6, QApplication)
+        self.ui.plainTextEdit_Page6.appendPlainText("Done")
         QApplication.processEvents()
     ##########################################################################
 
