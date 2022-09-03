@@ -7,17 +7,54 @@ import time
 
 from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QFileDialog
 from PyQt5.QtCore import QFile
-from PyQt5.QtCore import QObject, QThread, pyqtSignal
+from PyQt5.QtCore import QObject, QThread, pyqtSignal, QPropertyAnimation, QEasingCurve
 
 import scripts.Bulk_Converter_to_CSV as Bulk_Converter_to_CSV
 import scripts.Xlsx_to_Csv as Xlsx_to_Csv
 import scripts.Large_File_Splitter as Large_File_Splitter
 import scripts.merge_small_files_under_1mb as merge_small_files_under_1mb
 import scripts.Extract_Geos as Extract_Geos
+import scripts.Merge_Geos as Merge_Geos
 
 
 from ui import Ui_MainWindow
 
+
+
+defult_style = "QPushButton {\n""    border: 2px solid rgb(52, 59, 72);\n""    /*border-radius: 5px;    */\n""    background-color: rgb(52, 59, 72);\n""}\n""QPushButton:hover {\n""    background-color: rgb(57, 65, 80);\n""    border: 2px solid rgb(61, 70, 86);\n""}\n""QPushButton:pressed {    \n""    background-color: rgb(35, 40, 49);\n""    border: 2px solid rgb(43, 50, 61);\n""}"
+pressed_style = "QPushButton {\n""    border: 0px solid rgb(52, 59, 72);\n""    /*border-radius: 5px;    */\n""    background-color: rgb(44,48,61);\n""}"
+
+
+
+
+class UIFunctions():
+    ## ==> GLOBALS
+    GLOBAL_STATE = 0
+    GLOBAL_TITLE_BAR = True
+
+    def __init__(self,ui):
+        self.ui = ui
+    
+
+    def toggleMenu(self, maxWidth):
+        # GET WIDTH
+        width = self.ui.frame_left_menu.width()
+        maxExtend = maxWidth
+        standard = 150
+
+        # SET MAX WIDTH
+        if width == standard:
+            widthExtended = 0
+        else:
+            widthExtended = standard
+
+        # ANIMATION
+        self.animation = QPropertyAnimation(self.ui.frame_left_menu, b"minimumWidth")
+        self.animation.setDuration(300)
+        self.animation.setStartValue(width)
+        self.animation.setEndValue(widthExtended)
+        self.animation.setEasingCurve(QEasingCurve.InOutQuart)
+        self.animation.start()
 
 
 
@@ -47,6 +84,15 @@ class Window(QMainWindow):
         self.Page4_MergeSmall_merged_file_max_size_mb = 49
         self.Page5_Geos_fname = ''
         self.SetPage1BulkConverter()
+        UIFunctions.toggleMenu(self, 220)
+
+
+
+        ############################SIDE-BAR-ANNIMATION##########################
+        self.ui.btn_toggle_menu.clicked.connect(self.SideBar)
+        ##########################################################################
+
+
 
         ############################PAGE1-BULCK_CONERTER##########################
         self.ui.BtnBulkConverter.clicked.connect(self.SetPage1BulkConverter)
@@ -86,10 +132,41 @@ class Window(QMainWindow):
 
 
     
+
+    def BtnPressed(self,lst):
+        if lst[0] == 1:
+            self.ui.BtnBulkConverter.setStyleSheet(defult_style)
+        if lst[1] == 1:
+            self.ui.BtnXlsxToCSV.setStyleSheet(defult_style)
+        if lst[2] == 1:
+            self.ui.BtnLargeFileSplitter.setStyleSheet(defult_style)
+        if lst[3] == 1:
+            self.ui.BtnMergeSmallFiles.setStyleSheet(defult_style)
+        if lst[4] == 1:
+            self.ui.BtnGeos.setStyleSheet(defult_style)
+        #if lst[5] == 1:
+        #    self.ui.BtnBulkConverter.setStyleSheet(self.defult)
+
+        self.ui.BtnBulkConverter.setEnabled(lst[0])
+        self.ui.BtnXlsxToCSV.setEnabled(lst[1])
+        self.ui.BtnLargeFileSplitter.setEnabled(lst[2])
+        self.ui.BtnMergeSmallFiles.setEnabled(lst[3])
+        self.ui.BtnGeos.setEnabled(lst[4])
+
+
+
+
+    ############################SIDE-BAR-ANNIMATION##########################
+    def SideBar(self):
+        UIFunctions.toggleMenu(self, 220)
+    ##########################################################################
+
     ############################PAGE1-BULCK_CONERTER##########################
     def SetPage1BulkConverter(self):
         self.ui.stackedWidget.setCurrentIndex(0)
         self.ui.label_title_bar_top.setText("Bulk Converter")
+        self.ui.BtnBulkConverter.setStyleSheet(pressed_style)
+        self.BtnPressed([0,1,1,1,1,1])
 
     def Page1_BulckConverter_BrowsFolders(self):
         self.Page1_BulckConverter_fname = QFileDialog.getExistingDirectory(self, "Chosse folder", "/home/")
@@ -110,6 +187,8 @@ class Window(QMainWindow):
     def SetPage2XlsxToCSV(self):
         self.ui.stackedWidget.setCurrentIndex(2)
         self.ui.label_title_bar_top.setText("Xlsx Converter")
+        self.ui.BtnXlsxToCSV.setStyleSheet(pressed_style)
+        self.BtnPressed([1,0,1,1,1,1])
 
     def Page2_XlsxToSCV_BrowsFolders(self):
         self.Page2_XlsxToSCV_fname = QFileDialog.getExistingDirectory(self, "Chosse folder", "/home/")
@@ -128,6 +207,8 @@ class Window(QMainWindow):
     def SetPage3LargeFileSplitter(self):
         self.ui.stackedWidget.setCurrentIndex(3)
         self.ui.label_title_bar_top.setText("Large Files Splitter")
+        self.ui.BtnLargeFileSplitter.setStyleSheet(pressed_style)
+        self.BtnPressed([1,1,0,1,1,1])
 
     def Page3_LargeFileSplitter_BrowsFolders(self):
         self.Page3_LargeFileSplitter_fname = QFileDialog.getExistingDirectory(self, "Chosse folder", "/home/")
@@ -165,6 +246,8 @@ class Window(QMainWindow):
     def SetPage4MergeSmallFiles(self):
         self.ui.stackedWidget.setCurrentIndex(4)
         self.ui.label_title_bar_top.setText("Merge Small Files")
+        self.ui.BtnMergeSmallFiles.setStyleSheet(pressed_style)
+        self.BtnPressed([1,1,1,0,1,1])
 
     def Page4_MergeSmall_BrowsFolders(self):
         self.Page4_MergeSmall_fname = QFileDialog.getExistingDirectory(self, "Chosse folder", "/home/")
@@ -187,6 +270,8 @@ class Window(QMainWindow):
     def SetPage5Geos(self):
         self.ui.stackedWidget.setCurrentIndex(5)
         self.ui.label_title_bar_top.setText("Geos Extractor and Merger")
+        self.ui.BtnGeos.setStyleSheet(pressed_style)
+        self.BtnPressed([1,1,1,1,0,1])
 
     def Page5_Geos_BrowsFolders(self):
         self.Page5_Geos_fname = QFileDialog.getExistingDirectory(self, "Chosse folder", "/home/")
@@ -202,10 +287,11 @@ class Window(QMainWindow):
         QApplication.processEvents()
 
     def Page5_MergeGeo_CallScript(self):
-        self.ui.LabelStatus_Page5_Geos.setText("Wait......")
+        self.ui.plainTextEdit_Page5.appendPlainText("Wait......")
         QApplication.processEvents()
-        #Xlsx_to_Csv.DirctoryPathToXlxsFiles(self.Page5_Geos_fname)
-        self.ui.LabelStatus_Page5_Geos.setText("Done")
+        Merge_Geos.DirctoryPathToGeo(self.Page5_Geos_fname,self.ui.plainTextEdit_Page5, QApplication)
+        self.ui.plainTextEdit_Page5.appendPlainText("Done")
+        QApplication.processEvents()
     ##########################################################################
 
 
