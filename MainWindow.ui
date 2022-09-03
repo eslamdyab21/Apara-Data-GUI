@@ -1667,7 +1667,7 @@ QPushButton:pressed {
           <item>
            <widget class="QFrame" name="frame_content_right">
             <property name="styleSheet">
-             <string notr="true">background-color: rgb(65, 70, 80);</string>
+             <string notr="true">background-color: rgb(80,80,90);</string>
             </property>
             <property name="frameShape">
              <enum>QFrame::NoFrame</enum>
@@ -2393,7 +2393,7 @@ QScrollBar:horizontal {
                              <rect>
                               <x>0</x>
                               <y>0</y>
-                              <width>274</width>
+                              <width>218</width>
                               <height>218</height>
                              </rect>
                             </property>
