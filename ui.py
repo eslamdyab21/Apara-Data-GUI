@@ -859,7 +859,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_5.addWidget(self.frame_90)
         self.horizontalLayout_2.addWidget(self.frame_left_menu)
         self.frame_content_right = QtWidgets.QFrame(self.frame_center)
-        self.frame_content_right.setStyleSheet("background-color: rgb(44, 49, 60);")
+        self.frame_content_right.setStyleSheet("background-color: rgb(65, 70, 80);")
         self.frame_content_right.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.frame_content_right.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_content_right.setObjectName("frame_content_right")

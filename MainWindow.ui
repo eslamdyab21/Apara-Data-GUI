@@ -1799,7 +1799,7 @@ QPushButton:pressed {
           <item>
            <widget class="QFrame" name="frame_content_right">
             <property name="styleSheet">
-             <string notr="true">background-color: rgb(44, 49, 60);</string>
+             <string notr="true">background-color: rgb(65, 70, 80);</string>
             </property>
             <property name="frameShape">
              <enum>QFrame::NoFrame</enum>
