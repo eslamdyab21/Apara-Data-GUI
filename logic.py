@@ -320,7 +320,7 @@ class Window(QMainWindow):
         #self.ui.LabelStatus_Page5_Geos.setText("Wait......")
         self.ui.plainTextEdit_Page5.appendPlainText("Wait......")
         QApplication.processEvents()
-        Extract_Geos.DirctoryPathToGeo(self.Page5_Geos_fname,self.ui.plainTextEdit_Page5, QApplication)
+        Extract_Geos.DirctoryPathToGeo(self.Page5_Geos_fname)
         #self.ui.LabelStatus_Page5_Geos.setText("Done")
         self.ui.plainTextEdit_Page5.appendPlainText("Done")
         QApplication.processEvents()

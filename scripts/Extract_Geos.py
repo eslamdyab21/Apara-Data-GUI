@@ -290,7 +290,7 @@ def DirctoryPathToGeo(current_directory):
     for csvfile in os.listdir(current_directory):
         if csvfile.endswith(".csv"):
             try:
-                df = pd.read_csv(csvfile, encoding="ISO-8859-1", error_bad_lines=False, dtype=str)
+                df = pd.read_csv(current_directory + '/' + csvfile, encoding="ISO-8859-1", error_bad_lines=False, dtype=str)
                 df.columns = df.columns.str.strip()
                 flag = 'green'
             except:
