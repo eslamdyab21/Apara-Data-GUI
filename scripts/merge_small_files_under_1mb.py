@@ -34,7 +34,7 @@ def DirctoryPathToMergeSmallFiles(current_directory, small_file_max_size_kb, mer
     csvfiles_multi_list = [[0 for i in range(0)] for j in range(1)]
     marker=0
 
-    wanted_list = ['EMAIL','NAME','FIRST NAME','LAST NAME','COUNTRY','NUMBER','SOURCE']
+    wanted_list = ['EMAIL','Email', 'NAME','Name', 'FIRST NAME','Fname', 'LAST NAME','Lname','COUNTRY','Country','NUMBER','Number','SOURCE','Source']
 
     print('preparing files......')
     s = 'preparing files......'
@@ -67,12 +67,17 @@ def DirctoryPathToMergeSmallFiles(current_directory, small_file_max_size_kb, mer
 
             if flag == 'green':
                 if 'NAME' in df.columns:
+                    name_col_name = 'NAME'
+                if 'Name' in df.columns:
+                    name_col_name = 'Name'
+
+                if ('NAME' in df.columns) or ('Name' in df.columns):
                     # split NAME column to FIRST NAME and LAST NAME
                     try:
-                        df[['FIRST NAME', 'LAST NAME']] = df['NAME'].str.split(' ', 1, expand=True)
-                        df = df.drop(columns=['NAME'])
+                        df[['Fname', 'Lname']] = df[name_col_name].str.split(' ', 1, expand=True)
+                        df = df.drop(columns=[name_col_name])
                     except:
-                        df.rename({'NAME':'FIRST NAME'},axis=1, inplace=True)
+                        df.rename({name_col_name:'Fname'},axis=1, inplace=True)
 
                 statue = checkMaxSize(current_directory, csvfile, merged_file_max_size_mb)
 
