@@ -127,6 +127,24 @@ def mx_validate(df,email_col_name,csvfile, current_directory,plainTextEdit_Page6
     df_domains_list.append(df_domains)
     big_df_domains = pd.concat(df_domains_list)
     big_df_domains.to_csv(current_directory + '/' +'checked_domains.csv', index=None, header=True)
+
+
+    #save valid and invalid domains in separate files
+    big_df_domains_valid = big_df_domains.copy()
+    big_df_domains_invalid = big_df_domains.copy()
+    
+    big_df_domains_valid = big_df_domains_valid.drop('mx records', axis=1)
+    big_df_domains_invalid = big_df_domains_invalid.drop('mx records', axis=1)
+
+
+    big_df_domains_valid = big_df_domains_valid[big_df_domains_valid['type'].isin(['valid'])]
+    big_df_domains_invalid = big_df_domains_invalid[big_df_domains_invalid['type'].isin(['invalid'])]
+
+
+    big_df_domains_valid.to_csv(current_directory + '/' +'checked_domains_valid.csv', index=None, header=True)
+    big_df_domains_invalid.to_csv(current_directory + '/' +'checked_domains_invalid.csv', index=None, header=True)
+
+   
     k = k + 1
 
 
