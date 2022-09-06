@@ -120,7 +120,7 @@ def mx_validate(df,email_col_name,csvfile, current_directory,plainTextEdit_Page6
     df = df[~df['domain'].isin(invalid_domains_list)]
     df = df.drop(columns=['mail', 'domain'])
 
-    df.to_csv(final_directory + '/' + csvfile, index=None, header=True)
+    df.to_csv(final_directory + '/' + csvfile, encoding="ISO-8859-1", index=None, header=True)
 
     df_domains = pd.DataFrame.from_dict(domains_dict, orient='index').reset_index().rename(columns={'index': 'domain', 0: 'type', 1: 'mx records'})
 
