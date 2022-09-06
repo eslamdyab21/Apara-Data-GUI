@@ -259,6 +259,7 @@ class Window(QMainWindow):
 
     ############################PAGE4-MERGE-SMALL#############################
     def SetPage4MergeSmallFiles(self):
+        
         self.ui.stackedWidget.setCurrentIndex(4)
         self.ui.label_title_bar_top.setText("Merge Small Files")
         self.ui.BtnMergeSmallFiles.setStyleSheet(pressed_style)
@@ -269,6 +270,7 @@ class Window(QMainWindow):
         self.ui.LineEditPath_Page4.setText(self.Page4_MergeSmall_fname)
 
     def Page4_MergeSmall_CallScript(self):
+        self.ui.plainTextEdit_Page4.clear()
         self.ui.plainTextEdit_Page4.appendPlainText("Wait......")
         QApplication.processEvents()
         self.Page4_MergeSmall_small_file_max_size_kb = int(self.ui.LineEdit_Page4_SmallFileMaxSize.text())
@@ -293,6 +295,7 @@ class Window(QMainWindow):
         self.ui.LineEditPath_Page5.setText(self.Page5_Geos_fname)
 
     def Page5_ExtractGeo_CallScript(self):
+        self.ui.plainTextEdit_Page5.clear()
         #self.ui.LabelStatus_Page5_Geos.setText("Wait......")
         self.ui.plainTextEdit_Page5.appendPlainText("Wait......")
         QApplication.processEvents()
@@ -302,6 +305,7 @@ class Window(QMainWindow):
         QApplication.processEvents()
 
     def Page5_MergeGeo_CallScript(self):
+        self.ui.plainTextEdit_Page5.clear()
         self.ui.plainTextEdit_Page5.appendPlainText("Wait......")
         QApplication.processEvents()
         Merge_Geos.DirctoryPathToGeo(self.Page5_Geos_fname,self.ui.plainTextEdit_Page5, QApplication)
@@ -324,6 +328,7 @@ class Window(QMainWindow):
         self.ui.LineEditPath_Page6.setText(self.Page6_Validation_fname)
 
     def Page6_ValidateEmailSpam_CallScript(self):
+        self.ui.plainTextEdit_Page6.clear()
         self.ui.plainTextEdit_Page6.appendPlainText("Wait......")
         QApplication.processEvents()
         Validate_Emails_Spam.DirctoryPathToValidation(self.Page6_Validation_fname,self.ui.plainTextEdit_Page6, QApplication)
@@ -331,6 +336,7 @@ class Window(QMainWindow):
         QApplication.processEvents()
     
     def Page6_ValidateMxDomain_CallScript(self):
+        self.ui.plainTextEdit_Page6.clear()
         self.ui.plainTextEdit_Page6.appendPlainText("Wait......")
         QApplication.processEvents()
         MX_Domain_Validator.DirctoryPathToValidation(self.Page6_Validation_fname,self.ui.plainTextEdit_Page6, QApplication)
