@@ -75,14 +75,21 @@ class Worker(QObject):
 
 # Create a worker2 class
 class Worker2(QThread):
-    
     update_plainTextEdit_Page6 = pyqtSignal(str)
-    
-    def run(self):
-        global Page6_Validation_fname
-        """Long-running task."""
 
-        val = MX_Domain_Validator.DirctoryPathToValidation(Page6_Validation_fname)
+    def __init__(self,MX_or_Emails, Page6_Validation_fname):
+        QThread.__init__(self)
+        self.MX_or_Emails = MX_or_Emails
+        self.Page6_Validation_fname = Page6_Validation_fname
+        
+
+    def run(self):
+        """Long-running task."""
+        if(self.MX_or_Emails) == 0:
+            val = Validate_Emails_Spam.DirctoryPathToValidation(self.Page6_Validation_fname)
+        elif(self.MX_or_Emails == 1):
+            val = MX_Domain_Validator.DirctoryPathToValidation(self.Page6_Validation_fname)
+
         for value in val:
             self.update_plainTextEdit_Page6.emit(value)
             print(value)
@@ -343,21 +350,17 @@ class Window(QMainWindow):
         self.ui.LineEditPath_Page6.setText(self.Page6_Validation_fname)
 
     def Page6_ValidateEmailSpam_CallScript(self):
-        self.ui.plainTextEdit_Page6.clear()
-        self.ui.plainTextEdit_Page6.appendPlainText("Wait......")
-        QApplication.processEvents()
-        Validate_Emails_Spam.DirctoryPathToValidation(self.Page6_Validation_fname,self.ui.plainTextEdit_Page6, QApplication)
-        self.ui.plainTextEdit_Page6.appendPlainText("Done")
-        QApplication.processEvents()
+        #Create a QThread object
+        self.worker2 = Worker2(0, self.Page6_Validation_fname)
+
+        self.worker2.start()
+
+        self.worker2.finished.connect(self.evt_worker2_thread_finished)
+        self.worker2.update_plainTextEdit_Page6.connect(self.evt_update_plainTextEdit_Page6)
     
     def Page6_ValidateMxDomain_CallScript(self):
-        global plainTextEdit_Page6 ,Page6_Validation_fname
-
-        plainTextEdit_Page6 = self.ui.plainTextEdit_Page6
-        Page6_Validation_fname = self.Page6_Validation_fname
-
         #Create a QThread object
-        self.worker2 = Worker2()
+        self.worker2 = Worker2(1, self.Page6_Validation_fname)
 
         self.worker2.start()
 
