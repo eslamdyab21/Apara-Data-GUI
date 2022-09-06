@@ -17,7 +17,7 @@ big_df_domains = []
 k=1
 
 
-def mx_validate(df,csvfile, current_directory,plainTextEdit_Page6, QApplication):
+def mx_validate(df,email_col_name,csvfile, current_directory,plainTextEdit_Page6, QApplication):
     global  df_domains_list
     global big_df_domains
     global k
@@ -27,7 +27,7 @@ def mx_validate(df,csvfile, current_directory,plainTextEdit_Page6, QApplication)
         os.makedirs(final_directory)
 
 
-    df[['mail', 'domain']] = df['EMAIL'].str.split('@', 1, expand=True)
+    df[['mail', 'domain']] = df[email_col_name].str.split('@', 1, expand=True)
     df = df[~df['domain'].isnull()]
     domains = list(df.domain.unique())
 
@@ -135,7 +135,7 @@ def mx_validate(df,csvfile, current_directory,plainTextEdit_Page6, QApplication)
 
 def DirctoryPathToValidation(current_directory,plainTextEdit_Page6, QApplication):
     j=1
-
+    
     for csvfile in os.listdir(current_directory):
         if csvfile.endswith(".csv") and not csvfile == 'checked_domains.csv':
             start_time = time.time()
@@ -153,10 +153,18 @@ def DirctoryPathToValidation(current_directory,plainTextEdit_Page6, QApplication
                 QApplication.processEvents()
 
             if 'EMAIL' in df.columns:
+                email_col_name = 'EMAIL'
                 df = df[df['EMAIL'].notna()].reset_index(drop=True)
                 df = df[~df['EMAIL'].isnull()]
                 print('MX filtering....')
-                mx_validate(df,csvfile,current_directory,plainTextEdit_Page6, QApplication)
+                mx_validate(df,email_col_name,csvfile,current_directory,plainTextEdit_Page6, QApplication)
+
+            elif 'Email' in df.columns:
+                email_col_name = 'Email'
+                df = df[df['Email'].notna()].reset_index(drop=True)
+                df = df[~df['Email'].isnull()]
+                print('MX filtering....')
+                mx_validate(df,email_col_name,csvfile,current_directory,plainTextEdit_Page6, QApplication)
 
             j = j + 1
 
