@@ -73,6 +73,21 @@ class Worker(QObject):
         self.finished.emit()
 
 
+# Create a worker2 class
+class Worker2(QThread):
+    
+    update_plainTextEdit_Page6 = pyqtSignal(str)
+    
+    def run(self):
+        global Page6_Validation_fname
+        """Long-running task."""
+
+        val = MX_Domain_Validator.DirctoryPathToValidation(Page6_Validation_fname)
+        for value in val:
+            self.update_plainTextEdit_Page6.emit(value)
+            print(value)
+
+    
 
 class Window(QMainWindow):
     def __init__(self,ui):
@@ -336,12 +351,24 @@ class Window(QMainWindow):
         QApplication.processEvents()
     
     def Page6_ValidateMxDomain_CallScript(self):
-        self.ui.plainTextEdit_Page6.clear()
-        self.ui.plainTextEdit_Page6.appendPlainText("Wait......")
-        QApplication.processEvents()
-        MX_Domain_Validator.DirctoryPathToValidation(self.Page6_Validation_fname,self.ui.plainTextEdit_Page6, QApplication)
+        global plainTextEdit_Page6 ,Page6_Validation_fname
+
+        plainTextEdit_Page6 = self.ui.plainTextEdit_Page6
+        Page6_Validation_fname = self.Page6_Validation_fname
+
+        #Create a QThread object
+        self.worker2 = Worker2()
+
+        self.worker2.start()
+
+        self.worker2.finished.connect(self.evt_worker2_thread_finished)
+        self.worker2.update_plainTextEdit_Page6.connect(self.evt_update_plainTextEdit_Page6)
+
+    def evt_worker2_thread_finished(self):
         self.ui.plainTextEdit_Page6.appendPlainText("Done")
-        QApplication.processEvents()
+
+    def evt_update_plainTextEdit_Page6(self, value):
+        self.ui.plainTextEdit_Page6.appendPlainText(value)
     ##########################################################################
 
 

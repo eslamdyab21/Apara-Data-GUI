@@ -17,7 +17,7 @@ big_df_domains = []
 k=1
 
 
-def mx_validate(df,email_col_name,csvfile, current_directory,plainTextEdit_Page6, QApplication):
+def mx_validate(df,email_col_name,csvfile, current_directory):
     global  df_domains_list
     global big_df_domains
     global k
@@ -64,25 +64,28 @@ def mx_validate(df,email_col_name,csvfile, current_directory,plainTextEdit_Page6
                 domains_dict[domain] = ['valid', exchanges]
                 print(str(len(os.listdir(current_directory)) - k) + ' files remaining')
                 s = str(len(os.listdir(current_directory)) - k) + ' files remaining'
-                plainTextEdit_Page6.appendPlainText(s)
-                QApplication.processEvents()
+                yield s
+                #plainTextEdit_Page6.appendPlainText(s)
+                #QApplication.processEvents()
 
                 print(domain + ' domain exist')
                 s = domain + ' domain exist'
-                plainTextEdit_Page6.appendPlainText(s)
-                QApplication.processEvents()
+                yield s
+                #plainTextEdit_Page6.appendPlainText(s)
+                #QApplication.processEvents()
                 
 
             except:
                 print(str(len(os.listdir(current_directory)) - k) + ' files remaining')
                 s = str(len(os.listdir(current_directory)) - k) + ' files remaining'
-                plainTextEdit_Page6.appendPlainText(s)
-                QApplication.processEvents()
+                #plainTextEdit_Page6.appendPlainText(s)
+                #QApplication.processEvents()
 
                 print(domain + ' domain does not exist')
                 s = domain + ' domain does not exist'
-                plainTextEdit_Page6.appendPlainText(s)
-                QApplication.processEvents()
+                yield s
+                #plainTextEdit_Page6.appendPlainText(s)
+                #QApplication.processEvents()
 
                 domains_dict[domain] = ['invalid',np.nan]
                 invalid_domains_list.append(domain)
@@ -90,32 +93,38 @@ def mx_validate(df,email_col_name,csvfile, current_directory,plainTextEdit_Page6
             time.sleep(0.2)
             per = i * 100 / len(domains)
             print(str(int(per)) + '%')
-            plainTextEdit_Page6.appendPlainText(str(int(per)) + '%')
-            QApplication.processEvents()
+            yield str(int(per)) + '%'
+            #plainTextEdit_Page6.appendPlainText(str(int(per)) + '%')
+            #QApplication.processEvents()
 
             print('===================================================================================')
-            plainTextEdit_Page6.appendPlainText('===================================================================================')
-            QApplication.processEvents()
+            yield '==================================================================================='
+            #plainTextEdit_Page6.appendPlainText('===================================================================================')
+            #QApplication.processEvents()
 
         else:
             print(str(len(os.listdir(current_directory)) - k) + ' files remaining')
             s = str(len(os.listdir(current_directory)) - k) + ' files remaining'
-            plainTextEdit_Page6.appendPlainText(s)
-            QApplication.processEvents()
+            yield s
+            #plainTextEdit_Page6.appendPlainText(s)
+            #QApplication.processEvents()
 
             print(domain + ' domain had been checked before')
             s = domain + ' domain had been checked before'
-            plainTextEdit_Page6.appendPlainText(s)
-            QApplication.processEvents()
+            yield s
+            #plainTextEdit_Page6.appendPlainText(s)
+            #QApplication.processEvents()
 
             per = i * 100 / len(domains)
             print(str(int(per)) + '%')
-            plainTextEdit_Page6.appendPlainText(str(int(per)) + '%')
-            QApplication.processEvents()
+            yield str(int(per)) + '%'
+            #plainTextEdit_Page6.appendPlainText(str(int(per)) + '%')
+            #QApplication.processEvents()
 
             print('===================================================================================')
-            plainTextEdit_Page6.appendPlainText('===================================================================================')
-            QApplication.processEvents()
+            yield '==================================================================================='
+            #plainTextEdit_Page6.appendPlainText('===================================================================================')
+            #QApplication.processEvents()
 
     df = df[~df['domain'].isin(invalid_domains_list)]
     df = df.drop(columns=['mail', 'domain'])
@@ -151,7 +160,7 @@ def mx_validate(df,email_col_name,csvfile, current_directory,plainTextEdit_Page6
 
 
 
-def DirctoryPathToValidation(current_directory,plainTextEdit_Page6, QApplication):
+def DirctoryPathToValidation(current_directory):
     j=1
     
     for csvfile in os.listdir(current_directory):
@@ -159,30 +168,35 @@ def DirctoryPathToValidation(current_directory,plainTextEdit_Page6, QApplication
             start_time = time.time()
             print('loading ' + csvfile + ' file: ' + str(j))
             s = 'loading ' + csvfile + ' file: ' + str(j)
-            plainTextEdit_Page6.appendPlainText(s)
-            QApplication.processEvents()
+            yield s
+            #plainTextEdit_Page6.appendPlainText(s)
+            #QApplication.processEvents()
 
             try:
                 df = pd.read_csv(current_directory + '/' + csvfile, encoding="ISO-8859-1", error_bad_lines=False,dtype=str)
             except:
                 print('problem reading ' + csvfile)
                 s = 'problem reading ' + csvfile
-                plainTextEdit_Page6.appendPlainText(s)
-                QApplication.processEvents()
+                yield s
+                #plainTextEdit_Page6.appendPlainText(s)
+                #QApplication.processEvents()
 
             if 'EMAIL' in df.columns:
                 email_col_name = 'EMAIL'
                 df = df[df['EMAIL'].notna()].reset_index(drop=True)
                 df = df[~df['EMAIL'].isnull()]
                 print('MX filtering....')
-                mx_validate(df,email_col_name,csvfile,current_directory,plainTextEdit_Page6, QApplication)
-
+                val = mx_validate(df,email_col_name,csvfile,current_directory)
+                for value in val:
+                    yield value
             elif 'Email' in df.columns:
                 email_col_name = 'Email'
                 df = df[df['Email'].notna()].reset_index(drop=True)
                 df = df[~df['Email'].isnull()]
                 print('MX filtering....')
-                mx_validate(df,email_col_name,csvfile,current_directory,plainTextEdit_Page6, QApplication)
+                val = mx_validate(df,email_col_name,csvfile,current_directory)
+                for value in val:
+                    yield value
 
             j = j + 1
 
