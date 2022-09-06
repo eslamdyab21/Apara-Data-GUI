@@ -28,12 +28,18 @@ def DirctoryPathToValidation(current_directory,plainTextEdit_Page6, QApplication
                 QApplication.processEvents()
 
             if 'EMAIL' in df.columns:
+                email_col_name = 'EMAIL'
+
+            elif 'Email' in df.columns:
+                email_col_name = 'Email'
+
+            if ('EMAIL' in df.columns) or ('Email' in df.columns):
                 print('filtering emails.....')
                 plainTextEdit_Page6.appendPlainText('filtering emails.....')
                 QApplication.processEvents()
 
                 # delete invaled emails
-                df = df[df['EMAIL'].notna()].reset_index(drop=True)
+                df = df[df[email_col_name].notna()].reset_index(drop=True)
 
                 print('first stage....')
                 plainTextEdit_Page6.appendPlainText('first stage....')
@@ -48,7 +54,7 @@ def DirctoryPathToValidation(current_directory,plainTextEdit_Page6, QApplication
                     invalid_index_list = []
                     for i in range(df.shape[0]):
                         try:
-                            for char in df['EMAIL'][i]:
+                            for char in df[email_col_name][i]:
                                 if char not in valid_email_list:
                                     invalid_index_list.append(i)
                         except:
@@ -64,10 +70,10 @@ def DirctoryPathToValidation(current_directory,plainTextEdit_Page6, QApplication
                 QApplication.processEvents()
 
                 # drop empty emails
-                df = df[df['EMAIL'].notna()].reset_index(drop=True)
+                df = df[df[email_col_name].notna()].reset_index(drop=True)
 
                 try:
-                    df = df[df['EMAIL'].apply(lambda x: validate_email(x))]
+                    df = df[df[email_col_name].apply(lambda x: validate_email(x))]
                 except:
                     print('second stage unsuccessful')
                     plainTextEdit_Page6.appendPlainText('second stage unsuccessful')
@@ -81,7 +87,7 @@ def DirctoryPathToValidation(current_directory,plainTextEdit_Page6, QApplication
                     invalid_index_list = []
                     for i in range(df.shape[0]):
                         try:
-                            if df['EMAIL'][i].split('@')[1] in blocklist:
+                            if df[email_col_name][i].split('@')[1] in blocklist:
                                 invalid_index_list.append(i)
                         except:
                             invalid_index_list.append(i)
@@ -91,7 +97,7 @@ def DirctoryPathToValidation(current_directory,plainTextEdit_Page6, QApplication
                     plainTextEdit_Page6.appendPlainText('third stage unsuccessful')
                     QApplication.processEvents()
 
-                df = df[df['EMAIL'].notna()].reset_index(drop=True)
+                df = df[df[email_col_name].notna()].reset_index(drop=True)
                 df.to_csv(final_directory + '/' + csvfile, index=None, header=True)
 
             else:
