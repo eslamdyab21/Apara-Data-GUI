@@ -1598,7 +1598,7 @@ QPushButton:pressed {
                  </widget>
                 </item>
                 <item>
-                 <widget class="QPushButton" name="BtnEmailValidation_2">
+                 <widget class="QPushButton" name="BtnExtractNumbers">
                   <property name="minimumSize">
                    <size>
                     <width>150</width>

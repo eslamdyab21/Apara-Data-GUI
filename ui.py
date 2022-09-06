@@ -754,14 +754,14 @@ class Ui_MainWindow(object):
         self.BtnEmailValidation.setIconSize(QtCore.QSize(20, 20))
         self.BtnEmailValidation.setObjectName("BtnEmailValidation")
         self.verticalLayout_13.addWidget(self.BtnEmailValidation)
-        self.BtnEmailValidation_2 = QtWidgets.QPushButton(self.frame_menus)
-        self.BtnEmailValidation_2.setMinimumSize(QtCore.QSize(150, 60))
-        self.BtnEmailValidation_2.setMaximumSize(QtCore.QSize(150, 60))
+        self.BtnExtractNumbers = QtWidgets.QPushButton(self.frame_menus)
+        self.BtnExtractNumbers.setMinimumSize(QtCore.QSize(150, 60))
+        self.BtnExtractNumbers.setMaximumSize(QtCore.QSize(150, 60))
         font = QtGui.QFont()
         font.setFamily("Segoe UI")
         font.setPointSize(9)
-        self.BtnEmailValidation_2.setFont(font)
-        self.BtnEmailValidation_2.setStyleSheet("QPushButton {\n"
+        self.BtnExtractNumbers.setFont(font)
+        self.BtnExtractNumbers.setStyleSheet("QPushButton {\n"
 "    border: 2px solid rgb(52, 59, 72);\n"
 "    /*border-radius: 5px;    */\n"
 "    background-color: rgb(52, 59, 72);\n"
@@ -774,10 +774,10 @@ class Ui_MainWindow(object):
 "    background-color: rgb(35, 40, 49);\n"
 "    border: 2px solid rgb(43, 50, 61);\n"
 "}")
-        self.BtnEmailValidation_2.setIcon(icon1)
-        self.BtnEmailValidation_2.setIconSize(QtCore.QSize(20, 20))
-        self.BtnEmailValidation_2.setObjectName("BtnEmailValidation_2")
-        self.verticalLayout_13.addWidget(self.BtnEmailValidation_2)
+        self.BtnExtractNumbers.setIcon(icon1)
+        self.BtnExtractNumbers.setIconSize(QtCore.QSize(20, 20))
+        self.BtnExtractNumbers.setObjectName("BtnExtractNumbers")
+        self.verticalLayout_13.addWidget(self.BtnExtractNumbers)
         self.verticalLayout_5.addWidget(self.frame_menus)
         self.frame_90 = QtWidgets.QFrame(self.frame_left_menu)
         self.frame_90.setFrameShape(QtWidgets.QFrame.NoFrame)
@@ -3019,7 +3019,7 @@ class Ui_MainWindow(object):
         self.BtnMergeSmallFiles.setText(_translate("MainWindow", "Merge Small Files"))
         self.BtnGeos.setText(_translate("MainWindow", "Geos                        "))
         self.BtnEmailValidation.setText(_translate("MainWindow", "Email Validation "))
-        self.BtnEmailValidation_2.setText(_translate("MainWindow", "Extract Numbers"))
+        self.BtnExtractNumbers.setText(_translate("MainWindow", "Extract Numbers"))
         self.label_user_icon_2.setText(_translate("MainWindow", "Apara"))
         self.labelBoxBlenderInstalation_4.setText(_translate("MainWindow", "Brows to the folder which contains sub-folders each having a number of excelsheets"))
         self.LineEditPath_Page1.setPlaceholderText(_translate("MainWindow", "Your Path"))

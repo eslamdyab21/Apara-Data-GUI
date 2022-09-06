@@ -166,6 +166,13 @@ class Window(QMainWindow):
         self.ui.BtnValidateMxDomain_Page6.clicked.connect(self.Page6_ValidateMxDomain_CallScript)
         ##########################################################################
 
+        ############################PAGE7-Number-Extractor########################
+        self.ui.BtnEmailValidation.clicked.connect(self.SetPage6Validation)
+        self.ui.BtnBrows_Page6_Validation.clicked.connect(self.Page6_Validation_BrowsFolders)
+        self.ui.BtnValidateEmailSpam_Page6.clicked.connect(self.Page6_ValidateEmailSpam_CallScript)
+        self.ui.BtnValidateMxDomain_Page6.clicked.connect(self.Page6_ValidateMxDomain_CallScript)
+        ##########################################################################
+
 
     
 
