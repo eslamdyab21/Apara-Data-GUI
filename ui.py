@@ -601,8 +601,8 @@ class Ui_MainWindow(object):
         self.frame_menus.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_menus.setObjectName("frame_menus")
         self.verticalLayout_13 = QtWidgets.QVBoxLayout(self.frame_menus)
-        self.verticalLayout_13.setContentsMargins(0, 0, 0, 0)
-        self.verticalLayout_13.setSpacing(30)
+        self.verticalLayout_13.setContentsMargins(0, 0, -1, 9)
+        self.verticalLayout_13.setSpacing(15)
         self.verticalLayout_13.setObjectName("verticalLayout_13")
         self.BtnBulkConverter = QtWidgets.QPushButton(self.frame_menus)
         self.BtnBulkConverter.setMinimumSize(QtCore.QSize(150, 60))
@@ -705,7 +705,7 @@ class Ui_MainWindow(object):
         self.BtnMergeSmallFiles.setIcon(icon1)
         self.BtnMergeSmallFiles.setIconSize(QtCore.QSize(20, 20))
         self.BtnMergeSmallFiles.setObjectName("BtnMergeSmallFiles")
-        self.verticalLayout_13.addWidget(self.BtnMergeSmallFiles, 0, QtCore.Qt.AlignVCenter)
+        self.verticalLayout_13.addWidget(self.BtnMergeSmallFiles)
         self.BtnGeos = QtWidgets.QPushButton(self.frame_menus)
         self.BtnGeos.setMinimumSize(QtCore.QSize(150, 60))
         self.BtnGeos.setMaximumSize(QtCore.QSize(150, 60))
@@ -754,6 +754,30 @@ class Ui_MainWindow(object):
         self.BtnEmailValidation.setIconSize(QtCore.QSize(20, 20))
         self.BtnEmailValidation.setObjectName("BtnEmailValidation")
         self.verticalLayout_13.addWidget(self.BtnEmailValidation)
+        self.BtnEmailValidation_2 = QtWidgets.QPushButton(self.frame_menus)
+        self.BtnEmailValidation_2.setMinimumSize(QtCore.QSize(150, 60))
+        self.BtnEmailValidation_2.setMaximumSize(QtCore.QSize(150, 60))
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(9)
+        self.BtnEmailValidation_2.setFont(font)
+        self.BtnEmailValidation_2.setStyleSheet("QPushButton {\n"
+"    border: 2px solid rgb(52, 59, 72);\n"
+"    /*border-radius: 5px;    */\n"
+"    background-color: rgb(52, 59, 72);\n"
+"}\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(57, 65, 80);\n"
+"    border: 2px solid rgb(61, 70, 86);\n"
+"}\n"
+"QPushButton:pressed {    \n"
+"    background-color: rgb(35, 40, 49);\n"
+"    border: 2px solid rgb(43, 50, 61);\n"
+"}")
+        self.BtnEmailValidation_2.setIcon(icon1)
+        self.BtnEmailValidation_2.setIconSize(QtCore.QSize(20, 20))
+        self.BtnEmailValidation_2.setObjectName("BtnEmailValidation_2")
+        self.verticalLayout_13.addWidget(self.BtnEmailValidation_2)
         self.verticalLayout_5.addWidget(self.frame_menus)
         self.frame_90 = QtWidgets.QFrame(self.frame_left_menu)
         self.frame_90.setFrameShape(QtWidgets.QFrame.NoFrame)
@@ -1157,7 +1181,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 218, 218))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 274, 218))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.horizontalLayout_11 = QtWidgets.QHBoxLayout(self.scrollAreaWidgetContents)
         self.horizontalLayout_11.setObjectName("horizontalLayout_11")
@@ -2696,6 +2720,227 @@ class Ui_MainWindow(object):
         self.verticalLayout_44.addWidget(self.frame_95)
         self.verticalLayout_45.addWidget(self.frame_41)
         self.stackedWidget.addWidget(self.page6_EmailValidation)
+        self.page7_ExtractNumbers = QtWidgets.QWidget()
+        self.page7_ExtractNumbers.setObjectName("page7_ExtractNumbers")
+        self.verticalLayout_50 = QtWidgets.QVBoxLayout(self.page7_ExtractNumbers)
+        self.verticalLayout_50.setObjectName("verticalLayout_50")
+        self.frame_60 = QtWidgets.QFrame(self.page7_ExtractNumbers)
+        self.frame_60.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_60.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_60.setObjectName("frame_60")
+        self.verticalLayout_49 = QtWidgets.QVBoxLayout(self.frame_60)
+        self.verticalLayout_49.setObjectName("verticalLayout_49")
+        self.frame_70 = QtWidgets.QFrame(self.frame_60)
+        self.frame_70.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_70.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_70.setObjectName("frame_70")
+        self.verticalLayout_46 = QtWidgets.QVBoxLayout(self.frame_70)
+        self.verticalLayout_46.setContentsMargins(-1, -1, -1, 0)
+        self.verticalLayout_46.setObjectName("verticalLayout_46")
+        self.frame_83 = QtWidgets.QFrame(self.frame_70)
+        self.frame_83.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_83.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_83.setObjectName("frame_83")
+        self.horizontalLayout_32 = QtWidgets.QHBoxLayout(self.frame_83)
+        self.horizontalLayout_32.setContentsMargins(-1, -1, -1, 0)
+        self.horizontalLayout_32.setObjectName("horizontalLayout_32")
+        self.labelBoxBlenderInstalation_16 = QtWidgets.QLabel(self.frame_83)
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.labelBoxBlenderInstalation_16.setFont(font)
+        self.labelBoxBlenderInstalation_16.setStyleSheet("")
+        self.labelBoxBlenderInstalation_16.setObjectName("labelBoxBlenderInstalation_16")
+        self.horizontalLayout_32.addWidget(self.labelBoxBlenderInstalation_16)
+        self.verticalLayout_46.addWidget(self.frame_83)
+        self.frame_84 = QtWidgets.QFrame(self.frame_70)
+        self.frame_84.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_84.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_84.setObjectName("frame_84")
+        self.horizontalLayout_43 = QtWidgets.QHBoxLayout(self.frame_84)
+        self.horizontalLayout_43.setContentsMargins(-1, 0, -1, -1)
+        self.horizontalLayout_43.setObjectName("horizontalLayout_43")
+        self.gridLayout_11 = QtWidgets.QGridLayout()
+        self.gridLayout_11.setContentsMargins(-1, -1, -1, 0)
+        self.gridLayout_11.setObjectName("gridLayout_11")
+        self.LineEditPath_Page7 = QtWidgets.QLineEdit(self.frame_84)
+        self.LineEditPath_Page7.setMinimumSize(QtCore.QSize(0, 30))
+        self.LineEditPath_Page7.setStyleSheet("QLineEdit {\n"
+"    background-color: rgb(27, 29, 35);\n"
+"    border-radius: 5px;\n"
+"    border: 2px solid rgb(27, 29, 35);\n"
+"    padding-left: 10px;\n"
+"}\n"
+"QLineEdit:hover {\n"
+"    border: 2px solid rgb(64, 71, 88);\n"
+"}\n"
+"QLineEdit:focus {\n"
+"    border: 2px solid rgb(91, 101, 124);\n"
+"}")
+        self.LineEditPath_Page7.setObjectName("LineEditPath_Page7")
+        self.gridLayout_11.addWidget(self.LineEditPath_Page7, 0, 0, 1, 1)
+        self.BtnBrows_Page7_ExtractNumbers = QtWidgets.QPushButton(self.frame_84)
+        self.BtnBrows_Page7_ExtractNumbers.setMinimumSize(QtCore.QSize(150, 30))
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(9)
+        self.BtnBrows_Page7_ExtractNumbers.setFont(font)
+        self.BtnBrows_Page7_ExtractNumbers.setStyleSheet("QPushButton {\n"
+"    border: 2px solid rgb(52, 59, 72);\n"
+"    border-radius: 5px;    \n"
+"    background-color: rgb(52, 59, 72);\n"
+"}\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(57, 65, 80);\n"
+"    border: 2px solid rgb(61, 70, 86);\n"
+"}\n"
+"QPushButton:pressed {    \n"
+"    background-color: rgb(35, 40, 49);\n"
+"    border: 2px solid rgb(43, 50, 61);\n"
+"}")
+        self.BtnBrows_Page7_ExtractNumbers.setIcon(icon2)
+        self.BtnBrows_Page7_ExtractNumbers.setObjectName("BtnBrows_Page7_ExtractNumbers")
+        self.gridLayout_11.addWidget(self.BtnBrows_Page7_ExtractNumbers, 0, 1, 1, 1)
+        self.labelVersion_12 = QtWidgets.QLabel(self.frame_84)
+        self.labelVersion_12.setStyleSheet("color: rgb(98, 103, 111);")
+        self.labelVersion_12.setLineWidth(1)
+        self.labelVersion_12.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
+        self.labelVersion_12.setObjectName("labelVersion_12")
+        self.gridLayout_11.addWidget(self.labelVersion_12, 1, 0, 1, 2)
+        self.horizontalLayout_43.addLayout(self.gridLayout_11)
+        self.verticalLayout_46.addWidget(self.frame_84)
+        self.frame_85 = QtWidgets.QFrame(self.frame_70)
+        self.frame_85.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_85.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_85.setObjectName("frame_85")
+        self.verticalLayout_46.addWidget(self.frame_85)
+        self.frame_86 = QtWidgets.QFrame(self.frame_70)
+        self.frame_86.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_86.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_86.setObjectName("frame_86")
+        self.horizontalLayout_44 = QtWidgets.QHBoxLayout(self.frame_86)
+        self.horizontalLayout_44.setContentsMargins(-1, 15, -1, 0)
+        self.horizontalLayout_44.setObjectName("horizontalLayout_44")
+        self.frame_87 = QtWidgets.QFrame(self.frame_86)
+        self.frame_87.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_87.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_87.setObjectName("frame_87")
+        self.horizontalLayout_44.addWidget(self.frame_87)
+        self.labelConvert_Page1_BulkComvert_5 = QtWidgets.QLabel(self.frame_86)
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.labelConvert_Page1_BulkComvert_5.setFont(font)
+        self.labelConvert_Page1_BulkComvert_5.setStyleSheet("")
+        self.labelConvert_Page1_BulkComvert_5.setAlignment(QtCore.Qt.AlignCenter)
+        self.labelConvert_Page1_BulkComvert_5.setObjectName("labelConvert_Page1_BulkComvert_5")
+        self.horizontalLayout_44.addWidget(self.labelConvert_Page1_BulkComvert_5)
+        self.frame_88 = QtWidgets.QFrame(self.frame_86)
+        self.frame_88.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_88.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_88.setObjectName("frame_88")
+        self.horizontalLayout_44.addWidget(self.frame_88)
+        self.verticalLayout_46.addWidget(self.frame_86)
+        self.frame_89 = QtWidgets.QFrame(self.frame_70)
+        self.frame_89.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_89.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_89.setObjectName("frame_89")
+        self.horizontalLayout_45 = QtWidgets.QHBoxLayout(self.frame_89)
+        self.horizontalLayout_45.setContentsMargins(-1, 0, -1, 0)
+        self.horizontalLayout_45.setObjectName("horizontalLayout_45")
+        self.frame_102 = QtWidgets.QFrame(self.frame_89)
+        self.frame_102.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_102.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_102.setObjectName("frame_102")
+        self.horizontalLayout_45.addWidget(self.frame_102)
+        self.BtnConvert_Page7_ExtractNumbers = QtWidgets.QPushButton(self.frame_89)
+        self.BtnConvert_Page7_ExtractNumbers.setMinimumSize(QtCore.QSize(60, 60))
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(9)
+        self.BtnConvert_Page7_ExtractNumbers.setFont(font)
+        self.BtnConvert_Page7_ExtractNumbers.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.BtnConvert_Page7_ExtractNumbers.setAutoFillBackground(False)
+        self.BtnConvert_Page7_ExtractNumbers.setStyleSheet("QPushButton {\n"
+"    border: 2px solid rgb(52, 59, 72);\n"
+"    border-radius: 5px;    \n"
+"    background-color: rgb(52, 59, 72);\n"
+"}\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(57, 65, 80);\n"
+"    border: 2px solid rgb(61, 70, 86);\n"
+"}\n"
+"QPushButton:pressed {    \n"
+"    background-color: rgb(35, 40, 49);\n"
+"    border: 2px solid rgb(43, 50, 61);\n"
+"}")
+        self.BtnConvert_Page7_ExtractNumbers.setIcon(icon3)
+        self.BtnConvert_Page7_ExtractNumbers.setCheckable(False)
+        self.BtnConvert_Page7_ExtractNumbers.setObjectName("BtnConvert_Page7_ExtractNumbers")
+        self.horizontalLayout_45.addWidget(self.BtnConvert_Page7_ExtractNumbers)
+        self.frame_103 = QtWidgets.QFrame(self.frame_89)
+        self.frame_103.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_103.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_103.setObjectName("frame_103")
+        self.horizontalLayout_45.addWidget(self.frame_103)
+        self.verticalLayout_46.addWidget(self.frame_89)
+        self.LabelStatus_Page3_LargeFileSplitter_2 = QtWidgets.QLabel(self.frame_70)
+        self.LabelStatus_Page3_LargeFileSplitter_2.setStyleSheet("color: rgb(98, 103, 111);")
+        self.LabelStatus_Page3_LargeFileSplitter_2.setLineWidth(1)
+        self.LabelStatus_Page3_LargeFileSplitter_2.setText("")
+        self.LabelStatus_Page3_LargeFileSplitter_2.setAlignment(QtCore.Qt.AlignCenter)
+        self.LabelStatus_Page3_LargeFileSplitter_2.setObjectName("LabelStatus_Page3_LargeFileSplitter_2")
+        self.verticalLayout_46.addWidget(self.LabelStatus_Page3_LargeFileSplitter_2)
+        self.verticalLayout_49.addWidget(self.frame_70)
+        self.frame_104 = QtWidgets.QFrame(self.frame_60)
+        self.frame_104.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_104.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_104.setObjectName("frame_104")
+        self.verticalLayout_47 = QtWidgets.QVBoxLayout(self.frame_104)
+        self.verticalLayout_47.setObjectName("verticalLayout_47")
+        self.frame_105 = QtWidgets.QFrame(self.frame_104)
+        self.frame_105.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_105.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_105.setObjectName("frame_105")
+        self.verticalLayout_48 = QtWidgets.QVBoxLayout(self.frame_105)
+        self.verticalLayout_48.setObjectName("verticalLayout_48")
+        self.plainTextEdit_Page7 = QtWidgets.QPlainTextEdit(self.frame_105)
+        self.plainTextEdit_Page7.setMinimumSize(QtCore.QSize(200, 200))
+        self.plainTextEdit_Page7.setStyleSheet("QPlainTextEdit {\n"
+"    background-color: rgb(27, 29, 35);\n"
+"    border-radius: 5px;\n"
+"    padding: 10px;\n"
+"}\n"
+"QPlainTextEdit:hover {\n"
+"    border: 2px solid rgb(64, 71, 88);\n"
+"}\n"
+"QPlainTextEdit:focus {\n"
+"    border: 2px solid rgb(91, 101, 124);\n"
+"}")
+        self.plainTextEdit_Page7.setPlainText("")
+        self.plainTextEdit_Page7.setPlaceholderText("")
+        self.plainTextEdit_Page7.setObjectName("plainTextEdit_Page7")
+        self.verticalLayout_48.addWidget(self.plainTextEdit_Page7)
+        self.verticalLayout_47.addWidget(self.frame_105)
+        self.frame_106 = QtWidgets.QFrame(self.frame_104)
+        self.frame_106.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_106.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_106.setObjectName("frame_106")
+        self.verticalLayout_47.addWidget(self.frame_106)
+        self.frame_107 = QtWidgets.QFrame(self.frame_104)
+        self.frame_107.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_107.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_107.setObjectName("frame_107")
+        self.horizontalLayout_51 = QtWidgets.QHBoxLayout(self.frame_107)
+        self.horizontalLayout_51.setObjectName("horizontalLayout_51")
+        self.verticalLayout_47.addWidget(self.frame_107)
+        self.verticalLayout_49.addWidget(self.frame_104)
+        self.verticalLayout_50.addWidget(self.frame_60)
+        self.stackedWidget.addWidget(self.page7_ExtractNumbers)
         self.verticalLayout_9.addWidget(self.stackedWidget)
         self.verticalLayout_4.addWidget(self.frame_content)
         self.frame_grip = QtWidgets.QFrame(self.frame_content_right)
@@ -2752,7 +2997,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(6)
+        self.stackedWidget.setCurrentIndex(7)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
         MainWindow.setTabOrder(self.btn_toggle_menu, self.checkBox)
         MainWindow.setTabOrder(self.checkBox, self.comboBox)
@@ -2774,6 +3019,7 @@ class Ui_MainWindow(object):
         self.BtnMergeSmallFiles.setText(_translate("MainWindow", "Merge Small Files"))
         self.BtnGeos.setText(_translate("MainWindow", "Geos                        "))
         self.BtnEmailValidation.setText(_translate("MainWindow", "Email Validation "))
+        self.BtnEmailValidation_2.setText(_translate("MainWindow", "Extract Numbers"))
         self.label_user_icon_2.setText(_translate("MainWindow", "Apara"))
         self.labelBoxBlenderInstalation_4.setText(_translate("MainWindow", "Brows to the folder which contains sub-folders each having a number of excelsheets"))
         self.LineEditPath_Page1.setPlaceholderText(_translate("MainWindow", "Your Path"))
@@ -2884,8 +3130,14 @@ class Ui_MainWindow(object):
         self.labelBoxBlenderInstalation_15.setText(_translate("MainWindow", "Press to validate MX Domain"))
         self.BtnValidateEmailSpam_Page6.setText(_translate("MainWindow", "Validate"))
         self.BtnValidateMxDomain_Page6.setText(_translate("MainWindow", "Validate"))
+        self.labelBoxBlenderInstalation_16.setText(_translate("MainWindow", "Brows to the folder containg the csv files"))
+        self.LineEditPath_Page7.setPlaceholderText(_translate("MainWindow", "Your Path"))
+        self.BtnBrows_Page7_ExtractNumbers.setText(_translate("MainWindow", "Open Folder"))
+        self.labelVersion_12.setText(_translate("MainWindow", "Ex: /home/documents/csvfolder"))
+        self.labelConvert_Page1_BulkComvert_5.setText(_translate("MainWindow", "Press to extract numbers"))
+        self.BtnConvert_Page7_ExtractNumbers.setText(_translate("MainWindow", "Extract"))
         self.label_credits.setText(_translate("MainWindow", "Developed by: Eslam Dyab"))
-        self.label_version.setText(_translate("MainWindow", "v1.0.0"))
+        self.label_version.setText(_translate("MainWindow", "v1.0.1"))
 import files_rc
 
 
