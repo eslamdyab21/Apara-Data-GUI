@@ -60,17 +60,22 @@ class UIFunctions():
 
 
 
-# Step 1: Create a worker class
-class Worker(QObject):
-    finished = pyqtSignal()
-    progress = pyqtSignal(int)
+# Create a worker class
+class Worker1(QThread):
+    update_plainTextEdit_Page3 = pyqtSignal(str)
 
-    def run(self,Page3_LargeFileSplitter_fname, plainTextEdit_Page3):
+    def __init__(self,Page3_LargeFileSplitter_fname):
+        QThread.__init__(self)
+        self.Page3_LargeFileSplitter_fname = Page3_LargeFileSplitter_fname
+
+    def run(self):
         """Long-running task."""
-        Large_File_Splitter.DirctoryPathToLargeFilesToSplit(Page3_LargeFileSplitter_fname, plainTextEdit_Page3, QApplication)
-        plainTextEdit_Page3.appendPlainText("Done")
+        val = Large_File_Splitter.DirctoryPathToLargeFilesToSplit(self.Page3_LargeFileSplitter_fname)        
         
-        self.finished.emit()
+        for value in val:
+            self.update_plainTextEdit_Page3.emit(value)
+            #print(value)
+
 
 
 # Create a worker2 class
@@ -255,25 +260,19 @@ class Window(QMainWindow):
         self.ui.plainTextEdit_Page3.appendPlainText("Wait......")
         QApplication.processEvents()
 
-        # Step 2: Create a QThread object
-        self.thread = QThread()
-        # Step 3: Create a worker object
-        self.worker = Worker()
-        # Step 4: Move worker to the thread
-        self.worker.moveToThread(self.thread)
-        # Step 5: Connect signals and slots
-        self.thread.started.connect(self.worker.run(self.Page3_LargeFileSplitter_fname, self.ui.plainTextEdit_Page3))
-        self.worker.finished.connect(self.thread.quit)
-        self.worker.finished.connect(self.worker.deleteLater)
-        self.thread.finished.connect(self.thread.deleteLater)
-        #self.worker.progress.connect(self.reportProgress)
-        # Step 6: Start the thread
-        self.thread.start()
+        #Create a QThread object
+        self.worker1 = Worker1(self.Page3_LargeFileSplitter_fname)
 
-        # Final resets
-        self.ui.BtnConvert_Page3_LargeFileSplitter.setEnabled(False)
-        self.thread.finished.connect(lambda: self.ui.BtnConvert_Page3_LargeFileSplitter.setEnabled(True))
-        #self.thread.finished.connect(lambda: self.stepLabel.setText("Long-Running Step: 0"))        
+        self.worker1.start()
+
+        self.worker1.finished.connect(self.evt_worker1_thread_finished)
+        self.worker1.update_plainTextEdit_Page3.connect(self.evt_update_plainTextEdit_Page3)
+
+    def evt_worker1_thread_finished(self):
+        self.ui.plainTextEdit_Page3.appendPlainText("Done")
+
+    def evt_update_plainTextEdit_Page3(self, value):
+        self.ui.plainTextEdit_Page3.appendPlainText(value)
     ##########################################################################
 
 
