@@ -1280,7 +1280,7 @@ QPushButton:pressed {
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_13">
                 <property name="spacing">
-                 <number>30</number>
+                 <number>15</number>
                 </property>
                 <property name="leftMargin">
                  <number>0</number>
@@ -1288,11 +1288,8 @@ QPushButton:pressed {
                 <property name="topMargin">
                  <number>0</number>
                 </property>
-                <property name="rightMargin">
-                 <number>0</number>
-                </property>
                 <property name="bottomMargin">
-                 <number>0</number>
+                 <number>9</number>
                 </property>
                 <item>
                  <widget class="QPushButton" name="BtnBulkConverter">
@@ -1450,7 +1447,7 @@ QPushButton:pressed {
                   </property>
                  </widget>
                 </item>
-                <item alignment="Qt::AlignVCenter">
+                <item>
                  <widget class="QPushButton" name="BtnMergeSmallFiles">
                   <property name="minimumSize">
                    <size>
@@ -1600,6 +1597,56 @@ QPushButton:pressed {
                   </property>
                  </widget>
                 </item>
+                <item>
+                 <widget class="QPushButton" name="BtnEmailValidation_2">
+                  <property name="minimumSize">
+                   <size>
+                    <width>150</width>
+                    <height>60</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>150</width>
+                    <height>60</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Segoe UI</family>
+                    <pointsize>9</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QPushButton {
+	border: 2px solid rgb(52, 59, 72);
+	/*border-radius: 5px;	*/
+	background-color: rgb(52, 59, 72);
+}
+QPushButton:hover {
+	background-color: rgb(57, 65, 80);
+	border: 2px solid rgb(61, 70, 86);
+}
+QPushButton:pressed {	
+	background-color: rgb(35, 40, 49);
+	border: 2px solid rgb(43, 50, 61);
+}</string>
+                  </property>
+                  <property name="text">
+                   <string>Extract Numbers</string>
+                  </property>
+                  <property name="icon">
+                   <iconset>
+                    <normaloff>icons/24x24/cil-lightbulb.png</normaloff>icons/24x24/cil-lightbulb.png</iconset>
+                  </property>
+                  <property name="iconSize">
+                   <size>
+                    <width>20</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </widget>
+                </item>
                </layout>
               </widget>
              </item>
@@ -1724,7 +1771,7 @@ QPushButton:pressed {
                    <string notr="true">background: transparent;</string>
                   </property>
                   <property name="currentIndex">
-                   <number>6</number>
+                   <number>7</number>
                   </property>
                   <widget class="QWidget" name="page1_home">
                    <layout class="QVBoxLayout" name="verticalLayout_10">
@@ -5332,6 +5379,417 @@ QPlainTextEdit:focus {
                     </item>
                    </layout>
                   </widget>
+                  <widget class="QWidget" name="page7_ExtractNumbers">
+                   <layout class="QVBoxLayout" name="verticalLayout_50">
+                    <item>
+                     <widget class="QFrame" name="frame_60">
+                      <property name="frameShape">
+                       <enum>QFrame::StyledPanel</enum>
+                      </property>
+                      <property name="frameShadow">
+                       <enum>QFrame::Raised</enum>
+                      </property>
+                      <layout class="QVBoxLayout" name="verticalLayout_49">
+                       <item>
+                        <widget class="QFrame" name="frame_70">
+                         <property name="frameShape">
+                          <enum>QFrame::StyledPanel</enum>
+                         </property>
+                         <property name="frameShadow">
+                          <enum>QFrame::Raised</enum>
+                         </property>
+                         <layout class="QVBoxLayout" name="verticalLayout_46">
+                          <property name="bottomMargin">
+                           <number>0</number>
+                          </property>
+                          <item>
+                           <widget class="QFrame" name="frame_83">
+                            <property name="frameShape">
+                             <enum>QFrame::StyledPanel</enum>
+                            </property>
+                            <property name="frameShadow">
+                             <enum>QFrame::Raised</enum>
+                            </property>
+                            <layout class="QHBoxLayout" name="horizontalLayout_32">
+                             <property name="bottomMargin">
+                              <number>0</number>
+                             </property>
+                             <item>
+                              <widget class="QLabel" name="labelBoxBlenderInstalation_16">
+                               <property name="font">
+                                <font>
+                                 <family>Segoe UI</family>
+                                 <pointsize>10</pointsize>
+                                 <weight>75</weight>
+                                 <bold>true</bold>
+                                </font>
+                               </property>
+                               <property name="styleSheet">
+                                <string notr="true"/>
+                               </property>
+                               <property name="text">
+                                <string>Brows to the folder containg the csv files</string>
+                               </property>
+                              </widget>
+                             </item>
+                            </layout>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="QFrame" name="frame_84">
+                            <property name="frameShape">
+                             <enum>QFrame::StyledPanel</enum>
+                            </property>
+                            <property name="frameShadow">
+                             <enum>QFrame::Raised</enum>
+                            </property>
+                            <layout class="QHBoxLayout" name="horizontalLayout_43">
+                             <property name="topMargin">
+                              <number>0</number>
+                             </property>
+                             <item>
+                              <layout class="QGridLayout" name="gridLayout_11">
+                               <property name="bottomMargin">
+                                <number>0</number>
+                               </property>
+                               <item row="0" column="0">
+                                <widget class="QLineEdit" name="LineEditPath_Page7">
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>0</width>
+                                   <height>30</height>
+                                  </size>
+                                 </property>
+                                 <property name="styleSheet">
+                                  <string notr="true">QLineEdit {
+	background-color: rgb(27, 29, 35);
+	border-radius: 5px;
+	border: 2px solid rgb(27, 29, 35);
+	padding-left: 10px;
+}
+QLineEdit:hover {
+	border: 2px solid rgb(64, 71, 88);
+}
+QLineEdit:focus {
+	border: 2px solid rgb(91, 101, 124);
+}</string>
+                                 </property>
+                                 <property name="placeholderText">
+                                  <string>Your Path</string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item row="0" column="1">
+                                <widget class="QPushButton" name="BtnBrows_Page7_ExtractNumbers">
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>150</width>
+                                   <height>30</height>
+                                  </size>
+                                 </property>
+                                 <property name="font">
+                                  <font>
+                                   <family>Segoe UI</family>
+                                   <pointsize>9</pointsize>
+                                  </font>
+                                 </property>
+                                 <property name="styleSheet">
+                                  <string notr="true">QPushButton {
+	border: 2px solid rgb(52, 59, 72);
+	border-radius: 5px;	
+	background-color: rgb(52, 59, 72);
+}
+QPushButton:hover {
+	background-color: rgb(57, 65, 80);
+	border: 2px solid rgb(61, 70, 86);
+}
+QPushButton:pressed {	
+	background-color: rgb(35, 40, 49);
+	border: 2px solid rgb(43, 50, 61);
+}</string>
+                                 </property>
+                                 <property name="text">
+                                  <string>Open Folder</string>
+                                 </property>
+                                 <property name="icon">
+                                  <iconset resource="files.qrc">
+                                   <normaloff>:/16x16/icons/16x16/cil-folder-open.png</normaloff>:/16x16/icons/16x16/cil-folder-open.png</iconset>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item row="1" column="0" colspan="2">
+                                <widget class="QLabel" name="labelVersion_12">
+                                 <property name="styleSheet">
+                                  <string notr="true">color: rgb(98, 103, 111);</string>
+                                 </property>
+                                 <property name="lineWidth">
+                                  <number>1</number>
+                                 </property>
+                                 <property name="text">
+                                  <string>Ex: /home/documents/csvfolder</string>
+                                 </property>
+                                 <property name="alignment">
+                                  <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                                 </property>
+                                </widget>
+                               </item>
+                              </layout>
+                             </item>
+                            </layout>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="QFrame" name="frame_85">
+                            <property name="frameShape">
+                             <enum>QFrame::StyledPanel</enum>
+                            </property>
+                            <property name="frameShadow">
+                             <enum>QFrame::Raised</enum>
+                            </property>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="QFrame" name="frame_86">
+                            <property name="frameShape">
+                             <enum>QFrame::StyledPanel</enum>
+                            </property>
+                            <property name="frameShadow">
+                             <enum>QFrame::Raised</enum>
+                            </property>
+                            <layout class="QHBoxLayout" name="horizontalLayout_44">
+                             <property name="topMargin">
+                              <number>15</number>
+                             </property>
+                             <property name="bottomMargin">
+                              <number>0</number>
+                             </property>
+                             <item>
+                              <widget class="QFrame" name="frame_87">
+                               <property name="frameShape">
+                                <enum>QFrame::StyledPanel</enum>
+                               </property>
+                               <property name="frameShadow">
+                                <enum>QFrame::Raised</enum>
+                               </property>
+                              </widget>
+                             </item>
+                             <item>
+                              <widget class="QLabel" name="labelConvert_Page1_BulkComvert_5">
+                               <property name="font">
+                                <font>
+                                 <family>Segoe UI</family>
+                                 <pointsize>10</pointsize>
+                                 <weight>75</weight>
+                                 <bold>true</bold>
+                                </font>
+                               </property>
+                               <property name="styleSheet">
+                                <string notr="true"/>
+                               </property>
+                               <property name="text">
+                                <string>Press to extract numbers</string>
+                               </property>
+                               <property name="alignment">
+                                <set>Qt::AlignCenter</set>
+                               </property>
+                              </widget>
+                             </item>
+                             <item>
+                              <widget class="QFrame" name="frame_88">
+                               <property name="frameShape">
+                                <enum>QFrame::StyledPanel</enum>
+                               </property>
+                               <property name="frameShadow">
+                                <enum>QFrame::Raised</enum>
+                               </property>
+                              </widget>
+                             </item>
+                            </layout>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="QFrame" name="frame_89">
+                            <property name="frameShape">
+                             <enum>QFrame::StyledPanel</enum>
+                            </property>
+                            <property name="frameShadow">
+                             <enum>QFrame::Raised</enum>
+                            </property>
+                            <layout class="QHBoxLayout" name="horizontalLayout_45">
+                             <property name="topMargin">
+                              <number>0</number>
+                             </property>
+                             <property name="bottomMargin">
+                              <number>0</number>
+                             </property>
+                             <item>
+                              <widget class="QFrame" name="frame_102">
+                               <property name="frameShape">
+                                <enum>QFrame::StyledPanel</enum>
+                               </property>
+                               <property name="frameShadow">
+                                <enum>QFrame::Raised</enum>
+                               </property>
+                              </widget>
+                             </item>
+                             <item>
+                              <widget class="QPushButton" name="BtnConvert_Page7_ExtractNumbers">
+                               <property name="minimumSize">
+                                <size>
+                                 <width>60</width>
+                                 <height>60</height>
+                                </size>
+                               </property>
+                               <property name="font">
+                                <font>
+                                 <family>Segoe UI</family>
+                                 <pointsize>9</pointsize>
+                                </font>
+                               </property>
+                               <property name="layoutDirection">
+                                <enum>Qt::LeftToRight</enum>
+                               </property>
+                               <property name="autoFillBackground">
+                                <bool>false</bool>
+                               </property>
+                               <property name="styleSheet">
+                                <string notr="true">QPushButton {
+	border: 2px solid rgb(52, 59, 72);
+	border-radius: 5px;	
+	background-color: rgb(52, 59, 72);
+}
+QPushButton:hover {
+	background-color: rgb(57, 65, 80);
+	border: 2px solid rgb(61, 70, 86);
+}
+QPushButton:pressed {	
+	background-color: rgb(35, 40, 49);
+	border: 2px solid rgb(43, 50, 61);
+}</string>
+                               </property>
+                               <property name="text">
+                                <string>Extract</string>
+                               </property>
+                               <property name="icon">
+                                <iconset>
+                                 <normaloff>icons/20x20/cil-paper-plane.png</normaloff>icons/20x20/cil-paper-plane.png</iconset>
+                               </property>
+                               <property name="checkable">
+                                <bool>false</bool>
+                               </property>
+                              </widget>
+                             </item>
+                             <item>
+                              <widget class="QFrame" name="frame_103">
+                               <property name="frameShape">
+                                <enum>QFrame::StyledPanel</enum>
+                               </property>
+                               <property name="frameShadow">
+                                <enum>QFrame::Raised</enum>
+                               </property>
+                              </widget>
+                             </item>
+                            </layout>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="QLabel" name="LabelStatus_Page3_LargeFileSplitter_2">
+                            <property name="styleSheet">
+                             <string notr="true">color: rgb(98, 103, 111);</string>
+                            </property>
+                            <property name="lineWidth">
+                             <number>1</number>
+                            </property>
+                            <property name="text">
+                             <string/>
+                            </property>
+                            <property name="alignment">
+                             <set>Qt::AlignCenter</set>
+                            </property>
+                           </widget>
+                          </item>
+                         </layout>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QFrame" name="frame_104">
+                         <property name="frameShape">
+                          <enum>QFrame::StyledPanel</enum>
+                         </property>
+                         <property name="frameShadow">
+                          <enum>QFrame::Raised</enum>
+                         </property>
+                         <layout class="QVBoxLayout" name="verticalLayout_47">
+                          <item>
+                           <widget class="QFrame" name="frame_105">
+                            <property name="frameShape">
+                             <enum>QFrame::StyledPanel</enum>
+                            </property>
+                            <property name="frameShadow">
+                             <enum>QFrame::Raised</enum>
+                            </property>
+                            <layout class="QVBoxLayout" name="verticalLayout_48">
+                             <item>
+                              <widget class="QPlainTextEdit" name="plainTextEdit_Page7">
+                               <property name="minimumSize">
+                                <size>
+                                 <width>200</width>
+                                 <height>200</height>
+                                </size>
+                               </property>
+                               <property name="styleSheet">
+                                <string notr="true">QPlainTextEdit {
+	background-color: rgb(27, 29, 35);
+	border-radius: 5px;
+	padding: 10px;
+}
+QPlainTextEdit:hover {
+	border: 2px solid rgb(64, 71, 88);
+}
+QPlainTextEdit:focus {
+	border: 2px solid rgb(91, 101, 124);
+}</string>
+                               </property>
+                               <property name="plainText">
+                                <string/>
+                               </property>
+                               <property name="placeholderText">
+                                <string/>
+                               </property>
+                              </widget>
+                             </item>
+                            </layout>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="QFrame" name="frame_106">
+                            <property name="frameShape">
+                             <enum>QFrame::StyledPanel</enum>
+                            </property>
+                            <property name="frameShadow">
+                             <enum>QFrame::Raised</enum>
+                            </property>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="QFrame" name="frame_107">
+                            <property name="frameShape">
+                             <enum>QFrame::StyledPanel</enum>
+                            </property>
+                            <property name="frameShadow">
+                             <enum>QFrame::Raised</enum>
+                            </property>
+                            <layout class="QHBoxLayout" name="horizontalLayout_51"/>
+                           </widget>
+                          </item>
+                         </layout>
+                        </widget>
+                       </item>
+                      </layout>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
                  </widget>
                 </item>
                </layout>
@@ -5432,7 +5890,7 @@ QPlainTextEdit:focus {
                       <string notr="true">color: rgb(98, 103, 111);</string>
                      </property>
                      <property name="text">
-                      <string>v1.0.0</string>
+                      <string>v1.0.1</string>
                      </property>
                      <property name="alignment">
                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
