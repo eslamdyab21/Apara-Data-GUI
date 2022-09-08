@@ -20,11 +20,11 @@ def DirctoryPathToNumbersExtract(current_directory):
             if 'NUMBER' in df.columns:
                 print("Extracting numbers in " + csvfile + ' file')
                 df['NUMBER'] = '+' + df['NUMBER'].astype(str)
-                np.savetxt(final_directory + '/' + csvfile.split('.')[0]+ '.txt' , [df['NUMBER'].values], fmt='%s',delimiter=',')
+                np.savetxt(final_directory + '/' + csvfile.split('.')[0]+ '.txt' , df['NUMBER'].values, fmt='%s')
                 yield "Extracting numbers in " + csvfile + ' file'
 
             elif 'Number' in df.columns:
                 print("Extracting numbers in " + csvfile + ' file')
                 df['Number'] = '+' + df['Number'].astype(str)
-                np.savetxt(final_directory + '/' + csvfile.split('.')[0]+ '.txt' , [df['Number'].values], fmt='%s', delimiter=',')
+                np.savetxt(final_directory + '/' + csvfile.split('.')[0]+ '.txt' , df['Number'].values, fmt='%s')
                 yield "Extracting numbers in " + csvfile + ' file'
