@@ -20,7 +20,7 @@ def DirctoryPathToGeo(current_directory,plainTextEdit_Page5, QApplication):
     folders = []
     Coutries = []
     for folder in os.listdir(current_directory):
-        if '.' not in folder:
+        if os.path.isdir(current_directory + '/' + folder):
             folders.append(folder)
             Coutries.extend(os.listdir(current_directory + '/' + folder))
 
