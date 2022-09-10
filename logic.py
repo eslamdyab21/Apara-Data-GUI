@@ -118,6 +118,28 @@ class Worker3_extract_numbers(QThread):
             #print(value)
 
 
+# Create a Worker4_geos class
+class Worker4_geos(QThread):
+    update_plainTextEdit_Page5 = pyqtSignal(str)
+
+    def __init__(self , Extract_or_Merge, Page5_Geos_fname):
+        QThread.__init__(self)
+        self.Extract_or_Merge = Extract_or_Merge
+        self.Page5_Geos_fname = Page5_Geos_fname
+        
+
+    def run(self):
+        """Long-running task."""
+        if self.Extract_or_Merge == 0:
+            val = Extract_Geos.DirctoryPathToGeo(self.Page5_Geos_fname)
+        elif self.Extract_or_Merge == 1:
+            val = Merge_Geos.DirctoryPathToGeo(self.Page5_Geos_fname)
+
+        for value in val:
+            self.update_plainTextEdit_Page5.emit(value)
+            #print(value)
+
+
 
 
 class Window(QMainWindow):
@@ -344,22 +366,39 @@ class Window(QMainWindow):
         self.ui.LineEditPath_Page5.setText(self.Page5_Geos_fname)
 
     def Page5_ExtractGeo_CallScript(self):
+
+        #Create a QThread object
         self.ui.plainTextEdit_Page5.clear()
-        #self.ui.LabelStatus_Page5_Geos.setText("Wait......")
+        self.worker4_geos = Worker4_geos(0,self.Page5_Geos_fname)
+
+        self.worker4_geos.start()
+
         self.ui.plainTextEdit_Page5.appendPlainText("Wait......")
-        QApplication.processEvents()
-        Extract_Geos.DirctoryPathToGeo(self.Page5_Geos_fname)
-        #self.ui.LabelStatus_Page5_Geos.setText("Done")
-        self.ui.plainTextEdit_Page5.appendPlainText("Done")
         QApplication.processEvents()
 
+        self.worker4_geos.finished.connect(self.evt_worker4_geos_thread_finished)
+        self.worker4_geos.update_plainTextEdit_Page5.connect(self.evt_update_plainTextEdit_Page5)
+
+
     def Page5_MergeGeo_CallScript(self):
+         #Create a QThread object
         self.ui.plainTextEdit_Page5.clear()
+        self.worker4_geos = Worker4_geos(1,self.Page5_Geos_fname)
+
+        self.worker4_geos.start()
+
         self.ui.plainTextEdit_Page5.appendPlainText("Wait......")
         QApplication.processEvents()
-        Merge_Geos.DirctoryPathToGeo(self.Page5_Geos_fname,self.ui.plainTextEdit_Page5, QApplication)
+
+        self.worker4_geos.finished.connect(self.evt_worker4_geos_thread_finished)
+        self.worker4_geos.update_plainTextEdit_Page5.connect(self.evt_update_plainTextEdit_Page5)
+
+    
+    def evt_worker4_geos_thread_finished(self):
         self.ui.plainTextEdit_Page5.appendPlainText("Done")
-        QApplication.processEvents()
+
+    def evt_update_plainTextEdit_Page5(self, value):
+        self.ui.plainTextEdit_Page5.appendPlainText(value)
     ##########################################################################
 
 

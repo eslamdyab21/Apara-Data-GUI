@@ -10,11 +10,12 @@ def create_country_folder(current_directory):
 
 
 
-def DirctoryPathToGeo(current_directory,plainTextEdit_Page5, QApplication):
+def DirctoryPathToGeo(current_directory):
     print('Merging....')
     s = 'Merging....'
-    plainTextEdit_Page5.appendPlainText(s)
-    QApplication.processEvents()
+    yield s
+    # plainTextEdit_Page5.appendPlainText(s)
+    # QApplication.processEvents()
 
     #current_directory = os.getcwd()
     folders = []
@@ -44,5 +45,6 @@ def DirctoryPathToGeo(current_directory,plainTextEdit_Page5, QApplication):
 
     print('program has finished execution')
     s = 'program has finished execution'
-    plainTextEdit_Page5.appendPlainText(s)
-    QApplication.processEvents()
+    yield s
+    # plainTextEdit_Page5.appendPlainText(s)
+    # QApplication.processEvents()

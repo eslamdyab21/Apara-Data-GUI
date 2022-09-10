@@ -273,9 +273,7 @@ def filter_by_country(df, country_col_name, current_directory, csvfile):
     final_directory = create_country_folder(current_directory, csvfile[0:-4])
     for country in countries:
         df_country_grouped.get_group(country).to_csv(final_directory + '/' + country + '.csv', index=None, header=True)
-    print('Done')
-    print('===========================================================================================')
-
+    
 
 
 
@@ -295,6 +293,8 @@ def DirctoryPathToGeo(current_directory):
                 flag = 'green'
             except:
                 print('Problem reading '+csvfile + ' file')
+                s = 'splitting NAME and filtering ' + csvfile + ' file: ' + str(i)
+                yield s
                 flag = 'red'
 
             if flag == 'green':
@@ -322,6 +322,9 @@ def DirctoryPathToGeo(current_directory):
                     if ('NAME' in df.columns) or ('Name' in df.columns):
                         # split NAME column to FIRST NAME and LAST NAME
                         print('splitting NAME and filtering ' + csvfile + ' file: ' + str(i))
+                        s = 'splitting NAME and filtering ' + csvfile + ' file: ' + str(i)
+                        yield s
+
                         try:
                             df[['Fname', 'Lname']] = df[name_col_name].str.split(' ', 1, expand=True)
                             df = df.drop(columns=[name_col_name])
@@ -331,12 +334,27 @@ def DirctoryPathToGeo(current_directory):
 
 
                     print('filtering ' + csvfile + ' file: ' + str(i))
+                    s = 'filtering ' + csvfile + ' file: ' + str(i)
+                    yield s
+
                     filter_by_country(df, country_col_name, current_directory, csvfile)
+                    print('Done')
+                    yield s
+                    s = 'Done'
+                    yield s
+                    print('===========================================================================================')
+                    s = '==========================================================================================='
+                    yield s
                     i = i + 1
 
                 else:
                     print('columns in ' + csvfile + ' file does not have country')
+                    s = 'columns in ' + csvfile + ' file does not have country'
+                    yield s
                     print('===========================================================================================')
-
+                    s = '==========================================================================================='
+                    yield s
 
     print('program has finished execution')
+    s = 'program has finished execution'
+    yield s
