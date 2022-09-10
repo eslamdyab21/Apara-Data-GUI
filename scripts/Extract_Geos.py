@@ -272,7 +272,8 @@ def filter_by_country(df, country_col_name, current_directory, csvfile):
 
     final_directory = create_country_folder(current_directory, csvfile[0:-4])
     for country in countries:
-        df_country_grouped.get_group(country).to_csv(final_directory + '/' + country + '.csv', index=None, header=True)
+        if '.' not in  country:
+            df_country_grouped.get_group(country).to_csv(final_directory + '/' + country + '.csv', index=None, header=True)
     
 
 
