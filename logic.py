@@ -417,7 +417,7 @@ class Window(QMainWindow):
         self.ui.LineEditPath_Page6.setText(self.Page6_Validation_fname)
 
     def Page6_ValidateEmailSpam_CallScript(self):
-        self.ui.update_plainTextEdit_Page6.clear()
+        self.ui.plainTextEdit_Page6.clear()
         #Create a QThread object
         self.worker2 = Worker2(0, self.Page6_Validation_fname)
 
@@ -427,7 +427,7 @@ class Window(QMainWindow):
         self.worker2.update_plainTextEdit_Page6.connect(self.evt_update_plainTextEdit_Page6)
     
     def Page6_ValidateMxDomain_CallScript(self):
-        self.ui.update_plainTextEdit_Page6.clear()
+        self.ui.plainTextEdit_Page6.clear()
         QApplication.processEvents()
         #Create a QThread object
         self.worker2 = Worker2(1, self.Page6_Validation_fname)
