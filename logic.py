@@ -1,5 +1,7 @@
 # This Python file uses the following encoding: utf-8
 #import imp
+import imp
+from operator import imod
 import os
 from pathlib import Path
 import sys
@@ -18,6 +20,8 @@ import scripts.Merge_Geos as Merge_Geos
 import scripts.Validate_Emails_Spam as Validate_Emails_Spam
 import scripts.MX_Domain_Validator as MX_Domain_Validator
 import scripts.Numbers_Extractor as Numbers_Extractor
+import scripts.TxtTOcsv as TxtTOcsv
+
 
 from ui import Ui_MainWindow
 
@@ -140,6 +144,24 @@ class Worker4_geos(QThread):
             #print(value)
 
 
+# Create a Worker5_textTocsv class
+class Worker5_textTocsv(QThread):
+    update_plainTextEdit_Page8 = pyqtSignal(str)
+
+    def __init__(self , Page8_TextToCsv_fname):
+        QThread.__init__(self)
+        self.Page8_TextToCsv_fname = Page8_TextToCsv_fname
+        
+
+    def run(self):
+        """Long-running task."""
+        val = TxtTOcsv.DirctoryPathToTextToCsv(self.Page8_TextToCsv_fname)
+
+        for value in val:
+            self.update_plainTextEdit_Page8.emit(value)
+            #print(value)
+
+
 
 
 class Window(QMainWindow):
@@ -213,6 +235,12 @@ class Window(QMainWindow):
         self.ui.BtnConvert_Page7_ExtractNumbers.clicked.connect(self.Page7_ExtractNumbers_CallScript)
         ##########################################################################
 
+        ############################PAGE8-Text-To-Csv#############################
+        self.ui.BtnTextToCsv.clicked.connect(self.SetPageTextToCsv)
+        self.ui.BtnBrows_Page8_TextToCsv.clicked.connect(self.Page8_TextToCsv_BrowsFolders)
+        self.ui.BtnConvert_Page8_TextToCsv.clicked.connect(self.Page8_TextToCsv_CallScript)
+        ##########################################################################
+
 
     
 
@@ -231,7 +259,9 @@ class Window(QMainWindow):
             self.ui.BtnEmailValidation.setStyleSheet(defult_style)
         if lst[6] == 1:
             self.ui.BtnExtractNumbers.setStyleSheet(defult_style)
-            
+        if lst[7] == 1:
+            self.ui.BtnTextToCsv.setStyleSheet(defult_style)
+
         #if lst[5] == 1:
         #    self.ui.BtnBulkConverter.setStyleSheet(self.defult)
 
@@ -242,6 +272,7 @@ class Window(QMainWindow):
         self.ui.BtnGeos.setEnabled(lst[4])
         self.ui.BtnEmailValidation.setEnabled(lst[5])
         self.ui.BtnExtractNumbers.setEnabled(lst[6])
+        self.ui.BtnTextToCsv.setEnabled(lst[7])
 
 
 
@@ -258,7 +289,7 @@ class Window(QMainWindow):
         self.ui.stackedWidget.setCurrentIndex(0)
         self.ui.label_title_bar_top.setText("Bulk Converter")
         self.ui.BtnBulkConverter.setStyleSheet(pressed_style)
-        self.BtnPressed([0,1,1,1,1,1,1])
+        self.BtnPressed([0,1,1,1,1,1,1,1])
 
     def Page1_BulckConverter_BrowsFolders(self):
         self.Page1_BulckConverter_fname = QFileDialog.getExistingDirectory(self, "Chosse folder", current_directory)
@@ -280,7 +311,7 @@ class Window(QMainWindow):
         self.ui.stackedWidget.setCurrentIndex(2)
         self.ui.label_title_bar_top.setText("Xlsx Converter")
         self.ui.BtnXlsxToCSV.setStyleSheet(pressed_style)
-        self.BtnPressed([1,0,1,1,1,1,1])
+        self.BtnPressed([1,0,1,1,1,1,1,1])
 
     def Page2_XlsxToSCV_BrowsFolders(self):
         self.Page2_XlsxToSCV_fname = QFileDialog.getExistingDirectory(self, "Chosse folder", current_directory)
@@ -300,7 +331,7 @@ class Window(QMainWindow):
         self.ui.stackedWidget.setCurrentIndex(3)
         self.ui.label_title_bar_top.setText("Large Files Splitter")
         self.ui.BtnLargeFileSplitter.setStyleSheet(pressed_style)
-        self.BtnPressed([1,1,0,1,1,1,1])
+        self.BtnPressed([1,1,0,1,1,1,1,1])
 
     def Page3_LargeFileSplitter_BrowsFolders(self):
         self.Page3_LargeFileSplitter_fname = QFileDialog.getExistingDirectory(self, "Chosse folder", current_directory)
@@ -335,7 +366,7 @@ class Window(QMainWindow):
         self.ui.stackedWidget.setCurrentIndex(4)
         self.ui.label_title_bar_top.setText("Merge Small Files")
         self.ui.BtnMergeSmallFiles.setStyleSheet(pressed_style)
-        self.BtnPressed([1,1,1,0,1,1,1])
+        self.BtnPressed([1,1,1,0,1,1,1,1])
 
     def Page4_MergeSmall_BrowsFolders(self):
         self.Page4_MergeSmall_fname = QFileDialog.getExistingDirectory(self, "Chosse folder", current_directory)
@@ -360,7 +391,7 @@ class Window(QMainWindow):
         self.ui.stackedWidget.setCurrentIndex(5)
         self.ui.label_title_bar_top.setText("Geos Extractor and Merger")
         self.ui.BtnGeos.setStyleSheet(pressed_style)
-        self.BtnPressed([1,1,1,1,0,1,1])
+        self.BtnPressed([1,1,1,1,0,1,1,1])
 
     def Page5_Geos_BrowsFolders(self):
         self.Page5_Geos_fname = QFileDialog.getExistingDirectory(self, "Chosse folder", current_directory)
@@ -410,7 +441,7 @@ class Window(QMainWindow):
         self.ui.stackedWidget.setCurrentIndex(6)
         self.ui.label_title_bar_top.setText("Email Validation")
         self.ui.BtnEmailValidation.setStyleSheet(pressed_style)
-        self.BtnPressed([1,1,1,1,1,0,1])
+        self.BtnPressed([1,1,1,1,1,0,1,1])
 
     def Page6_Validation_BrowsFolders(self):
         self.Page6_Validation_fname = QFileDialog.getExistingDirectory(self, "Chosse folder", current_directory)
@@ -453,7 +484,7 @@ class Window(QMainWindow):
         self.ui.stackedWidget.setCurrentIndex(7)
         self.ui.label_title_bar_top.setText("Extract Numbers")
         self.ui.BtnExtractNumbers.setStyleSheet(pressed_style)
-        self.BtnPressed([1,1,1,1,1,1,0])
+        self.BtnPressed([1,1,1,1,1,1,0,1])
 
     def Page7_ExtractNumbers_BrowsFolders(self):
         self.Page7_Validation_fname = QFileDialog.getExistingDirectory(self, "Chosse folder", current_directory)
@@ -477,6 +508,44 @@ class Window(QMainWindow):
     def evt_update_plainTextEdit_Page7(self, value):
         self.ui.plainTextEdit_Page7.appendPlainText(value)
     ##########################################################################
+
+
+
+    ############################PAGE8-Text-To-Csv#############################
+        # self.ui.BtnTextToCsv.clicked.connect(self.SetPageTextToCsv)
+        # self.ui.BtnBrows_Page8_TextToCsv.clicked.connect(self.Page8_TextToCsv_BrowsFolders)
+        # self.ui.BtnConvert_Page8_TextToCsv.clicked.connect(self.Page8_TextToCsv_CallScript)
+    ##########################################################################
+    ############################PAGE8-Text-To-Csv#############################
+    def SetPageTextToCsv(self):
+        self.ui.stackedWidget.setCurrentIndex(8)
+        self.ui.label_title_bar_top.setText("Text To CSV")
+        self.ui.BtnTextToCsv.setStyleSheet(pressed_style)
+        self.BtnPressed([1,1,1,1,1,1,1,0])
+    
+    def Page8_TextToCsv_BrowsFolders(self):
+        self.Page8_TextToCsv_fname = QFileDialog.getExistingDirectory(self, "Chosse folder", current_directory)
+        self.ui.LineEditPath_Page8.setText(self.Page8_TextToCsv_fname)
+
+    def Page8_TextToCsv_CallScript(self):
+        self.ui.plainTextEdit_Page8.clear()
+        QApplication.processEvents()
+
+        #Create a QThread object
+        self.worker5_textTocsv = Worker5_textTocsv(self.Page8_TextToCsv_fname)
+
+        self.worker5_textTocsv.start()
+
+        self.worker5_textTocsv.finished.connect(self.evt_Worker5_textTocsv_thread_finished)
+        self.worker5_textTocsv.update_plainTextEdit_Page8.connect(self.evt_update_plainTextEdit_Page8)
+
+    def evt_Worker5_textTocsv_thread_finished(self):
+        self.ui.plainTextEdit_Page8.appendPlainText("Done")
+
+    def evt_update_plainTextEdit_Page8(self, value):
+        self.ui.plainTextEdit_Page8.appendPlainText(value)
+    ##########################################################################
+
 
 
 if __name__ == "__main__":
