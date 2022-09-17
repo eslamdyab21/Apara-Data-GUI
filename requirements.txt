@@ -4,3 +4,4 @@ PySide2
 dnspython
 validate_email
 disposable_email_domains
+dirhunt
