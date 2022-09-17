@@ -21,7 +21,7 @@ import scripts.Validate_Emails_Spam as Validate_Emails_Spam
 import scripts.MX_Domain_Validator as MX_Domain_Validator
 import scripts.Numbers_Extractor as Numbers_Extractor
 import scripts.TxtTOcsv as TxtTOcsv
-
+import scripts.url_checker as url_checker
 
 from ui import Ui_MainWindow
 
@@ -164,6 +164,28 @@ class Worker5_textTocsv(QThread):
 
 
 
+# Create a Worker6_urlChecker class
+class Worker6_urlChecker(QThread):
+    update_plainTextEdit_Page9 = pyqtSignal(str)
+
+    def __init__(self , Page8_urlChecker_url):
+        QThread.__init__(self)
+        self.Page8_urlChecker_url = Page8_urlChecker_url
+        
+
+    def run(self):
+        """Long-running task."""
+        val = url_checker.UrlToCheck(self.Page8_urlChecker_url)
+
+        for value in val:
+            self.update_plainTextEdit_Page9.emit(value)
+            self.update_plainTextEdit_Page9.emit('------------------------------------------------------------------------------------------------')
+            #print(value)
+
+
+
+
+
 class Window(QMainWindow):
     def __init__(self,ui):
         QMainWindow.__init__(self)
@@ -241,6 +263,11 @@ class Window(QMainWindow):
         self.ui.BtnConvert_Page8_TextToCsv.clicked.connect(self.Page8_TextToCsv_CallScript)
         ##########################################################################
 
+        ############################PAGE9-Url-Check###############################
+        self.ui.BtnUrlChecker.clicked.connect(self.SetPageUrlChecker)
+        self.ui.BtnConvert_Page9_UrlCheck.clicked.connect(self.Page9_UrlCheck_CallScript)
+        ##########################################################################
+
 
     
 
@@ -261,6 +288,8 @@ class Window(QMainWindow):
             self.ui.BtnExtractNumbers.setStyleSheet(defult_style)
         if lst[7] == 1:
             self.ui.BtnTextToCsv.setStyleSheet(defult_style)
+        if lst[8] == 1:
+            self.ui.BtnUrlChecker.setStyleSheet(defult_style)
 
         #if lst[5] == 1:
         #    self.ui.BtnBulkConverter.setStyleSheet(self.defult)
@@ -273,6 +302,8 @@ class Window(QMainWindow):
         self.ui.BtnEmailValidation.setEnabled(lst[5])
         self.ui.BtnExtractNumbers.setEnabled(lst[6])
         self.ui.BtnTextToCsv.setEnabled(lst[7])
+        self.ui.BtnUrlChecker.setEnabled(lst[8])
+
 
 
 
@@ -289,7 +320,7 @@ class Window(QMainWindow):
         self.ui.stackedWidget.setCurrentIndex(0)
         self.ui.label_title_bar_top.setText("Bulk Converter")
         self.ui.BtnBulkConverter.setStyleSheet(pressed_style)
-        self.BtnPressed([0,1,1,1,1,1,1,1])
+        self.BtnPressed([0,1,1,1,1,1,1,1,1])
 
     def Page1_BulckConverter_BrowsFolders(self):
         self.Page1_BulckConverter_fname = QFileDialog.getExistingDirectory(self, "Chosse folder", current_directory)
@@ -311,7 +342,7 @@ class Window(QMainWindow):
         self.ui.stackedWidget.setCurrentIndex(2)
         self.ui.label_title_bar_top.setText("Xlsx Converter")
         self.ui.BtnXlsxToCSV.setStyleSheet(pressed_style)
-        self.BtnPressed([1,0,1,1,1,1,1,1])
+        self.BtnPressed([1,0,1,1,1,1,1,1,1])
 
     def Page2_XlsxToSCV_BrowsFolders(self):
         self.Page2_XlsxToSCV_fname = QFileDialog.getExistingDirectory(self, "Chosse folder", current_directory)
@@ -331,7 +362,7 @@ class Window(QMainWindow):
         self.ui.stackedWidget.setCurrentIndex(3)
         self.ui.label_title_bar_top.setText("Large Files Splitter")
         self.ui.BtnLargeFileSplitter.setStyleSheet(pressed_style)
-        self.BtnPressed([1,1,0,1,1,1,1,1])
+        self.BtnPressed([1,1,0,1,1,1,1,1,1])
 
     def Page3_LargeFileSplitter_BrowsFolders(self):
         self.Page3_LargeFileSplitter_fname = QFileDialog.getExistingDirectory(self, "Chosse folder", current_directory)
@@ -366,7 +397,7 @@ class Window(QMainWindow):
         self.ui.stackedWidget.setCurrentIndex(4)
         self.ui.label_title_bar_top.setText("Merge Small Files")
         self.ui.BtnMergeSmallFiles.setStyleSheet(pressed_style)
-        self.BtnPressed([1,1,1,0,1,1,1,1])
+        self.BtnPressed([1,1,1,0,1,1,1,1,1])
 
     def Page4_MergeSmall_BrowsFolders(self):
         self.Page4_MergeSmall_fname = QFileDialog.getExistingDirectory(self, "Chosse folder", current_directory)
@@ -391,7 +422,7 @@ class Window(QMainWindow):
         self.ui.stackedWidget.setCurrentIndex(5)
         self.ui.label_title_bar_top.setText("Geos Extractor and Merger")
         self.ui.BtnGeos.setStyleSheet(pressed_style)
-        self.BtnPressed([1,1,1,1,0,1,1,1])
+        self.BtnPressed([1,1,1,1,0,1,1,1,1])
 
     def Page5_Geos_BrowsFolders(self):
         self.Page5_Geos_fname = QFileDialog.getExistingDirectory(self, "Chosse folder", current_directory)
@@ -441,7 +472,7 @@ class Window(QMainWindow):
         self.ui.stackedWidget.setCurrentIndex(6)
         self.ui.label_title_bar_top.setText("Email Validation")
         self.ui.BtnEmailValidation.setStyleSheet(pressed_style)
-        self.BtnPressed([1,1,1,1,1,0,1,1])
+        self.BtnPressed([1,1,1,1,1,0,1,1,1])
 
     def Page6_Validation_BrowsFolders(self):
         self.Page6_Validation_fname = QFileDialog.getExistingDirectory(self, "Chosse folder", current_directory)
@@ -484,7 +515,7 @@ class Window(QMainWindow):
         self.ui.stackedWidget.setCurrentIndex(7)
         self.ui.label_title_bar_top.setText("Extract Numbers")
         self.ui.BtnExtractNumbers.setStyleSheet(pressed_style)
-        self.BtnPressed([1,1,1,1,1,1,0,1])
+        self.BtnPressed([1,1,1,1,1,1,0,1,1])
 
     def Page7_ExtractNumbers_BrowsFolders(self):
         self.Page7_Validation_fname = QFileDialog.getExistingDirectory(self, "Chosse folder", current_directory)
@@ -521,7 +552,7 @@ class Window(QMainWindow):
         self.ui.stackedWidget.setCurrentIndex(8)
         self.ui.label_title_bar_top.setText("Text To CSV")
         self.ui.BtnTextToCsv.setStyleSheet(pressed_style)
-        self.BtnPressed([1,1,1,1,1,1,1,0])
+        self.BtnPressed([1,1,1,1,1,1,1,0,1])
     
     def Page8_TextToCsv_BrowsFolders(self):
         self.Page8_TextToCsv_fname = QFileDialog.getExistingDirectory(self, "Chosse folder", current_directory)
@@ -547,6 +578,38 @@ class Window(QMainWindow):
     ##########################################################################
 
 
+
+    ############################PAGE9-Url-Check###############################
+        # self.ui.BtnUrlChecker.clicked.connect(self.SetPageUrlChecker)
+        # self.ui.BtnConvert_Page9_UrlCheck.clicked.connect(self.Page9_UrlCheck_CallScript)
+    ##########################################################################
+    ############################PAGE9-Url-Check###############################
+    def SetPageUrlChecker(self):
+        self.ui.stackedWidget.setCurrentIndex(9)
+        self.ui.label_title_bar_top.setText("URL Checker")
+        self.ui.BtnTextToCsv.setStyleSheet(pressed_style)
+        self.BtnPressed([1,1,1,1,1,1,1,1,0])
+
+
+    def Page9_UrlCheck_CallScript(self):
+        self.ui.plainTextEdit_Page8.clear()
+        QApplication.processEvents()
+
+        #Create a QThread object
+        self.worker6_urlChecker = Worker6_urlChecker(self.ui.LineEditPath_Page9_Url.text())
+
+        self.worker6_urlChecker.start()
+
+        self.worker6_urlChecker.finished.connect(self.evt_Worker6_urlChecker_thread_finished)
+        self.worker6_urlChecker.update_plainTextEdit_Page9.connect(self.evt_update_plainTextEdit_Page9)
+
+    def evt_Worker6_urlChecker_thread_finished(self):
+        self.ui.plainTextEdit_Page9.appendPlainText("Done")
+
+    def evt_update_plainTextEdit_Page9(self, value):
+        self.ui.plainTextEdit_Page9.appendPlainText(value)
+
+    ##########################################################################
 
 if __name__ == "__main__":
     import sys

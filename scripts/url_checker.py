@@ -11,9 +11,5 @@ def UrlToCheck(url):
             break
         else: 
             yield line
-            yield '------------------------------------------------------------------------------------------------'
+            
         
-
-val = UrlToCheck('https://jyplacements.com/')
-for value in val:
-    print(value)
