@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1000, 720)
+        MainWindow.resize(1000, 845)
         MainWindow.setMinimumSize(QtCore.QSize(1000, 720))
         palette = QtGui.QPalette()
         brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
@@ -583,7 +583,7 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.frame_left_menu.sizePolicy().hasHeightForWidth())
         self.frame_left_menu.setSizePolicy(sizePolicy)
-        self.frame_left_menu.setMinimumSize(QtCore.QSize(0, 500))
+        self.frame_left_menu.setMinimumSize(QtCore.QSize(150, 500))
         self.frame_left_menu.setMaximumSize(QtCore.QSize(0, 16777215))
         self.frame_left_menu.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.frame_left_menu.setStyleSheet("background-color: rgb(27, 29, 35);")
@@ -601,8 +601,8 @@ class Ui_MainWindow(object):
         self.frame_menus.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_menus.setObjectName("frame_menus")
         self.verticalLayout_13 = QtWidgets.QVBoxLayout(self.frame_menus)
-        self.verticalLayout_13.setContentsMargins(0, 0, -1, 9)
-        self.verticalLayout_13.setSpacing(15)
+        self.verticalLayout_13.setContentsMargins(0, 0, -1, -1)
+        self.verticalLayout_13.setSpacing(12)
         self.verticalLayout_13.setObjectName("verticalLayout_13")
         self.BtnBulkConverter = QtWidgets.QPushButton(self.frame_menus)
         self.BtnBulkConverter.setMinimumSize(QtCore.QSize(150, 60))
@@ -778,6 +778,78 @@ class Ui_MainWindow(object):
         self.BtnExtractNumbers.setIconSize(QtCore.QSize(20, 20))
         self.BtnExtractNumbers.setObjectName("BtnExtractNumbers")
         self.verticalLayout_13.addWidget(self.BtnExtractNumbers)
+        self.BtnTextToCsv = QtWidgets.QPushButton(self.frame_menus)
+        self.BtnTextToCsv.setMinimumSize(QtCore.QSize(150, 60))
+        self.BtnTextToCsv.setMaximumSize(QtCore.QSize(150, 60))
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(9)
+        self.BtnTextToCsv.setFont(font)
+        self.BtnTextToCsv.setStyleSheet("QPushButton {\n"
+"    border: 2px solid rgb(52, 59, 72);\n"
+"    /*border-radius: 5px;    */\n"
+"    background-color: rgb(52, 59, 72);\n"
+"}\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(57, 65, 80);\n"
+"    border: 2px solid rgb(61, 70, 86);\n"
+"}\n"
+"QPushButton:pressed {    \n"
+"    background-color: rgb(35, 40, 49);\n"
+"    border: 2px solid rgb(43, 50, 61);\n"
+"}")
+        self.BtnTextToCsv.setIcon(icon1)
+        self.BtnTextToCsv.setIconSize(QtCore.QSize(20, 20))
+        self.BtnTextToCsv.setObjectName("BtnTextToCsv")
+        self.verticalLayout_13.addWidget(self.BtnTextToCsv)
+        self.BtnUrlChecker = QtWidgets.QPushButton(self.frame_menus)
+        self.BtnUrlChecker.setMinimumSize(QtCore.QSize(150, 60))
+        self.BtnUrlChecker.setMaximumSize(QtCore.QSize(150, 60))
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(9)
+        self.BtnUrlChecker.setFont(font)
+        self.BtnUrlChecker.setStyleSheet("QPushButton {\n"
+"    border: 2px solid rgb(52, 59, 72);\n"
+"    /*border-radius: 5px;    */\n"
+"    background-color: rgb(52, 59, 72);\n"
+"}\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(57, 65, 80);\n"
+"    border: 2px solid rgb(61, 70, 86);\n"
+"}\n"
+"QPushButton:pressed {    \n"
+"    background-color: rgb(35, 40, 49);\n"
+"    border: 2px solid rgb(43, 50, 61);\n"
+"}")
+        self.BtnUrlChecker.setIcon(icon1)
+        self.BtnUrlChecker.setIconSize(QtCore.QSize(20, 20))
+        self.BtnUrlChecker.setObjectName("BtnUrlChecker")
+        self.verticalLayout_13.addWidget(self.BtnUrlChecker)
+        self.BtnEmailDomainSearch = QtWidgets.QPushButton(self.frame_menus)
+        self.BtnEmailDomainSearch.setMinimumSize(QtCore.QSize(150, 60))
+        self.BtnEmailDomainSearch.setMaximumSize(QtCore.QSize(150, 60))
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(9)
+        self.BtnEmailDomainSearch.setFont(font)
+        self.BtnEmailDomainSearch.setStyleSheet("QPushButton {\n"
+"    border: 2px solid rgb(52, 59, 72);\n"
+"    /*border-radius: 5px;    */\n"
+"    background-color: rgb(52, 59, 72);\n"
+"}\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(57, 65, 80);\n"
+"    border: 2px solid rgb(61, 70, 86);\n"
+"}\n"
+"QPushButton:pressed {    \n"
+"    background-color: rgb(35, 40, 49);\n"
+"    border: 2px solid rgb(43, 50, 61);\n"
+"}")
+        self.BtnEmailDomainSearch.setIcon(icon1)
+        self.BtnEmailDomainSearch.setIconSize(QtCore.QSize(20, 20))
+        self.BtnEmailDomainSearch.setObjectName("BtnEmailDomainSearch")
+        self.verticalLayout_13.addWidget(self.BtnEmailDomainSearch)
         self.verticalLayout_5.addWidget(self.frame_menus)
         self.frame_90 = QtWidgets.QFrame(self.frame_left_menu)
         self.frame_90.setFrameShape(QtWidgets.QFrame.NoFrame)
@@ -1181,7 +1253,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 274, 218))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 218, 218))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.horizontalLayout_11 = QtWidgets.QHBoxLayout(self.scrollAreaWidgetContents)
         self.horizontalLayout_11.setObjectName("horizontalLayout_11")
@@ -2941,6 +3013,681 @@ class Ui_MainWindow(object):
         self.verticalLayout_49.addWidget(self.frame_104)
         self.verticalLayout_50.addWidget(self.frame_60)
         self.stackedWidget.addWidget(self.page7_ExtractNumbers)
+        self.page8_TextToCsv = QtWidgets.QWidget()
+        self.page8_TextToCsv.setObjectName("page8_TextToCsv")
+        self.verticalLayout_55 = QtWidgets.QVBoxLayout(self.page8_TextToCsv)
+        self.verticalLayout_55.setObjectName("verticalLayout_55")
+        self.frame_108 = QtWidgets.QFrame(self.page8_TextToCsv)
+        self.frame_108.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_108.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_108.setObjectName("frame_108")
+        self.verticalLayout_54 = QtWidgets.QVBoxLayout(self.frame_108)
+        self.verticalLayout_54.setObjectName("verticalLayout_54")
+        self.frame_109 = QtWidgets.QFrame(self.frame_108)
+        self.frame_109.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_109.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_109.setObjectName("frame_109")
+        self.verticalLayout_51 = QtWidgets.QVBoxLayout(self.frame_109)
+        self.verticalLayout_51.setContentsMargins(-1, -1, -1, 0)
+        self.verticalLayout_51.setObjectName("verticalLayout_51")
+        self.frame_110 = QtWidgets.QFrame(self.frame_109)
+        self.frame_110.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_110.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_110.setObjectName("frame_110")
+        self.horizontalLayout_52 = QtWidgets.QHBoxLayout(self.frame_110)
+        self.horizontalLayout_52.setContentsMargins(-1, -1, -1, 0)
+        self.horizontalLayout_52.setObjectName("horizontalLayout_52")
+        self.labelBoxBlenderInstalation_17 = QtWidgets.QLabel(self.frame_110)
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.labelBoxBlenderInstalation_17.setFont(font)
+        self.labelBoxBlenderInstalation_17.setStyleSheet("")
+        self.labelBoxBlenderInstalation_17.setObjectName("labelBoxBlenderInstalation_17")
+        self.horizontalLayout_52.addWidget(self.labelBoxBlenderInstalation_17)
+        self.verticalLayout_51.addWidget(self.frame_110)
+        self.frame_111 = QtWidgets.QFrame(self.frame_109)
+        self.frame_111.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_111.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_111.setObjectName("frame_111")
+        self.horizontalLayout_53 = QtWidgets.QHBoxLayout(self.frame_111)
+        self.horizontalLayout_53.setContentsMargins(-1, 0, -1, -1)
+        self.horizontalLayout_53.setObjectName("horizontalLayout_53")
+        self.gridLayout_12 = QtWidgets.QGridLayout()
+        self.gridLayout_12.setContentsMargins(-1, -1, -1, 0)
+        self.gridLayout_12.setObjectName("gridLayout_12")
+        self.LineEditPath_Page8 = QtWidgets.QLineEdit(self.frame_111)
+        self.LineEditPath_Page8.setMinimumSize(QtCore.QSize(0, 30))
+        self.LineEditPath_Page8.setStyleSheet("QLineEdit {\n"
+"    background-color: rgb(27, 29, 35);\n"
+"    border-radius: 5px;\n"
+"    border: 2px solid rgb(27, 29, 35);\n"
+"    padding-left: 10px;\n"
+"}\n"
+"QLineEdit:hover {\n"
+"    border: 2px solid rgb(64, 71, 88);\n"
+"}\n"
+"QLineEdit:focus {\n"
+"    border: 2px solid rgb(91, 101, 124);\n"
+"}")
+        self.LineEditPath_Page8.setObjectName("LineEditPath_Page8")
+        self.gridLayout_12.addWidget(self.LineEditPath_Page8, 0, 0, 1, 1)
+        self.BtnBrows_Page8_TextToCsv = QtWidgets.QPushButton(self.frame_111)
+        self.BtnBrows_Page8_TextToCsv.setMinimumSize(QtCore.QSize(150, 30))
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(9)
+        self.BtnBrows_Page8_TextToCsv.setFont(font)
+        self.BtnBrows_Page8_TextToCsv.setStyleSheet("QPushButton {\n"
+"    border: 2px solid rgb(52, 59, 72);\n"
+"    border-radius: 5px;    \n"
+"    background-color: rgb(52, 59, 72);\n"
+"}\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(57, 65, 80);\n"
+"    border: 2px solid rgb(61, 70, 86);\n"
+"}\n"
+"QPushButton:pressed {    \n"
+"    background-color: rgb(35, 40, 49);\n"
+"    border: 2px solid rgb(43, 50, 61);\n"
+"}")
+        self.BtnBrows_Page8_TextToCsv.setIcon(icon2)
+        self.BtnBrows_Page8_TextToCsv.setObjectName("BtnBrows_Page8_TextToCsv")
+        self.gridLayout_12.addWidget(self.BtnBrows_Page8_TextToCsv, 0, 1, 1, 1)
+        self.labelVersion_13 = QtWidgets.QLabel(self.frame_111)
+        self.labelVersion_13.setStyleSheet("color: rgb(98, 103, 111);")
+        self.labelVersion_13.setLineWidth(1)
+        self.labelVersion_13.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
+        self.labelVersion_13.setObjectName("labelVersion_13")
+        self.gridLayout_12.addWidget(self.labelVersion_13, 1, 0, 1, 2)
+        self.horizontalLayout_53.addLayout(self.gridLayout_12)
+        self.verticalLayout_51.addWidget(self.frame_111)
+        self.frame_112 = QtWidgets.QFrame(self.frame_109)
+        self.frame_112.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_112.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_112.setObjectName("frame_112")
+        self.verticalLayout_51.addWidget(self.frame_112)
+        self.frame_113 = QtWidgets.QFrame(self.frame_109)
+        self.frame_113.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_113.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_113.setObjectName("frame_113")
+        self.horizontalLayout_54 = QtWidgets.QHBoxLayout(self.frame_113)
+        self.horizontalLayout_54.setContentsMargins(-1, 15, -1, 0)
+        self.horizontalLayout_54.setObjectName("horizontalLayout_54")
+        self.frame_114 = QtWidgets.QFrame(self.frame_113)
+        self.frame_114.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_114.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_114.setObjectName("frame_114")
+        self.horizontalLayout_54.addWidget(self.frame_114)
+        self.labelConvert_Page1_BulkComvert_6 = QtWidgets.QLabel(self.frame_113)
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.labelConvert_Page1_BulkComvert_6.setFont(font)
+        self.labelConvert_Page1_BulkComvert_6.setStyleSheet("")
+        self.labelConvert_Page1_BulkComvert_6.setAlignment(QtCore.Qt.AlignCenter)
+        self.labelConvert_Page1_BulkComvert_6.setObjectName("labelConvert_Page1_BulkComvert_6")
+        self.horizontalLayout_54.addWidget(self.labelConvert_Page1_BulkComvert_6)
+        self.frame_115 = QtWidgets.QFrame(self.frame_113)
+        self.frame_115.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_115.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_115.setObjectName("frame_115")
+        self.horizontalLayout_54.addWidget(self.frame_115)
+        self.verticalLayout_51.addWidget(self.frame_113)
+        self.frame_116 = QtWidgets.QFrame(self.frame_109)
+        self.frame_116.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_116.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_116.setObjectName("frame_116")
+        self.horizontalLayout_55 = QtWidgets.QHBoxLayout(self.frame_116)
+        self.horizontalLayout_55.setContentsMargins(-1, 0, -1, 0)
+        self.horizontalLayout_55.setObjectName("horizontalLayout_55")
+        self.frame_117 = QtWidgets.QFrame(self.frame_116)
+        self.frame_117.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_117.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_117.setObjectName("frame_117")
+        self.horizontalLayout_55.addWidget(self.frame_117)
+        self.BtnConvert_Page8_TextToCsv = QtWidgets.QPushButton(self.frame_116)
+        self.BtnConvert_Page8_TextToCsv.setMinimumSize(QtCore.QSize(60, 60))
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(9)
+        self.BtnConvert_Page8_TextToCsv.setFont(font)
+        self.BtnConvert_Page8_TextToCsv.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.BtnConvert_Page8_TextToCsv.setAutoFillBackground(False)
+        self.BtnConvert_Page8_TextToCsv.setStyleSheet("QPushButton {\n"
+"    border: 2px solid rgb(52, 59, 72);\n"
+"    border-radius: 5px;    \n"
+"    background-color: rgb(52, 59, 72);\n"
+"}\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(57, 65, 80);\n"
+"    border: 2px solid rgb(61, 70, 86);\n"
+"}\n"
+"QPushButton:pressed {    \n"
+"    background-color: rgb(35, 40, 49);\n"
+"    border: 2px solid rgb(43, 50, 61);\n"
+"}")
+        self.BtnConvert_Page8_TextToCsv.setIcon(icon3)
+        self.BtnConvert_Page8_TextToCsv.setCheckable(False)
+        self.BtnConvert_Page8_TextToCsv.setObjectName("BtnConvert_Page8_TextToCsv")
+        self.horizontalLayout_55.addWidget(self.BtnConvert_Page8_TextToCsv)
+        self.frame_118 = QtWidgets.QFrame(self.frame_116)
+        self.frame_118.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_118.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_118.setObjectName("frame_118")
+        self.horizontalLayout_55.addWidget(self.frame_118)
+        self.verticalLayout_51.addWidget(self.frame_116)
+        self.LabelStatus_Page3_LargeFileSplitter_3 = QtWidgets.QLabel(self.frame_109)
+        self.LabelStatus_Page3_LargeFileSplitter_3.setStyleSheet("color: rgb(98, 103, 111);")
+        self.LabelStatus_Page3_LargeFileSplitter_3.setLineWidth(1)
+        self.LabelStatus_Page3_LargeFileSplitter_3.setText("")
+        self.LabelStatus_Page3_LargeFileSplitter_3.setAlignment(QtCore.Qt.AlignCenter)
+        self.LabelStatus_Page3_LargeFileSplitter_3.setObjectName("LabelStatus_Page3_LargeFileSplitter_3")
+        self.verticalLayout_51.addWidget(self.LabelStatus_Page3_LargeFileSplitter_3)
+        self.verticalLayout_54.addWidget(self.frame_109)
+        self.frame_119 = QtWidgets.QFrame(self.frame_108)
+        self.frame_119.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_119.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_119.setObjectName("frame_119")
+        self.verticalLayout_52 = QtWidgets.QVBoxLayout(self.frame_119)
+        self.verticalLayout_52.setObjectName("verticalLayout_52")
+        self.frame_120 = QtWidgets.QFrame(self.frame_119)
+        self.frame_120.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_120.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_120.setObjectName("frame_120")
+        self.verticalLayout_53 = QtWidgets.QVBoxLayout(self.frame_120)
+        self.verticalLayout_53.setObjectName("verticalLayout_53")
+        self.plainTextEdit_Page8 = QtWidgets.QPlainTextEdit(self.frame_120)
+        self.plainTextEdit_Page8.setMinimumSize(QtCore.QSize(200, 200))
+        self.plainTextEdit_Page8.setStyleSheet("QPlainTextEdit {\n"
+"    background-color: rgb(27, 29, 35);\n"
+"    border-radius: 5px;\n"
+"    padding: 10px;\n"
+"}\n"
+"QPlainTextEdit:hover {\n"
+"    border: 2px solid rgb(64, 71, 88);\n"
+"}\n"
+"QPlainTextEdit:focus {\n"
+"    border: 2px solid rgb(91, 101, 124);\n"
+"}")
+        self.plainTextEdit_Page8.setPlainText("")
+        self.plainTextEdit_Page8.setPlaceholderText("")
+        self.plainTextEdit_Page8.setObjectName("plainTextEdit_Page8")
+        self.verticalLayout_53.addWidget(self.plainTextEdit_Page8)
+        self.verticalLayout_52.addWidget(self.frame_120)
+        self.frame_121 = QtWidgets.QFrame(self.frame_119)
+        self.frame_121.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_121.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_121.setObjectName("frame_121")
+        self.verticalLayout_52.addWidget(self.frame_121)
+        self.frame_122 = QtWidgets.QFrame(self.frame_119)
+        self.frame_122.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_122.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_122.setObjectName("frame_122")
+        self.horizontalLayout_56 = QtWidgets.QHBoxLayout(self.frame_122)
+        self.horizontalLayout_56.setObjectName("horizontalLayout_56")
+        self.verticalLayout_52.addWidget(self.frame_122)
+        self.verticalLayout_54.addWidget(self.frame_119)
+        self.verticalLayout_55.addWidget(self.frame_108)
+        self.stackedWidget.addWidget(self.page8_TextToCsv)
+        self.page9_UrlChecker = QtWidgets.QWidget()
+        self.page9_UrlChecker.setObjectName("page9_UrlChecker")
+        self.verticalLayout_60 = QtWidgets.QVBoxLayout(self.page9_UrlChecker)
+        self.verticalLayout_60.setObjectName("verticalLayout_60")
+        self.frame_123 = QtWidgets.QFrame(self.page9_UrlChecker)
+        self.frame_123.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_123.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_123.setObjectName("frame_123")
+        self.verticalLayout_59 = QtWidgets.QVBoxLayout(self.frame_123)
+        self.verticalLayout_59.setObjectName("verticalLayout_59")
+        self.frame_124 = QtWidgets.QFrame(self.frame_123)
+        self.frame_124.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_124.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_124.setObjectName("frame_124")
+        self.verticalLayout_56 = QtWidgets.QVBoxLayout(self.frame_124)
+        self.verticalLayout_56.setContentsMargins(-1, -1, -1, 0)
+        self.verticalLayout_56.setObjectName("verticalLayout_56")
+        self.frame_125 = QtWidgets.QFrame(self.frame_124)
+        self.frame_125.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_125.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_125.setObjectName("frame_125")
+        self.horizontalLayout_57 = QtWidgets.QHBoxLayout(self.frame_125)
+        self.horizontalLayout_57.setContentsMargins(-1, -1, -1, 0)
+        self.horizontalLayout_57.setObjectName("horizontalLayout_57")
+        self.labelBoxBlenderInstalation_18 = QtWidgets.QLabel(self.frame_125)
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.labelBoxBlenderInstalation_18.setFont(font)
+        self.labelBoxBlenderInstalation_18.setStyleSheet("")
+        self.labelBoxBlenderInstalation_18.setObjectName("labelBoxBlenderInstalation_18")
+        self.horizontalLayout_57.addWidget(self.labelBoxBlenderInstalation_18)
+        self.verticalLayout_56.addWidget(self.frame_125)
+        self.frame_126 = QtWidgets.QFrame(self.frame_124)
+        self.frame_126.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_126.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_126.setObjectName("frame_126")
+        self.horizontalLayout_58 = QtWidgets.QHBoxLayout(self.frame_126)
+        self.horizontalLayout_58.setContentsMargins(-1, 0, -1, -1)
+        self.horizontalLayout_58.setObjectName("horizontalLayout_58")
+        self.gridLayout_13 = QtWidgets.QGridLayout()
+        self.gridLayout_13.setContentsMargins(-1, -1, -1, 0)
+        self.gridLayout_13.setObjectName("gridLayout_13")
+        self.LineEditPath_Page9_Url = QtWidgets.QLineEdit(self.frame_126)
+        self.LineEditPath_Page9_Url.setMinimumSize(QtCore.QSize(0, 30))
+        self.LineEditPath_Page9_Url.setStyleSheet("QLineEdit {\n"
+"    background-color: rgb(27, 29, 35);\n"
+"    border-radius: 5px;\n"
+"    border: 2px solid rgb(27, 29, 35);\n"
+"    padding-left: 10px;\n"
+"}\n"
+"QLineEdit:hover {\n"
+"    border: 2px solid rgb(64, 71, 88);\n"
+"}\n"
+"QLineEdit:focus {\n"
+"    border: 2px solid rgb(91, 101, 124);\n"
+"}")
+        self.LineEditPath_Page9_Url.setObjectName("LineEditPath_Page9_Url")
+        self.gridLayout_13.addWidget(self.LineEditPath_Page9_Url, 0, 0, 1, 1)
+        self.labelVersion_14 = QtWidgets.QLabel(self.frame_126)
+        self.labelVersion_14.setStyleSheet("color: rgb(98, 103, 111);")
+        self.labelVersion_14.setLineWidth(1)
+        self.labelVersion_14.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
+        self.labelVersion_14.setObjectName("labelVersion_14")
+        self.gridLayout_13.addWidget(self.labelVersion_14, 1, 0, 1, 2)
+        self.horizontalLayout_58.addLayout(self.gridLayout_13)
+        self.verticalLayout_56.addWidget(self.frame_126)
+        self.frame_127 = QtWidgets.QFrame(self.frame_124)
+        self.frame_127.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_127.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_127.setObjectName("frame_127")
+        self.verticalLayout_56.addWidget(self.frame_127)
+        self.frame_128 = QtWidgets.QFrame(self.frame_124)
+        self.frame_128.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_128.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_128.setObjectName("frame_128")
+        self.horizontalLayout_59 = QtWidgets.QHBoxLayout(self.frame_128)
+        self.horizontalLayout_59.setContentsMargins(-1, 15, -1, 0)
+        self.horizontalLayout_59.setObjectName("horizontalLayout_59")
+        self.frame_129 = QtWidgets.QFrame(self.frame_128)
+        self.frame_129.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_129.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_129.setObjectName("frame_129")
+        self.horizontalLayout_59.addWidget(self.frame_129)
+        self.labelConvert_Page1_BulkComvert_7 = QtWidgets.QLabel(self.frame_128)
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.labelConvert_Page1_BulkComvert_7.setFont(font)
+        self.labelConvert_Page1_BulkComvert_7.setStyleSheet("")
+        self.labelConvert_Page1_BulkComvert_7.setAlignment(QtCore.Qt.AlignCenter)
+        self.labelConvert_Page1_BulkComvert_7.setObjectName("labelConvert_Page1_BulkComvert_7")
+        self.horizontalLayout_59.addWidget(self.labelConvert_Page1_BulkComvert_7)
+        self.frame_130 = QtWidgets.QFrame(self.frame_128)
+        self.frame_130.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_130.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_130.setObjectName("frame_130")
+        self.horizontalLayout_59.addWidget(self.frame_130)
+        self.verticalLayout_56.addWidget(self.frame_128)
+        self.frame_131 = QtWidgets.QFrame(self.frame_124)
+        self.frame_131.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_131.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_131.setObjectName("frame_131")
+        self.horizontalLayout_60 = QtWidgets.QHBoxLayout(self.frame_131)
+        self.horizontalLayout_60.setContentsMargins(-1, 0, -1, 0)
+        self.horizontalLayout_60.setObjectName("horizontalLayout_60")
+        self.frame_132 = QtWidgets.QFrame(self.frame_131)
+        self.frame_132.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_132.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_132.setObjectName("frame_132")
+        self.horizontalLayout_60.addWidget(self.frame_132)
+        self.BtnConvert_Page9_UrlCheck = QtWidgets.QPushButton(self.frame_131)
+        self.BtnConvert_Page9_UrlCheck.setMinimumSize(QtCore.QSize(60, 60))
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(9)
+        self.BtnConvert_Page9_UrlCheck.setFont(font)
+        self.BtnConvert_Page9_UrlCheck.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.BtnConvert_Page9_UrlCheck.setAutoFillBackground(False)
+        self.BtnConvert_Page9_UrlCheck.setStyleSheet("QPushButton {\n"
+"    border: 2px solid rgb(52, 59, 72);\n"
+"    border-radius: 5px;    \n"
+"    background-color: rgb(52, 59, 72);\n"
+"}\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(57, 65, 80);\n"
+"    border: 2px solid rgb(61, 70, 86);\n"
+"}\n"
+"QPushButton:pressed {    \n"
+"    background-color: rgb(35, 40, 49);\n"
+"    border: 2px solid rgb(43, 50, 61);\n"
+"}")
+        self.BtnConvert_Page9_UrlCheck.setIcon(icon3)
+        self.BtnConvert_Page9_UrlCheck.setCheckable(False)
+        self.BtnConvert_Page9_UrlCheck.setObjectName("BtnConvert_Page9_UrlCheck")
+        self.horizontalLayout_60.addWidget(self.BtnConvert_Page9_UrlCheck)
+        self.frame_133 = QtWidgets.QFrame(self.frame_131)
+        self.frame_133.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_133.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_133.setObjectName("frame_133")
+        self.horizontalLayout_60.addWidget(self.frame_133)
+        self.verticalLayout_56.addWidget(self.frame_131)
+        self.LabelStatus_Page3_LargeFileSplitter_4 = QtWidgets.QLabel(self.frame_124)
+        self.LabelStatus_Page3_LargeFileSplitter_4.setStyleSheet("color: rgb(98, 103, 111);")
+        self.LabelStatus_Page3_LargeFileSplitter_4.setLineWidth(1)
+        self.LabelStatus_Page3_LargeFileSplitter_4.setText("")
+        self.LabelStatus_Page3_LargeFileSplitter_4.setAlignment(QtCore.Qt.AlignCenter)
+        self.LabelStatus_Page3_LargeFileSplitter_4.setObjectName("LabelStatus_Page3_LargeFileSplitter_4")
+        self.verticalLayout_56.addWidget(self.LabelStatus_Page3_LargeFileSplitter_4)
+        self.verticalLayout_59.addWidget(self.frame_124)
+        self.frame_134 = QtWidgets.QFrame(self.frame_123)
+        self.frame_134.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_134.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_134.setObjectName("frame_134")
+        self.verticalLayout_57 = QtWidgets.QVBoxLayout(self.frame_134)
+        self.verticalLayout_57.setObjectName("verticalLayout_57")
+        self.frame_135 = QtWidgets.QFrame(self.frame_134)
+        self.frame_135.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_135.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_135.setObjectName("frame_135")
+        self.verticalLayout_58 = QtWidgets.QVBoxLayout(self.frame_135)
+        self.verticalLayout_58.setObjectName("verticalLayout_58")
+        self.plainTextEdit_Page9 = QtWidgets.QPlainTextEdit(self.frame_135)
+        self.plainTextEdit_Page9.setMinimumSize(QtCore.QSize(200, 200))
+        self.plainTextEdit_Page9.setStyleSheet("QPlainTextEdit {\n"
+"    background-color: rgb(27, 29, 35);\n"
+"    border-radius: 5px;\n"
+"    padding: 10px;\n"
+"}\n"
+"QPlainTextEdit:hover {\n"
+"    border: 2px solid rgb(64, 71, 88);\n"
+"}\n"
+"QPlainTextEdit:focus {\n"
+"    border: 2px solid rgb(91, 101, 124);\n"
+"}")
+        self.plainTextEdit_Page9.setPlainText("")
+        self.plainTextEdit_Page9.setPlaceholderText("")
+        self.plainTextEdit_Page9.setObjectName("plainTextEdit_Page9")
+        self.verticalLayout_58.addWidget(self.plainTextEdit_Page9)
+        self.verticalLayout_57.addWidget(self.frame_135)
+        self.frame_136 = QtWidgets.QFrame(self.frame_134)
+        self.frame_136.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_136.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_136.setObjectName("frame_136")
+        self.verticalLayout_57.addWidget(self.frame_136)
+        self.frame_137 = QtWidgets.QFrame(self.frame_134)
+        self.frame_137.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_137.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_137.setObjectName("frame_137")
+        self.horizontalLayout_61 = QtWidgets.QHBoxLayout(self.frame_137)
+        self.horizontalLayout_61.setObjectName("horizontalLayout_61")
+        self.verticalLayout_57.addWidget(self.frame_137)
+        self.verticalLayout_59.addWidget(self.frame_134)
+        self.verticalLayout_60.addWidget(self.frame_123)
+        self.stackedWidget.addWidget(self.page9_UrlChecker)
+        self.page10_EmailDomainSearch = QtWidgets.QWidget()
+        self.page10_EmailDomainSearch.setObjectName("page10_EmailDomainSearch")
+        self.verticalLayout_65 = QtWidgets.QVBoxLayout(self.page10_EmailDomainSearch)
+        self.verticalLayout_65.setObjectName("verticalLayout_65")
+        self.frame_138 = QtWidgets.QFrame(self.page10_EmailDomainSearch)
+        self.frame_138.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_138.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_138.setObjectName("frame_138")
+        self.verticalLayout_64 = QtWidgets.QVBoxLayout(self.frame_138)
+        self.verticalLayout_64.setObjectName("verticalLayout_64")
+        self.frame_139 = QtWidgets.QFrame(self.frame_138)
+        self.frame_139.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_139.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_139.setObjectName("frame_139")
+        self.verticalLayout_61 = QtWidgets.QVBoxLayout(self.frame_139)
+        self.verticalLayout_61.setContentsMargins(-1, -1, -1, 0)
+        self.verticalLayout_61.setObjectName("verticalLayout_61")
+        self.frame_140 = QtWidgets.QFrame(self.frame_139)
+        self.frame_140.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_140.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_140.setObjectName("frame_140")
+        self.horizontalLayout_62 = QtWidgets.QHBoxLayout(self.frame_140)
+        self.horizontalLayout_62.setContentsMargins(-1, -1, -1, 0)
+        self.horizontalLayout_62.setObjectName("horizontalLayout_62")
+        self.labelBoxBlenderInstalation_19 = QtWidgets.QLabel(self.frame_140)
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.labelBoxBlenderInstalation_19.setFont(font)
+        self.labelBoxBlenderInstalation_19.setStyleSheet("")
+        self.labelBoxBlenderInstalation_19.setObjectName("labelBoxBlenderInstalation_19")
+        self.horizontalLayout_62.addWidget(self.labelBoxBlenderInstalation_19)
+        self.verticalLayout_61.addWidget(self.frame_140)
+        self.frame_141 = QtWidgets.QFrame(self.frame_139)
+        self.frame_141.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_141.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_141.setObjectName("frame_141")
+        self.horizontalLayout_63 = QtWidgets.QHBoxLayout(self.frame_141)
+        self.horizontalLayout_63.setContentsMargins(-1, 0, -1, -1)
+        self.horizontalLayout_63.setObjectName("horizontalLayout_63")
+        self.gridLayout_14 = QtWidgets.QGridLayout()
+        self.gridLayout_14.setContentsMargins(-1, -1, -1, 0)
+        self.gridLayout_14.setObjectName("gridLayout_14")
+        self.LineEditPath_Page10 = QtWidgets.QLineEdit(self.frame_141)
+        self.LineEditPath_Page10.setMinimumSize(QtCore.QSize(0, 30))
+        self.LineEditPath_Page10.setStyleSheet("QLineEdit {\n"
+"    background-color: rgb(27, 29, 35);\n"
+"    border-radius: 5px;\n"
+"    border: 2px solid rgb(27, 29, 35);\n"
+"    padding-left: 10px;\n"
+"}\n"
+"QLineEdit:hover {\n"
+"    border: 2px solid rgb(64, 71, 88);\n"
+"}\n"
+"QLineEdit:focus {\n"
+"    border: 2px solid rgb(91, 101, 124);\n"
+"}")
+        self.LineEditPath_Page10.setObjectName("LineEditPath_Page10")
+        self.gridLayout_14.addWidget(self.LineEditPath_Page10, 0, 0, 1, 1)
+        self.BtnBrows_Page10_EmailDomailSearch = QtWidgets.QPushButton(self.frame_141)
+        self.BtnBrows_Page10_EmailDomailSearch.setMinimumSize(QtCore.QSize(150, 30))
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(9)
+        self.BtnBrows_Page10_EmailDomailSearch.setFont(font)
+        self.BtnBrows_Page10_EmailDomailSearch.setStyleSheet("QPushButton {\n"
+"    border: 2px solid rgb(52, 59, 72);\n"
+"    border-radius: 5px;    \n"
+"    background-color: rgb(52, 59, 72);\n"
+"}\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(57, 65, 80);\n"
+"    border: 2px solid rgb(61, 70, 86);\n"
+"}\n"
+"QPushButton:pressed {    \n"
+"    background-color: rgb(35, 40, 49);\n"
+"    border: 2px solid rgb(43, 50, 61);\n"
+"}")
+        self.BtnBrows_Page10_EmailDomailSearch.setIcon(icon2)
+        self.BtnBrows_Page10_EmailDomailSearch.setObjectName("BtnBrows_Page10_EmailDomailSearch")
+        self.gridLayout_14.addWidget(self.BtnBrows_Page10_EmailDomailSearch, 0, 1, 1, 1)
+        self.labelVersion_15 = QtWidgets.QLabel(self.frame_141)
+        self.labelVersion_15.setStyleSheet("color: rgb(98, 103, 111);")
+        self.labelVersion_15.setLineWidth(1)
+        self.labelVersion_15.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
+        self.labelVersion_15.setObjectName("labelVersion_15")
+        self.gridLayout_14.addWidget(self.labelVersion_15, 1, 0, 1, 2)
+        self.horizontalLayout_63.addLayout(self.gridLayout_14)
+        self.verticalLayout_61.addWidget(self.frame_141)
+        self.frame_142 = QtWidgets.QFrame(self.frame_139)
+        self.frame_142.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_142.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_142.setObjectName("frame_142")
+        self.verticalLayout_66 = QtWidgets.QVBoxLayout(self.frame_142)
+        self.verticalLayout_66.setObjectName("verticalLayout_66")
+        self.labelBoxBlenderInstalation_20 = QtWidgets.QLabel(self.frame_142)
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.labelBoxBlenderInstalation_20.setFont(font)
+        self.labelBoxBlenderInstalation_20.setStyleSheet("")
+        self.labelBoxBlenderInstalation_20.setObjectName("labelBoxBlenderInstalation_20")
+        self.verticalLayout_66.addWidget(self.labelBoxBlenderInstalation_20)
+        self.LineEditPath_Page10_EmailDomain = QtWidgets.QLineEdit(self.frame_142)
+        self.LineEditPath_Page10_EmailDomain.setMinimumSize(QtCore.QSize(0, 30))
+        self.LineEditPath_Page10_EmailDomain.setStyleSheet("QLineEdit {\n"
+"    background-color: rgb(27, 29, 35);\n"
+"    border-radius: 5px;\n"
+"    border: 2px solid rgb(27, 29, 35);\n"
+"    padding-left: 10px;\n"
+"}\n"
+"QLineEdit:hover {\n"
+"    border: 2px solid rgb(64, 71, 88);\n"
+"}\n"
+"QLineEdit:focus {\n"
+"    border: 2px solid rgb(91, 101, 124);\n"
+"}")
+        self.LineEditPath_Page10_EmailDomain.setObjectName("LineEditPath_Page10_EmailDomain")
+        self.verticalLayout_66.addWidget(self.LineEditPath_Page10_EmailDomain)
+        self.labelVersion_16 = QtWidgets.QLabel(self.frame_142)
+        self.labelVersion_16.setStyleSheet("color: rgb(98, 103, 111);")
+        self.labelVersion_16.setLineWidth(1)
+        self.labelVersion_16.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
+        self.labelVersion_16.setObjectName("labelVersion_16")
+        self.verticalLayout_66.addWidget(self.labelVersion_16)
+        self.verticalLayout_61.addWidget(self.frame_142)
+        self.frame_143 = QtWidgets.QFrame(self.frame_139)
+        self.frame_143.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_143.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_143.setObjectName("frame_143")
+        self.horizontalLayout_64 = QtWidgets.QHBoxLayout(self.frame_143)
+        self.horizontalLayout_64.setContentsMargins(-1, 15, -1, 0)
+        self.horizontalLayout_64.setObjectName("horizontalLayout_64")
+        self.frame_144 = QtWidgets.QFrame(self.frame_143)
+        self.frame_144.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_144.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_144.setObjectName("frame_144")
+        self.horizontalLayout_64.addWidget(self.frame_144)
+        self.labelConvert_Page1_BulkComvert_8 = QtWidgets.QLabel(self.frame_143)
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.labelConvert_Page1_BulkComvert_8.setFont(font)
+        self.labelConvert_Page1_BulkComvert_8.setStyleSheet("")
+        self.labelConvert_Page1_BulkComvert_8.setAlignment(QtCore.Qt.AlignCenter)
+        self.labelConvert_Page1_BulkComvert_8.setObjectName("labelConvert_Page1_BulkComvert_8")
+        self.horizontalLayout_64.addWidget(self.labelConvert_Page1_BulkComvert_8)
+        self.frame_145 = QtWidgets.QFrame(self.frame_143)
+        self.frame_145.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_145.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_145.setObjectName("frame_145")
+        self.horizontalLayout_64.addWidget(self.frame_145)
+        self.verticalLayout_61.addWidget(self.frame_143)
+        self.frame_146 = QtWidgets.QFrame(self.frame_139)
+        self.frame_146.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_146.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_146.setObjectName("frame_146")
+        self.horizontalLayout_65 = QtWidgets.QHBoxLayout(self.frame_146)
+        self.horizontalLayout_65.setContentsMargins(-1, 0, -1, 0)
+        self.horizontalLayout_65.setObjectName("horizontalLayout_65")
+        self.frame_147 = QtWidgets.QFrame(self.frame_146)
+        self.frame_147.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_147.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_147.setObjectName("frame_147")
+        self.horizontalLayout_65.addWidget(self.frame_147)
+        self.BtnConvert_Page10_EmailDomainSearch = QtWidgets.QPushButton(self.frame_146)
+        self.BtnConvert_Page10_EmailDomainSearch.setMinimumSize(QtCore.QSize(60, 60))
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(9)
+        self.BtnConvert_Page10_EmailDomainSearch.setFont(font)
+        self.BtnConvert_Page10_EmailDomainSearch.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.BtnConvert_Page10_EmailDomainSearch.setAutoFillBackground(False)
+        self.BtnConvert_Page10_EmailDomainSearch.setStyleSheet("QPushButton {\n"
+"    border: 2px solid rgb(52, 59, 72);\n"
+"    border-radius: 5px;    \n"
+"    background-color: rgb(52, 59, 72);\n"
+"}\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(57, 65, 80);\n"
+"    border: 2px solid rgb(61, 70, 86);\n"
+"}\n"
+"QPushButton:pressed {    \n"
+"    background-color: rgb(35, 40, 49);\n"
+"    border: 2px solid rgb(43, 50, 61);\n"
+"}")
+        self.BtnConvert_Page10_EmailDomainSearch.setIcon(icon3)
+        self.BtnConvert_Page10_EmailDomainSearch.setCheckable(False)
+        self.BtnConvert_Page10_EmailDomainSearch.setObjectName("BtnConvert_Page10_EmailDomainSearch")
+        self.horizontalLayout_65.addWidget(self.BtnConvert_Page10_EmailDomainSearch)
+        self.frame_148 = QtWidgets.QFrame(self.frame_146)
+        self.frame_148.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_148.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_148.setObjectName("frame_148")
+        self.horizontalLayout_65.addWidget(self.frame_148)
+        self.verticalLayout_61.addWidget(self.frame_146)
+        self.LabelStatus_Page3_LargeFileSplitter_5 = QtWidgets.QLabel(self.frame_139)
+        self.LabelStatus_Page3_LargeFileSplitter_5.setStyleSheet("color: rgb(98, 103, 111);")
+        self.LabelStatus_Page3_LargeFileSplitter_5.setLineWidth(1)
+        self.LabelStatus_Page3_LargeFileSplitter_5.setText("")
+        self.LabelStatus_Page3_LargeFileSplitter_5.setAlignment(QtCore.Qt.AlignCenter)
+        self.LabelStatus_Page3_LargeFileSplitter_5.setObjectName("LabelStatus_Page3_LargeFileSplitter_5")
+        self.verticalLayout_61.addWidget(self.LabelStatus_Page3_LargeFileSplitter_5)
+        self.verticalLayout_64.addWidget(self.frame_139)
+        self.frame_149 = QtWidgets.QFrame(self.frame_138)
+        self.frame_149.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_149.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_149.setObjectName("frame_149")
+        self.verticalLayout_62 = QtWidgets.QVBoxLayout(self.frame_149)
+        self.verticalLayout_62.setObjectName("verticalLayout_62")
+        self.frame_150 = QtWidgets.QFrame(self.frame_149)
+        self.frame_150.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_150.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_150.setObjectName("frame_150")
+        self.verticalLayout_63 = QtWidgets.QVBoxLayout(self.frame_150)
+        self.verticalLayout_63.setObjectName("verticalLayout_63")
+        self.plainTextEdit_Page10 = QtWidgets.QPlainTextEdit(self.frame_150)
+        self.plainTextEdit_Page10.setMinimumSize(QtCore.QSize(200, 200))
+        self.plainTextEdit_Page10.setStyleSheet("QPlainTextEdit {\n"
+"    background-color: rgb(27, 29, 35);\n"
+"    border-radius: 5px;\n"
+"    padding: 10px;\n"
+"}\n"
+"QPlainTextEdit:hover {\n"
+"    border: 2px solid rgb(64, 71, 88);\n"
+"}\n"
+"QPlainTextEdit:focus {\n"
+"    border: 2px solid rgb(91, 101, 124);\n"
+"}")
+        self.plainTextEdit_Page10.setPlainText("")
+        self.plainTextEdit_Page10.setPlaceholderText("")
+        self.plainTextEdit_Page10.setObjectName("plainTextEdit_Page10")
+        self.verticalLayout_63.addWidget(self.plainTextEdit_Page10)
+        self.verticalLayout_62.addWidget(self.frame_150)
+        self.frame_151 = QtWidgets.QFrame(self.frame_149)
+        self.frame_151.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_151.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_151.setObjectName("frame_151")
+        self.verticalLayout_62.addWidget(self.frame_151)
+        self.frame_152 = QtWidgets.QFrame(self.frame_149)
+        self.frame_152.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_152.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_152.setObjectName("frame_152")
+        self.horizontalLayout_66 = QtWidgets.QHBoxLayout(self.frame_152)
+        self.horizontalLayout_66.setObjectName("horizontalLayout_66")
+        self.verticalLayout_62.addWidget(self.frame_152)
+        self.verticalLayout_64.addWidget(self.frame_149)
+        self.verticalLayout_65.addWidget(self.frame_138)
+        self.stackedWidget.addWidget(self.page10_EmailDomainSearch)
         self.verticalLayout_9.addWidget(self.stackedWidget)
         self.verticalLayout_4.addWidget(self.frame_content)
         self.frame_grip = QtWidgets.QFrame(self.frame_content_right)
@@ -2997,7 +3744,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(7)
+        self.stackedWidget.setCurrentIndex(9)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
         MainWindow.setTabOrder(self.btn_toggle_menu, self.checkBox)
         MainWindow.setTabOrder(self.checkBox, self.comboBox)
@@ -3020,6 +3767,9 @@ class Ui_MainWindow(object):
         self.BtnGeos.setText(_translate("MainWindow", "Geos                        "))
         self.BtnEmailValidation.setText(_translate("MainWindow", "Email Validation "))
         self.BtnExtractNumbers.setText(_translate("MainWindow", "Extract Numbers"))
+        self.BtnTextToCsv.setText(_translate("MainWindow", "Text To CSV         "))
+        self.BtnUrlChecker.setText(_translate("MainWindow", "Url Checker        "))
+        self.BtnEmailDomainSearch.setText(_translate("MainWindow", "Email/Domain Search"))
         self.label_user_icon_2.setText(_translate("MainWindow", "Apara"))
         self.labelBoxBlenderInstalation_4.setText(_translate("MainWindow", "Brows to the folder which contains sub-folders each having a number of excelsheets"))
         self.LineEditPath_Page1.setPlaceholderText(_translate("MainWindow", "Your Path"))
@@ -3136,6 +3886,28 @@ class Ui_MainWindow(object):
         self.labelVersion_12.setText(_translate("MainWindow", "Ex: /home/documents/csvfolder"))
         self.labelConvert_Page1_BulkComvert_5.setText(_translate("MainWindow", "Press to extract numbers"))
         self.BtnConvert_Page7_ExtractNumbers.setText(_translate("MainWindow", "Extract"))
+        self.labelBoxBlenderInstalation_17.setText(_translate("MainWindow", "Brows to the folder containg the text files"))
+        self.LineEditPath_Page8.setPlaceholderText(_translate("MainWindow", "Your Path"))
+        self.BtnBrows_Page8_TextToCsv.setText(_translate("MainWindow", "Open Folder"))
+        self.labelVersion_13.setText(_translate("MainWindow", "Ex: /home/documents/csvfolder"))
+        self.labelConvert_Page1_BulkComvert_6.setText(_translate("MainWindow", "Press to convert text to csv"))
+        self.BtnConvert_Page8_TextToCsv.setText(_translate("MainWindow", "Convert"))
+        self.labelBoxBlenderInstalation_18.setText(_translate("MainWindow", "Enter the url to check"))
+        self.LineEditPath_Page9_Url.setText(_translate("MainWindow", "https://jyplacements.com/"))
+        self.LineEditPath_Page9_Url.setPlaceholderText(_translate("MainWindow", "Your Path"))
+        self.labelVersion_14.setText(_translate("MainWindow", "Ex: https://jyplacements.com/"))
+        self.labelConvert_Page1_BulkComvert_7.setText(_translate("MainWindow", "Press to begin check"))
+        self.BtnConvert_Page9_UrlCheck.setText(_translate("MainWindow", "Check"))
+        self.labelBoxBlenderInstalation_19.setText(_translate("MainWindow", "Brows to the folder containg the csv files"))
+        self.LineEditPath_Page10.setPlaceholderText(_translate("MainWindow", "Your Path"))
+        self.BtnBrows_Page10_EmailDomailSearch.setText(_translate("MainWindow", "Open Folder"))
+        self.labelVersion_15.setText(_translate("MainWindow", "Ex: /home/documents/csvfolder"))
+        self.labelBoxBlenderInstalation_20.setText(_translate("MainWindow", "Enter email or domain to search for"))
+        self.LineEditPath_Page10_EmailDomain.setText(_translate("MainWindow", "email@gmail.com"))
+        self.LineEditPath_Page10_EmailDomain.setPlaceholderText(_translate("MainWindow", "Your Path"))
+        self.labelVersion_16.setText(_translate("MainWindow", "Ex: email@gmail.com, or, gmail.com"))
+        self.labelConvert_Page1_BulkComvert_8.setText(_translate("MainWindow", "Press to begin search"))
+        self.BtnConvert_Page10_EmailDomainSearch.setText(_translate("MainWindow", "Search"))
         self.label_credits.setText(_translate("MainWindow", "Developed by: Eslam Dyab"))
         self.label_version.setText(_translate("MainWindow", "v1.0.1"))
 import files_rc
