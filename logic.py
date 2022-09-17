@@ -22,6 +22,7 @@ import scripts.MX_Domain_Validator as MX_Domain_Validator
 import scripts.Numbers_Extractor as Numbers_Extractor
 import scripts.TxtTOcsv as TxtTOcsv
 import scripts.url_checker as url_checker
+import scripts.email_search as email_search
 
 from ui import Ui_MainWindow
 
@@ -184,6 +185,26 @@ class Worker6_urlChecker(QThread):
 
 
 
+# Create a Worker7_EmailDomainSearch class
+class Worker7_EmailDomainSearch(QThread):
+    update_plainTextEdit_Page10 = pyqtSignal(str)
+
+    def __init__(self , Page10_EmailDomainSearch_fname, EmailOrDomain):
+        QThread.__init__(self)
+        self.Page10_EmailDomainSearch_fname = Page10_EmailDomainSearch_fname
+        self.EmailOrDomain = EmailOrDomain
+        
+
+    def run(self):
+        """Long-running task."""
+        print('----------------------------------------------------------------')
+        print(self.Page10_EmailDomainSearch_fname, self.EmailOrDomain)
+        print('----------------------------------------------------------------')
+        val = email_search.DirctoryPathToEmailDomainSearch(self.Page10_EmailDomainSearch_fname, self.EmailOrDomain)
+
+        for value in val:
+            self.update_plainTextEdit_Page10.emit(value)
+            #print(value)
 
 
 class Window(QMainWindow):
@@ -269,6 +290,12 @@ class Window(QMainWindow):
         ##########################################################################
 
 
+        #########################PAGE10-Email-Domain-Search#######################
+        self.ui.BtnEmailDomainSearch.clicked.connect(self.SetPage10EmailDomainSearch)
+        self.ui.BtnBrows_Page10_EmailDomailSearch.clicked.connect(self.Page10_EmailDomailSearch_BrowsFolders)
+        self.ui.BtnConvert_Page10_EmailDomainSearch.clicked.connect(self.Page10_EmailDomainSearch_CallScript)
+        ##########################################################################
+
     
 
     def BtnPressed(self,lst):
@@ -290,6 +317,9 @@ class Window(QMainWindow):
             self.ui.BtnTextToCsv.setStyleSheet(defult_style)
         if lst[8] == 1:
             self.ui.BtnUrlChecker.setStyleSheet(defult_style)
+        if lst[9] == 1:
+            self.ui.BtnEmailDomainSearch.setStyleSheet(defult_style)
+
 
         #if lst[5] == 1:
         #    self.ui.BtnBulkConverter.setStyleSheet(self.defult)
@@ -303,6 +333,7 @@ class Window(QMainWindow):
         self.ui.BtnExtractNumbers.setEnabled(lst[6])
         self.ui.BtnTextToCsv.setEnabled(lst[7])
         self.ui.BtnUrlChecker.setEnabled(lst[8])
+        self.ui.BtnEmailDomainSearch.setEnabled(lst[9])
 
 
 
@@ -320,7 +351,7 @@ class Window(QMainWindow):
         self.ui.stackedWidget.setCurrentIndex(0)
         self.ui.label_title_bar_top.setText("Bulk Converter")
         self.ui.BtnBulkConverter.setStyleSheet(pressed_style)
-        self.BtnPressed([0,1,1,1,1,1,1,1,1])
+        self.BtnPressed([0,1,1,1,1,1,1,1,1,1])
 
     def Page1_BulckConverter_BrowsFolders(self):
         self.Page1_BulckConverter_fname = QFileDialog.getExistingDirectory(self, "Chosse folder", current_directory)
@@ -342,7 +373,7 @@ class Window(QMainWindow):
         self.ui.stackedWidget.setCurrentIndex(2)
         self.ui.label_title_bar_top.setText("Xlsx Converter")
         self.ui.BtnXlsxToCSV.setStyleSheet(pressed_style)
-        self.BtnPressed([1,0,1,1,1,1,1,1,1])
+        self.BtnPressed([1,0,1,1,1,1,1,1,1,1])
 
     def Page2_XlsxToSCV_BrowsFolders(self):
         self.Page2_XlsxToSCV_fname = QFileDialog.getExistingDirectory(self, "Chosse folder", current_directory)
@@ -362,7 +393,7 @@ class Window(QMainWindow):
         self.ui.stackedWidget.setCurrentIndex(3)
         self.ui.label_title_bar_top.setText("Large Files Splitter")
         self.ui.BtnLargeFileSplitter.setStyleSheet(pressed_style)
-        self.BtnPressed([1,1,0,1,1,1,1,1,1])
+        self.BtnPressed([1,1,0,1,1,1,1,1,1,1])
 
     def Page3_LargeFileSplitter_BrowsFolders(self):
         self.Page3_LargeFileSplitter_fname = QFileDialog.getExistingDirectory(self, "Chosse folder", current_directory)
@@ -397,7 +428,7 @@ class Window(QMainWindow):
         self.ui.stackedWidget.setCurrentIndex(4)
         self.ui.label_title_bar_top.setText("Merge Small Files")
         self.ui.BtnMergeSmallFiles.setStyleSheet(pressed_style)
-        self.BtnPressed([1,1,1,0,1,1,1,1,1])
+        self.BtnPressed([1,1,1,0,1,1,1,1,1,1])
 
     def Page4_MergeSmall_BrowsFolders(self):
         self.Page4_MergeSmall_fname = QFileDialog.getExistingDirectory(self, "Chosse folder", current_directory)
@@ -422,7 +453,7 @@ class Window(QMainWindow):
         self.ui.stackedWidget.setCurrentIndex(5)
         self.ui.label_title_bar_top.setText("Geos Extractor and Merger")
         self.ui.BtnGeos.setStyleSheet(pressed_style)
-        self.BtnPressed([1,1,1,1,0,1,1,1,1])
+        self.BtnPressed([1,1,1,1,0,1,1,1,1,1])
 
     def Page5_Geos_BrowsFolders(self):
         self.Page5_Geos_fname = QFileDialog.getExistingDirectory(self, "Chosse folder", current_directory)
@@ -472,7 +503,7 @@ class Window(QMainWindow):
         self.ui.stackedWidget.setCurrentIndex(6)
         self.ui.label_title_bar_top.setText("Email Validation")
         self.ui.BtnEmailValidation.setStyleSheet(pressed_style)
-        self.BtnPressed([1,1,1,1,1,0,1,1,1])
+        self.BtnPressed([1,1,1,1,1,0,1,1,1,1])
 
     def Page6_Validation_BrowsFolders(self):
         self.Page6_Validation_fname = QFileDialog.getExistingDirectory(self, "Chosse folder", current_directory)
@@ -515,7 +546,7 @@ class Window(QMainWindow):
         self.ui.stackedWidget.setCurrentIndex(7)
         self.ui.label_title_bar_top.setText("Extract Numbers")
         self.ui.BtnExtractNumbers.setStyleSheet(pressed_style)
-        self.BtnPressed([1,1,1,1,1,1,0,1,1])
+        self.BtnPressed([1,1,1,1,1,1,0,1,1,1])
 
     def Page7_ExtractNumbers_BrowsFolders(self):
         self.Page7_Validation_fname = QFileDialog.getExistingDirectory(self, "Chosse folder", current_directory)
@@ -552,7 +583,7 @@ class Window(QMainWindow):
         self.ui.stackedWidget.setCurrentIndex(8)
         self.ui.label_title_bar_top.setText("Text To CSV")
         self.ui.BtnTextToCsv.setStyleSheet(pressed_style)
-        self.BtnPressed([1,1,1,1,1,1,1,0,1])
+        self.BtnPressed([1,1,1,1,1,1,1,0,1,1])
     
     def Page8_TextToCsv_BrowsFolders(self):
         self.Page8_TextToCsv_fname = QFileDialog.getExistingDirectory(self, "Chosse folder", current_directory)
@@ -587,12 +618,12 @@ class Window(QMainWindow):
     def SetPageUrlChecker(self):
         self.ui.stackedWidget.setCurrentIndex(9)
         self.ui.label_title_bar_top.setText("URL Checker")
-        self.ui.BtnTextToCsv.setStyleSheet(pressed_style)
-        self.BtnPressed([1,1,1,1,1,1,1,1,0])
+        self.ui.BtnUrlChecker.setStyleSheet(pressed_style)
+        self.BtnPressed([1,1,1,1,1,1,1,1,0,1])
 
 
     def Page9_UrlCheck_CallScript(self):
-        self.ui.plainTextEdit_Page8.clear()
+        self.ui.plainTextEdit_Page9.clear()
         QApplication.processEvents()
 
         #Create a QThread object
@@ -610,6 +641,44 @@ class Window(QMainWindow):
         self.ui.plainTextEdit_Page9.appendPlainText(value)
 
     ##########################################################################
+
+
+
+    #########################PAGE10-Email-Domain-Search#######################
+        # self.ui.BtnEmailDomainSearch.clicked.connect(self.SetPage10EmailDomainSearch)
+        # self.ui.BtnBrows_Page10_EmailDomailSearch.clicked.connect(self.Page10_EmailDomailSearch_BrowsFolders)
+        # self.ui.BtnConvert_Page10_EmailDomainSearch.clicked.connect(self.Page10_EmailDomainSearch_CallScript)
+    ##########################################################################
+    #########################PAGE10-Email-Domain-Search#######################
+    def SetPage10EmailDomainSearch(self):
+        self.ui.stackedWidget.setCurrentIndex(10)
+        self.ui.label_title_bar_top.setText("Email/Domain Search")
+        self.ui.BtnEmailDomainSearch.setStyleSheet(pressed_style)
+        self.BtnPressed([1,1,1,1,1,1,1,1,1,0])
+
+    def Page10_EmailDomailSearch_BrowsFolders(self):
+        self.Page10_EmailDomainSearch_fname = QFileDialog.getExistingDirectory(self, "Chosse folder", current_directory)
+        self.ui.LineEditPath_Page10.setText(self.Page10_EmailDomainSearch_fname)
+
+    def Page10_EmailDomainSearch_CallScript(self):
+        self.ui.plainTextEdit_Page10.clear()
+        QApplication.processEvents()
+
+        #Create a QThread object
+        self.worker7_EmailDomainSearch = Worker7_EmailDomainSearch(self.Page10_EmailDomainSearch_fname, self.ui.LineEditPath_Page10_EmailDomain.text())
+
+        self.worker7_EmailDomainSearch.start()
+
+        self.worker7_EmailDomainSearch.finished.connect(self.evt_Worker7_EmailDomainSearch_thread_finished)
+        self.worker7_EmailDomainSearch.update_plainTextEdit_Page10.connect(self.evt_update_plainTextEdit_Page10)
+
+    def evt_Worker7_EmailDomainSearch_thread_finished(self):
+        self.ui.plainTextEdit_Page10.appendPlainText("Done")
+
+    def evt_update_plainTextEdit_Page10(self, value):
+        self.ui.plainTextEdit_Page10.appendPlainText(value)
+    ##########################################################################
+
 
 if __name__ == "__main__":
     import sys
