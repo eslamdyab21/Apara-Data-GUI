@@ -36,15 +36,25 @@ def DirctoryPathToEmailDomainSearch(current_directory, wanted_email):
                         email_col_name = 'Email'
 
                     if ('EMAIL' in df.columns) or ('Email' in df.columns):
-                        if wanted_email in list(df[email_col_name]):
-                            wanted_data = df[df[email_col_name] == wanted_email]
-                            wanted_mlist[0].append(folder)
-                            wanted_mlist[1].append(csvfile)
-                            wanted_mlist[2].append(wanted_data)
-                            #print(wanted_email + ' found in ' + "'" + folder + "'" + ' folder and in ' +  "'" + csvfile + "'" + ' file')
-                            #print("Email row's data: ")
-                            #print(str(wanted_data))
-                            #print('==============================================================')
+                        if '@' in wanted_email:
+                            if wanted_email in list(df[email_col_name]):
+                                wanted_data = df[df[email_col_name] == wanted_email]
+                                wanted_mlist[0].append(folder)
+                                wanted_mlist[1].append(csvfile)
+                                wanted_mlist[2].append(wanted_data)
+                                #print(wanted_email + ' found in ' + "'" + folder + "'" + ' folder and in ' +  "'" + csvfile + "'" + ' file')
+                                #print("Email row's data: ")
+                                #print(str(wanted_data))
+                                #print('==============================================================')
+
+                        if '@' not in wanted_email:
+                            domains_col = df[email_col_name].str.split('@', 1, expand=True)[1]
+                            domains = list(domains_col.unique())
+                            if wanted_email in domains:
+                                wanted_data = df[domains_col == wanted_email]
+                                wanted_mlist[0].append(folder)
+                                wanted_mlist[1].append(csvfile)
+                                wanted_mlist[2].append(wanted_data)
 
     if len(wanted_mlist[0]) == 0:
         print(wanted_email + ' was not found')

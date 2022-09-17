@@ -22,7 +22,7 @@ import scripts.MX_Domain_Validator as MX_Domain_Validator
 import scripts.Numbers_Extractor as Numbers_Extractor
 import scripts.TxtTOcsv as TxtTOcsv
 import scripts.url_checker as url_checker
-import scripts.email_search as email_search
+import scripts.email_domain_search as email_domain_search
 
 from ui import Ui_MainWindow
 
@@ -197,7 +197,7 @@ class Worker7_EmailDomainSearch(QThread):
 
     def run(self):
         """Long-running task."""
-        val = email_search.DirctoryPathToEmailDomainSearch(self.Page10_EmailDomainSearch_fname, self.EmailOrDomain)
+        val = email_domain_search.DirctoryPathToEmailDomainSearch(self.Page10_EmailDomainSearch_fname, self.EmailOrDomain)
 
         for value in val:
             self.update_plainTextEdit_Page10.emit(value)
