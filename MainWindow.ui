@@ -1918,7 +1918,7 @@ QPushButton:pressed {
                    <string notr="true">background: transparent;</string>
                   </property>
                   <property name="currentIndex">
-                   <number>9</number>
+                   <number>10</number>
                   </property>
                   <widget class="QWidget" name="page1_home">
                    <layout class="QVBoxLayout" name="verticalLayout_10">
@@ -6773,7 +6773,7 @@ QPlainTextEdit:focus {
                                 <string notr="true"/>
                                </property>
                                <property name="text">
-                                <string>Brows to the folder containg the csv files</string>
+                                <string>Brows to the folder which contains sub-folders each having a number of csvs</string>
                                </property>
                               </widget>
                              </item>

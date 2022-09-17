@@ -3744,7 +3744,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(9)
+        self.stackedWidget.setCurrentIndex(10)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
         MainWindow.setTabOrder(self.btn_toggle_menu, self.checkBox)
         MainWindow.setTabOrder(self.checkBox, self.comboBox)
@@ -3898,7 +3898,7 @@ class Ui_MainWindow(object):
         self.labelVersion_14.setText(_translate("MainWindow", "Ex: https://jyplacements.com/"))
         self.labelConvert_Page1_BulkComvert_7.setText(_translate("MainWindow", "Press to begin check"))
         self.BtnConvert_Page9_UrlCheck.setText(_translate("MainWindow", "Check"))
-        self.labelBoxBlenderInstalation_19.setText(_translate("MainWindow", "Brows to the folder containg the csv files"))
+        self.labelBoxBlenderInstalation_19.setText(_translate("MainWindow", "Brows to the folder which contains sub-folders each having a number of csvs"))
         self.LineEditPath_Page10.setPlaceholderText(_translate("MainWindow", "Your Path"))
         self.BtnBrows_Page10_EmailDomailSearch.setText(_translate("MainWindow", "Open Folder"))
         self.labelVersion_15.setText(_translate("MainWindow", "Ex: /home/documents/csvfolder"))

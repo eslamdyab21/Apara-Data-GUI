@@ -197,9 +197,6 @@ class Worker7_EmailDomainSearch(QThread):
 
     def run(self):
         """Long-running task."""
-        print('----------------------------------------------------------------')
-        print(self.Page10_EmailDomainSearch_fname, self.EmailOrDomain)
-        print('----------------------------------------------------------------')
         val = email_search.DirctoryPathToEmailDomainSearch(self.Page10_EmailDomainSearch_fname, self.EmailOrDomain)
 
         for value in val:
