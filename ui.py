@@ -3909,7 +3909,7 @@ class Ui_MainWindow(object):
         self.labelConvert_Page1_BulkComvert_8.setText(_translate("MainWindow", "Press to begin search"))
         self.BtnConvert_Page10_EmailDomainSearch.setText(_translate("MainWindow", "Search"))
         self.label_credits.setText(_translate("MainWindow", "Developed by: Eslam Dyab"))
-        self.label_version.setText(_translate("MainWindow", "v1.0.1"))
+        self.label_version.setText(_translate("MainWindow", "v1.0.2"))
 import files_rc
 
 
