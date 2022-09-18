@@ -1,6 +1,6 @@
 import pandas as pd
 import os
-
+import scripts.merge_search_domain_files as merge_search_domain_files
 
 def DirctoryPathToEmailDomainSearch(current_directory, wanted_email):
     #wanted_email = input('Enter an email: ')
@@ -11,7 +11,11 @@ def DirctoryPathToEmailDomainSearch(current_directory, wanted_email):
         if '.' not in folder:
             folders.append(folder)
 
+    final_directory = os.path.join(current_directory, r'domain-search-results')
+    if not os.path.exists(final_directory):
+        os.makedirs(final_directory)
     
+    file_num = 0
     wanted_mlist = [[0 for i in range(0)] for j in range(3)]
     for folder in folders:
         for csvfile in os.listdir(current_directory + '/' + folder):
@@ -52,6 +56,10 @@ def DirctoryPathToEmailDomainSearch(current_directory, wanted_email):
                             domains = list(domains_col.unique())
                             if wanted_email in domains:
                                 wanted_data = df[domains_col == wanted_email]
+                                wanted_data.to_csv(final_directory + '/' + 'domain_search_result_'+str(file_num+1) + '.csv', index=None, header=True)
+                                
+                                file_num = file_num + 1
+
                                 wanted_mlist[0].append(folder)
                                 wanted_mlist[1].append(csvfile)
                                 wanted_mlist[2].append(wanted_data)
@@ -71,4 +79,10 @@ def DirctoryPathToEmailDomainSearch(current_directory, wanted_email):
             yield str(wanted_mlist[2][i])
             print('==============================================================')
             yield '=============================================================='
+        
+        val = merge_search_domain_files.DirctoryPathToMergeSmallFiles(final_directory,0, 1000)
+        print(final_directory)
+        yield final_directory
+        for value in val:
+            yield value
 
