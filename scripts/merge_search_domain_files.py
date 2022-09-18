@@ -106,7 +106,7 @@ def DirctoryPathToMergeSmallFiles(current_directory, small_file_max_size_kb, mer
 
 
     if len(df_multi_list[0]) > 0:
-        final_directory = os.path.join(current_directory, r'small merged csv files')
+        final_directory = os.path.join(current_directory, r'merged csv files')
         if not os.path.exists(final_directory):
             os.makedirs(final_directory)
 
